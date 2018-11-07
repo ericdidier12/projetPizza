@@ -49,7 +49,7 @@ public class UserEntity extends BaseEntity implements UserDetails {
     @Transactional
     @Override
     public boolean isAccountNonLocked() {
-        return isAccountNonLocked();
+        return accountNonLocked;
     }
 
     @Override

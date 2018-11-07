@@ -4,6 +4,7 @@
 
 <%@ page language="java" contentType="text/html ; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="include/importTags.jsp" %>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="type=text/html ; charset=UTF-8"/>
@@ -43,22 +44,6 @@
                     <p>Not a member?
                         <a href="${pageContext.request.contextPath}/account/register">Register</a>
                     </p>
-
-                    <!-- Social login -->
-                    <p>or sign in with:</p>
-
-                    <a type="button" class="light-blue-text mx-2">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                    <a type="button" class="light-blue-text mx-2">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <a type="button" class="light-blue-text mx-2">
-                        <i class="fa fa-linkedin"></i>
-                    </a>
-                    <a type="button" class="light-blue-text mx-2">
-                        <i class="fa fa-github"></i>
-                    </a>
 
                 </form:form>
                 <!-- Default form login -->

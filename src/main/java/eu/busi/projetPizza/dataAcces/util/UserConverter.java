@@ -29,7 +29,7 @@ public class UserConverter {
         user.setEmail(userEntity.getEmail() != null ? userEntity.getEmail() : null);
         user.setPassword(userEntity.getPassword());
         user.setAccountNonExpired(userEntity.isAccountNonExpired());
-        //user.setAccountNonLocked(userEntity.isAccountNonLocked());
+        user.setAccountNonLocked(userEntity.isAccountNonLocked());
         user.setCredentialsNonExpired(userEntity.isCredentialsNonExpired());
         user.setEnabled(userEntity.isEnabled());
 

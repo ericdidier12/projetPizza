@@ -1,12 +1,12 @@
-<%@ include file="../include/importTags.jsp"%>
-<%@ include file="../include/importLinks.jsp"%>
+<%@ include file="../include/importTags.jsp" %>
+<%@ include file="../include/importLinks.jsp" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title><tiles:getAsString name="title"/></title>
-    <link type="text/css" href="<spring:url value='/css/webApp.css'/>" rel="stylesheet" />
+    <link type="text/css" href="<spring:url value='/css/webApp.css'/>" rel="stylesheet"/>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -23,7 +23,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i> <span class="clearfix d-none d-sm-inline-block">Panier</span></a>
+                    <a class="nav-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i> <span
+                            class="clearfix d-none d-sm-inline-block">Panier</span></a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -37,8 +38,16 @@
                     </div>
                 </li>
 
-                <li class="nav-item"> <i class="fa fa-sign-in" aria-hidden="true"></i>
-                    <a href="#"> <button type="button" class="btn">Login</button> </a>
+                <li class="nav-item"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                    <a href="href="${pageContext.request.contextPath}/login">
+                    <button type="button" class="btn">
+                        <sec:authorize access="!isAuthenticated()">
+                            Login
+                        </sec:authorize>
+                        <sec:authorize access="isAuthenticated()">
+                            Logout
+                        </sec:authorize></button>
+                    </a>
                 </li>
             </ul>
         </nav>

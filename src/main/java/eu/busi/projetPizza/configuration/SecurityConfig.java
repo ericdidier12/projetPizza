@@ -19,8 +19,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String LOGIN_REQUEST = "/login";
 
     //
-    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/home", "/account/register"};
-    private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{"/users"};
+    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/home","/account/register"};
+    private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{"/users","/home","/account/register", };
     private static final String[] AUTHORIZED_REQUESTS_USER = new String[]{"/pizza"};
     String[] staticResources = {
             "/css/**",
@@ -51,9 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(new SavedRequestAwareAuthenticationSuccessHandler())
                 .loginPage(LOGIN_REQUEST)
                 .permitAll()
-                .defaultSuccessUrl("/home")
-                //  .and()
-                //  .logout()
+                .and()
+                .logout()
                 .permitAll();
     }
 
