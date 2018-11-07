@@ -1,4 +1,5 @@
 package eu.busi.projetPizza.configuration;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,13 +16,13 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final String LOGIN_REQUEST="/login";
+    private static final String LOGIN_REQUEST = "/login";
 
     //
-    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/home","/inscription"};
-    private static final String[] AUTHORIZED_REQUESTS_ADMIN= new String[]{"/users"};
-    private static final String[] AUTHORIZED_REQUESTS_USER= new String[]{"/pizza"};
-    String[] staticResources  =  {
+    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/home", "/account/register"};
+    private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{"/users"};
+    private static final String[] AUTHORIZED_REQUESTS_USER = new String[]{"/pizza"};
+    String[] staticResources = {
             "/css/**",
             "/images/**",
             "/fonts/**",
@@ -42,17 +43,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(AUTHORIZED_REQUESTS_ADMIN).hasRole("ADMIN")
                 .antMatchers(AUTHORIZED_REQUESTS_USER).hasRole("USER")
                 .antMatchers(AUTHORIZED_REQUESTS_ANYBODY).permitAll()
-                 .antMatchers(staticResources).permitAll()
+                .antMatchers(staticResources).permitAll()
                 .anyRequest().authenticated()
 
                 .and()
                 .formLogin()
-               .successHandler(new SavedRequestAwareAuthenticationSuccessHandler())
+                .successHandler(new SavedRequestAwareAuthenticationSuccessHandler())
                 .loginPage(LOGIN_REQUEST)
-               .permitAll()
-                .defaultSuccessUrl("/hello")
-              //  .and()
-              //  .logout()
+                .permitAll()
+                .defaultSuccessUrl("/home")
+                //  .and()
+                //  .logout()
                 .permitAll();
     }
 
@@ -63,8 +64,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
         // auth.inMemoryAuthentication().withUser("admin").password("root123").roles("ADMIN");
     }
 
- }
+}

@@ -2,6 +2,7 @@ package eu.busi.projetPizza.dataAcces.dao;
 
 import eu.busi.projetPizza.dataAcces.entity.UserEntity;
 import eu.busi.projetPizza.dataAcces.repository.UserRepository;
+import eu.busi.projetPizza.enums.RoleEnum;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 
 @Primary
 @Service
@@ -34,9 +36,6 @@ public class UserDAO implements UserDetailsService {
         System.out.println("Login OKAY");
         return found;
     }
-
-
-
 
 
 }
