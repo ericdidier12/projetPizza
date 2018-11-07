@@ -17,7 +17,7 @@ import javax.validation.Valid;
  */
 
 @Controller
-@RequestMapping("account/register")
+@RequestMapping("/user/register")
 @SessionAttributes({Constants.CURRENT_USER})
 public class InscriptionController {
 

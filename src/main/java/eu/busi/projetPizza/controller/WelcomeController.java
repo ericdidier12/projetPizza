@@ -13,10 +13,4 @@ public class WelcomeController {
         return "integrated:welcome";
     }
 
-
-    @RequestMapping(value = "/tables", method = RequestMethod.GET)
-    public String tab() {
-
-        return "integrated:userInscription";
-    }
 }
