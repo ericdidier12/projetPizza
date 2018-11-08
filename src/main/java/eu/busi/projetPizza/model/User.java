@@ -1,6 +1,11 @@
 package eu.busi.projetPizza.model;
 
+import eu.busi.projetPizza.dataAcces.entity.AdressEntity;
 import eu.busi.projetPizza.dataAcces.entity.Authority;
+import eu.busi.projetPizza.dataAcces.entity.BankAccountEntity;
+
+import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
 
 public class User {
@@ -12,8 +17,11 @@ public class User {
     private boolean accountNonExpired;
     private boolean credentialsNonExpired;
     private boolean enabled ;
-
     public List<Authority> authorities;
+    private LocalDate birth_date;
+    private Collection<BankAccountEntity> bankAccountEntities;
+    private AdressEntity adressEntity ;
+    private Collection<Oder> oders;
 
     public User() {
     }
@@ -80,5 +88,37 @@ public class User {
 
     public void setAuthorities(List<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public LocalDate getBirth_date() {
+        return birth_date;
+    }
+
+    public void setBirth_date(LocalDate birth_date) {
+        this.birth_date = birth_date;
+    }
+
+    public Collection<BankAccountEntity> getBankAccountEntities() {
+        return bankAccountEntities;
+    }
+
+    public void setBankAccountEntities(Collection<BankAccountEntity> bankAccountEntities) {
+        this.bankAccountEntities = bankAccountEntities;
+    }
+
+    public AdressEntity getAdressEntity() {
+        return adressEntity;
+    }
+
+    public void setAdressEntity(AdressEntity adressEntity) {
+        this.adressEntity = adressEntity;
+    }
+
+    public Collection<Oder> getOders() {
+        return oders;
+    }
+
+    public void setOders(Collection<Oder> oders) {
+        this.oders = oders;
     }
 }

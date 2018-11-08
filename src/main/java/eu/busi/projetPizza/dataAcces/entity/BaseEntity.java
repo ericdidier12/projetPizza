@@ -6,6 +6,17 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.util.Objects;
 
+/**
+ * <b> BaseEntity est la classe représentant une entité mère (laSuperClasse) qui a un comportement particulier </b>
+ * <b> qui sera hérite par toutes ses entites  filles. </b>
+ *
+ * <p>
+ * L'avatange est de pouvoir définir qui seront héritées par toutes les classes filles.
+ * par contre, ces entitées mères ne sont pas manipulables.
+ * </p>
+ *
+ * @author Eric Nyandwi
+ */
 @MappedSuperclass
 public abstract class BaseEntity {
 

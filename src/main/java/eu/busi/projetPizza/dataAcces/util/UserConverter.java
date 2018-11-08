@@ -1,8 +1,12 @@
 package eu.busi.projetPizza.dataAcces.util;
 
+import eu.busi.projetPizza.dataAcces.entity.OderEntity;
 import eu.busi.projetPizza.dataAcces.entity.UserEntity;
+import eu.busi.projetPizza.model.Oder;
 import eu.busi.projetPizza.model.User;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -15,7 +19,7 @@ public class UserConverter {
 
 
     /**
-     * Transforme une entité JPA {@link UserEntity} en objet TDO {@link User}.
+     * Transforme une entité JPA {@link UserEntity} en objet Model {@link User}.
      * @param userEntity
      * @return Objet type User
      */
@@ -34,17 +38,27 @@ public class UserConverter {
         user.setEnabled(userEntity.isEnabled());
 
         user.setAuthorities(userEntity.getAuthorities() !=null ? userEntity.getAuthorities()  : null);
+        user.setBirth_date(userEntity.getBirth_date());
+        user.setAdressEntity(userEntity.getAdressEntity());
+
+        Collection<Oder> oders = new ArrayList<>();
+        userEntity.getOderEntities().forEach(oderEntity -> {
+            ((ArrayList<Oder>) oders).add(OderConverter.oderEntityToOderModel(oderEntity));
+        });
+
+        user.setOders(oders);
+
         return  user;
     }
 
 
 
     /**
-     * Transforme un objet TDO {@link User} en une entité JPA {@link UserEntity}.
+     * Transforme un objet Model {@link User} en une entité JPA {@link UserEntity}.
      * @param user
-     * @return objet artist
+     * @return objet user
      */
-    public static UserEntity UserModelToUserEntity (User user){
+    public static UserEntity userModelToUserEntity (User user){
         if (user == null) {
             throw new IllegalArgumentException(" objet userEntity  ne peut pas être null ");
         }
@@ -59,6 +73,14 @@ public class UserConverter {
         userEntity.setEnabled(user.isEnabled());
 
         userEntity.setAuthorities(user.getAuthorities() !=null ? user.getAuthorities()  : null);
+        userEntity.setAdressEntity(user.getAdressEntity());
+
+        Collection<OderEntity> oderEntities =  new ArrayList<>();
+        user.getOders().forEach(oder -> {
+            oderEntities.add(OderConverter.oderModelToOderrEntity(oder));
+        });
+
+        userEntity.setOderEntities(oderEntities);
         return  userEntity;
     }
 

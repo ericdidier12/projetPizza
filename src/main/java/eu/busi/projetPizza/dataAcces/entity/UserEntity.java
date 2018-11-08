@@ -1,22 +1,41 @@
 package eu.busi.projetPizza.dataAcces.entity;
 
+import eu.busi.projetPizza.dataAcces.util.converter.LocalDateTimeAttributeConverter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
+
+
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
+
 
 @Entity
 @Table(name = "user_client")
 public class UserEntity extends BaseEntity implements UserDetails {
 
-    private String username;
-    private String password;
+    @Basic
+    @Column(nullable = false)
     private String email;
+
+    @Basic
+    @Column(nullable = false, unique = true, length = 23)
+    private String username;
+
+    @Basic
+    @Column(nullable = false)
+    private String password;
+
+
+    @Column(nullable = true)
+    @Convert(converter = LocalDateTimeAttributeConverter.class)
+    private LocalDate birth_date;
+
+    @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL)
+    private Collection<BankAccountEntity> bankAccountEntities;
 
     @Column(name = "ACOUNT_NOT_LOCKED")
     private boolean accountNonLocked;
@@ -27,12 +46,18 @@ public class UserEntity extends BaseEntity implements UserDetails {
     @Column(name = "CREDENTIALS_NON_EXPIRED")
     private boolean credentialsNonExpired;
 
-    @Column(  name = "ENABLED")
-    private boolean enabled ;
+    @Column(name = "ENABLED")
+    private boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER) // EAGER c-à-d à chaque fois vous charge user vous chargerai aussi se Role
     @Fetch(value = FetchMode.SUBSELECT)
     public List<Authority> authorities;
+
+    @Embedded
+    private AdressEntity adressEntity;
+
+    @OneToMany(mappedBy="userEntity", cascade = CascadeType.ALL)
+    private Collection<OderEntity> oderEntities;
 
     public UserEntity() {
     }
@@ -46,7 +71,6 @@ public class UserEntity extends BaseEntity implements UserDetails {
         return accountNonExpired;
     }
 
-    @Transactional
     @Override
     public boolean isAccountNonLocked() {
         return accountNonLocked;
@@ -67,7 +91,7 @@ public class UserEntity extends BaseEntity implements UserDetails {
     }
 
     @Override
-    public List<Authority>  getAuthorities() {
+    public List<Authority> getAuthorities() {
         return authorities;
     }
 
@@ -107,7 +131,35 @@ public class UserEntity extends BaseEntity implements UserDetails {
         this.authorities = authorities;
     }
 
+    public LocalDate getBirth_date() {
+        return birth_date;
+    }
 
+    public void setBirth_date(LocalDate birth_date) {
+        this.birth_date = birth_date;
+    }
 
+    public Collection<BankAccountEntity> getBankAccountEntities() {
+        return bankAccountEntities;
+    }
 
+    public void setBankAccountEntities(Collection<BankAccountEntity> bankAccountEntities) {
+        this.bankAccountEntities = bankAccountEntities;
+    }
+
+    public AdressEntity getAdressEntity() {
+        return adressEntity;
+    }
+
+    public void setAdressEntity(AdressEntity adressEntity) {
+        this.adressEntity = adressEntity;
+    }
+
+    public Collection<OderEntity> getOderEntities() {
+        return oderEntities;
+    }
+
+    public void setOderEntities(Collection<OderEntity> oderEntities) {
+        this.oderEntities = oderEntities;
+    }
 }
