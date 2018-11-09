@@ -25,7 +25,7 @@ import java.util.Collections;
 @Component
 public class DbInit implements InitializingBean {
 
- /*   private final UserRepository userRepository;
+  /*  private final UserRepository userRepository;
 
     private final AuthorityRepository authorityRepository;
 
@@ -35,16 +35,16 @@ public class DbInit implements InitializingBean {
         this.userRepository = userRepository;
         this.authorityRepository = authorityRepository;
         this.passwordEncoder = passwordEncoder;
-    }*/
-
+    }
+*/
     @Override
     public void afterPropertiesSet() throws Exception {
 
         /*
         // Creating a user and the role attribute(s)
         */
-
-     /*   Authority authority =new Authority();
+/*
+       Authority authority =new Authority();
         authority.setAuthority(RoleEnum.ADMIN.getValue());
 
         User user = new User();
@@ -85,7 +85,7 @@ public class DbInit implements InitializingBean {
             authorityRepository.save(found);
         }
 
-        return found;*/
-    }
+        return found;
+    */}
 }
 
