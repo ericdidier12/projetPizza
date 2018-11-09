@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 public class PromoEntity extends  BaseEntity {
 
     private String name;
-    private BigDecimal reduction ;
+    private float reduction ;
 
     public PromoEntity() {
     }
@@ -27,11 +27,11 @@ public class PromoEntity extends  BaseEntity {
         this.name = name;
     }
 
-    public BigDecimal getReduction() {
+    public float getReduction() {
         return reduction;
     }
 
-    public void setReduction(BigDecimal reduction) {
+    public void setReduction(float reduction) {
         this.reduction = reduction;
     }
 }

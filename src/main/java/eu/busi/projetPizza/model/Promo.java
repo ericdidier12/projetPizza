@@ -11,7 +11,7 @@ public class Promo  {
 
     private Long id;
     private String name;
-    private BigDecimal reduction ;
+    private float reduction ;
 
     public Promo() {
     }
@@ -24,11 +24,11 @@ public class Promo  {
         this.name = name;
     }
 
-    public BigDecimal getReduction() {
+    public float getReduction() {
         return reduction;
     }
 
-    public void setReduction(BigDecimal reduction) {
+    public void setReduction(float reduction) {
         this.reduction = reduction;
     }
 

@@ -19,13 +19,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String LOGIN_REQUEST = "/login";
 
     //
-    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/home","/user/register"};
-    private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{"/users","/home","/user/register"};
-    private static final String[] AUTHORIZED_REQUESTS_USER = new String[]{"/pizza"};
+    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{
+            "/home","/Pizza","/Panier",
+            "/user/register"};
+    private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{
+            "/admin/manage-stock" ,"/admin/manage-order", "/admin-pizza",
+            "/home","/users", "/user/register"};
+    private static final String[] AUTHORIZED_REQUESTS_USER = new String[]{"" +
+            "/user/paiement","/user/commande","/user/pizza"};
     String[] staticResources = {
             "/css/**",
             "/images/**",
             "/fonts/**",
+            "/vendor/**",
             "/scripts/**",
     };
 
@@ -53,6 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
+                .logoutSuccessUrl("/home")
                 .permitAll();
     }
 

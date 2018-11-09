@@ -4,54 +4,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <title><tiles:getAsString name="title"/></title>
     <link type="text/css" href="<spring:url value='/css/webApp.css'/>" rel="stylesheet"/>
+    <!-- Bootstrap core CSS -->
+    <link type="text/css" href="<spring:url value='/vendor/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet"/>
+    <link type="text/css" href="<spring:url value='/vendor/bootstrap/js/bootstrap.bundle.js'/>" rel="stylesheet"/>
+    <link type="text/css" href="<spring:url value='/vendor/bootstrap/js/popper.min.js'/>" rel="stylesheet"/>
+    <!-- Custom styles for this template -->
+    <link type="text/css" href="<spring:url value='/css/heroic-features.css'/>" rel="stylesheet"/>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <div>
-    <header>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <a class="navbar-brand" href="#">Logo</a>
-
-            <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link"><i class="fa fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Home</span></a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i> <span
-                            class="clearfix d-none d-sm-inline-block">Panier</span></a>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        Langage
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">French</a>
-                        <a class="dropdown-item" href="#">English</a>
-                    </div>
-                </li>
-
-                <li class="nav-item"><i class="fa fa-sign-in" aria-hidden="true"></i>
-                    <a href="href="${pageContext.request.contextPath}/login">
-                    <button type="button" class="btn">
-                        <sec:authorize access="!isAuthenticated()">
-                            Login
-                        </sec:authorize>
-                        <sec:authorize access="isAuthenticated()">
-                            Logout
-                        </sec:authorize></button>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <tiles:insertAttribute name="header"/>
 </div>
 
 <div class="container">
@@ -59,9 +37,8 @@
 </div>
 
 <!---- footer --->
-<div class="footer">
-    <p class="copyright">Copyright @ 2018-2020 </p>
-    <p class="site">Website developped by Eric & Sébatien </p>
+<div>
+    <tiles:insertAttribute name="footer"/>
 </div>
 
 </body>
