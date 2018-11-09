@@ -9,20 +9,16 @@ import java.util.Set;
 @Table(name = "category")
 public class CategoryEntity extends BaseEntity {
 
-   @Column(name = "name")
+    @Column(name = "name")
     private String name;
-
-
-
-    public CategoryEntity(String name) {
-        this.name = name;
-    }
-
-    public CategoryEntity() {
-    }
 
     @OneToMany(mappedBy = "categoryEntity", cascade = CascadeType.ALL)
     private Set<PizzaEntity> pizzaEntities;
 
-    public Set<PizzaEntity> getPizzaEntities() {return pizzaEntities;}
+    public CategoryEntity() {
+    }
+
+    public Set<PizzaEntity> getPizzaEntities() {
+        return pizzaEntities;
+    }
 }

@@ -13,7 +13,5 @@ import javax.transaction.Transactional;
 public interface PizzaRepository extends JpaRepository<PizzaEntity,Long> {
 
   // PizzaEntity findByPizzaId(Long id);
-
-
 }
 

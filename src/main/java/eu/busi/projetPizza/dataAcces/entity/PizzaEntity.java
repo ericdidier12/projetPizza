@@ -17,23 +17,15 @@ public class PizzaEntity extends BaseEntity {
     @Column(name = "fixed")
     private boolean fixed;
 
-
-
-    public PizzaEntity() {
-    }
-
-    public PizzaEntity(String name, float price, boolean month_promo, boolean fixed, CategoryEntity categoryEntity, List<IngredientEntity> ingredientEntityList) {
-        this.name = name;
-        this.price = price;
-        this.month_promo = month_promo;
-        this.fixed = fixed;
-        this.categoryEntity = categoryEntity;
-        this.ingredientEntityList = ingredientEntityList;
-    }
-
     @ManyToOne
     @JoinColumn(name = "cat_id")
     private CategoryEntity categoryEntity;
+
+    @ManyToMany(mappedBy = "pizzaEntitiesList")
+    private List<IngredientEntity> ingredientEntityList;
+
+    public PizzaEntity() {
+    }
 
     public CategoryEntity getCategoryEntity() {
         return categoryEntity;
@@ -42,10 +34,6 @@ public class PizzaEntity extends BaseEntity {
     public void setCategoryEntity(CategoryEntity categoryEntity) {
         this.categoryEntity = categoryEntity;
     }
-
-
-    @ManyToMany(mappedBy = "pizzaEntitiesList")
-    private List<IngredientEntity> ingredientEntityList;
 
     public List<IngredientEntity> getIngredientEntityList() {
         return ingredientEntityList;

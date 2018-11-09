@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Pizza {
 
-    private int id;
+    private long id;
     private String name;
     private float price;
     private boolean month_promo;
@@ -16,19 +16,14 @@ public class Pizza {
 
     private List<Category> categoryList;
 
+    public Pizza() {
+    }
+
     public List<Category> getCategoryList() {
         return categoryList;
     }
 
     public void setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
-    }
-
-    public Pizza(String name, float price, boolean month_promo, boolean fixed, List<Category> categoryList) {
-        this.name = name;
-        this.price = price;
-        this.month_promo = month_promo;
-        this.fixed = fixed;
         this.categoryList = categoryList;
     }
 
@@ -64,17 +59,12 @@ public class Pizza {
         this.fixed = fixed;
     }
 
-    public Pizza() {
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
-
-
 }
 

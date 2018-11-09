@@ -4,12 +4,14 @@ import java.util.List;
 
 public class Ingredient {
 
-    private int id;
+    private long id;
     private String name;
     private float recipe_qunatity;
     private float stock_quantity;
     private float unit_price;
 
+    public Ingredient() {
+    }
 
     public String getName() {
         return name;
@@ -19,11 +21,11 @@ public class Ingredient {
         this.name = name;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -50,8 +52,4 @@ public class Ingredient {
     public void setUnit_price(float unit_price) {
         this.unit_price = unit_price;
     }
-
-    public Ingredient() {
-    }
-
 }

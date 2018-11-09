@@ -15,7 +15,7 @@ import java.util.List;
 public class PizzaConverter {
 
 
-    public static Pizza pizzaEntityToUserModel(PizzaEntity pizzaEntity){
+    public static Pizza pizzaEntityToUserModel(PizzaEntity pizzaEntity) {
         if (pizzaEntity == null) {
             throw new IllegalArgumentException("  ");
         }
@@ -27,11 +27,10 @@ public class PizzaConverter {
         pizza.setPrice(pizzaEntity.getPrice());
         pizza.setCategoryList((List<Category>) pizzaEntity.getCategoryEntity());
 
-        return  pizza;
+        return pizza;
     }
 
-
-    public static PizzaEntity PizzaModelToPizzaEntity (Pizza pizza){
+    public static PizzaEntity PizzaModelToPizzaEntity(Pizza pizza) {
         if (pizza == null) {
             throw new IllegalArgumentException(" objet pizzaEntity  ne peut pas être null ");
         }
@@ -44,7 +43,7 @@ public class PizzaConverter {
         pizzaEntity.setCategoryEntity((CategoryEntity) pizza.getCategoryList());
 
 
-        return  pizzaEntity;
+        return pizzaEntity;
     }
 
 }
