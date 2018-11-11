@@ -1,69 +1,71 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="include/importTags.jsp" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@include file="include/importLinks.jsp" %>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>register</title>
-</head>
-<body>
-<div class="row text-center">
-    <h2> Register user </h2>
-</div>
-<div class="row">
-    <form:form>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <form:label  path="username" for="username">Username</form:label>
-                <form:input  path="username" class="form-control" id="username" placeholder="username"/>
-            </div>
+<div class="row"> <h2>Register User </h2>  </div>
+<form:form id="form" method="POST" action="${pageContext.request.contextPath}/user/register/send"  modelAttribute="currentUser"  >
 
-            <div class="form-group col-md-6">
-                <form:label path="email" for="email">Email</form:label>
-                <form:input  path="email" type="email" class="form-control" id="email" placeholder="Email"/>
-            </div>
-            <div class="form-group col-md-6">
-                <form:label  path="password" for="password">Password</form:label>
-                <form:password path="password" class="form-control" id="password" placeholder="Password"/>
-            </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <form:label  path="name" for="name">First & Second Name</form:label>
+            <form:input  path="name" class="form-control" id="name" placeholder="First Name and Second Name"/>
+            <form:errors path="name" cssClass="error"/>
+        </div>
 
-            <div class="form-group col-md-6">
-                <form:label path="birth_date" for="birth_date">Birth_date</form:label>
-                <form:input  path="" type="date" class="form-control" id="birth_date" >
-            </div>
+        <div class="form-group col-md-6">
+            <form:label  path="username" for="username">Username</form:label>
+            <form:input  path="username" class="form-control" id="username" placeholder="username"/>
+            <form:errors path="username" cssClass="error"/>
         </div>
-        <div class="form-group">
-            <label for="street">Street</label>
-            <input type="text" class="form-control" id="street" placeholder="1234 Main St">
+
+        <div class="form-group col-md-6">
+            <form:label  path="password" for="password">Password</form:label>
+            <form:password path="password" class="form-control" id="password" placeholder="Password"/>
+            <form:errors path="password" cssClass="error"/>
         </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="city">City</label>
-                <input type="text" class="form-control" id="city">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputState">State</label>
-                <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                </select>
-            </div>
-            <div class="form-group col-md-2">
-                <label for="inputZip">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
-            </div>
+
+        <div class="form-group col-md-6">
+            <form:label path="email" for="email">Email</form:label>
+            <form:input  path="email"  class="form-control" id="email" placeholder="Email"/>
+            <form:errors path="email" cssClass="error"/>
         </div>
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    Check me out
-                </label>
-            </div>
+
+        <div class="form-group col-md-6">
+            <form:label path="adress" for="adress">adress </form:label>
+            <form:input  path="adress" class="form-control" id="adress" placeholder="Avenue Paris,1050,Bruxelles"/>
+            <form:errors path="adress" cssClass="error"/>
         </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
-    </form:form>
-</div>
-</body>
-</html>
+
+       <%-- <div class="form-group col-md-6">
+            <form:label path="street" for="email">Street </form:label>
+            <form:input  path="street" class="form-control" id="email" placeholder="street"/>
+            <form:errors path="street" cssClass="error"/>
+        </div>
+
+        <div class="form-group col-md-6">
+            <form:label path="country" for="country">country </form:label>
+            <form:input  path="country" class="form-control" id="country" placeholder="country"/>
+            <form:errors path="country" cssClass="error"/>
+        </div>
+        <div class="form-group col-md-2">
+            <form:label path="zip_code" for="country">zip_code </form:label>
+            <form:input  path="zip_code" class="form-control" id="zip_code" placeholder="zip_code"/>
+            <form:errors path="zip_code" cssClass="error"/>
+        </div>
+
+        <div class="form-group col-md-2">
+            <form:label path="number" for="country">number </form:label>
+            <form:input  path="number" class="form-control" id="zip_code" placeholder="number"/>
+            <form:errors path="number" cssClass="error"/>
+        </div>
+
+        <div class="form-group col-md-2">
+            <form:label path="box" for="country">box </form:label>
+            <form:input  path="box" class="form-control" id="box" placeholder="box"/>
+            <form:errors path="number" cssClass="box"/>
+        </div>--%>
+
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</form:form>

@@ -3,9 +3,13 @@ package eu.busi.projetPizza.dataAcces.entity;
 import eu.busi.projetPizza.dataAcces.util.converter.LocalDateTimeAttributeConverter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 import java.time.LocalDate;
@@ -19,16 +23,25 @@ public class UserEntity extends BaseEntity implements UserDetails {
 
     @Basic
     @Column(nullable = false)
+    @NotEmpty(message = "Please enter your email addresss.")
+    @Email
     private String email;
 
-    @Basic
-    @Column(nullable = false, unique = true, length = 23)
+    @NotNull
+    @Size(min = 4, max = 15, message = "Your username must between 4 and 15 characters")
+    @Column(nullable = false, unique = true, length = 15)
     private String username;
 
+
+    @NotNull
+    @Size(min = 4, max = 15, message = "Your name must between 4 and 15 characters")
+    private String name;
+
     @Basic
+    @NotNull
+    //@Size(min = 3, max = 15, message = "Your password must between 3 and 15 characters")
     @Column(nullable = false)
     private String password;
-
 
     @Column(nullable = true)
     @Convert(converter = LocalDateTimeAttributeConverter.class)
@@ -51,12 +64,12 @@ public class UserEntity extends BaseEntity implements UserDetails {
 
     @ManyToMany(fetch = FetchType.EAGER) // EAGER c-à-d à chaque fois vous charge user vous chargerai aussi se Role
     @Fetch(value = FetchMode.SUBSELECT)
-    public List<Authority> authorities;
+    private List<Authority> authorities;
 
-    @Embedded
-    private AdressEntity adressEntity;
 
-    @OneToMany(mappedBy="userEntity", cascade = CascadeType.ALL)
+    private String adresse;
+
+    @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL)
     private Collection<OderEntity> oderEntities;
 
     public UserEntity() {
@@ -147,12 +160,12 @@ public class UserEntity extends BaseEntity implements UserDetails {
         this.bankAccountEntities = bankAccountEntities;
     }
 
-    public AdressEntity getAdressEntity() {
-        return adressEntity;
+    public String getAdressEntity() {
+        return this.adresse;
     }
 
-    public void setAdressEntity(AdressEntity adressEntity) {
-        this.adressEntity = adressEntity;
+    public void setAdressEntity(String adressEntity) {
+        this.adresse = adressEntity;
     }
 
     public Collection<OderEntity> getOderEntities() {
@@ -161,5 +174,13 @@ public class UserEntity extends BaseEntity implements UserDetails {
 
     public void setOderEntities(Collection<OderEntity> oderEntities) {
         this.oderEntities = oderEntities;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

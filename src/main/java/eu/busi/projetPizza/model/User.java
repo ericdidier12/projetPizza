@@ -1,26 +1,47 @@
 package eu.busi.projetPizza.model;
 
-import eu.busi.projetPizza.dataAcces.entity.AdressEntity;
-import eu.busi.projetPizza.dataAcces.entity.Authority;
-import eu.busi.projetPizza.dataAcces.entity.BankAccountEntity;
 
+import eu.busi.projetPizza.dataAcces.entity.Authority;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
 public class User {
 
+    @NotNull
+    @Size(min = 3, max = 30, message = "Your name must between 6 and 15 characters")
+    private String name;
+
+    @NotNull
+    @Size(min = 3, max = 15, message = "Your username must between 6 and 15 characters")
     private String username;
+
+    @NotNull
+    //@Size(min = 3, max = 15, message = "Your password must between 3 and 15 characters")
     private String password;
+
+    @NotNull
+    @NotEmpty(message = "Please enter your email addresss.")
+    @Email
     private String email;
     private boolean accountNonLocked;
     private boolean accountNonExpired;
     private boolean credentialsNonExpired;
     private boolean enabled ;
-    public List<Authority> authorities;
+    private List<Authority> authorities;
     private LocalDate birth_date;
-    private Collection<BankAccountEntity> bankAccountEntities;
-    private AdressEntity adressEntity ;
+
+    @Size(min=4, max=50)
+    private String adress;
+
+
+    private Collection<BankAccount> bankAccountEntities;
     private Collection<Oder> oders;
 
     public User() {
@@ -98,20 +119,12 @@ public class User {
         this.birth_date = birth_date;
     }
 
-    public Collection<BankAccountEntity> getBankAccountEntities() {
+    public Collection<BankAccount> getBankAccountEntities() {
         return bankAccountEntities;
     }
 
-    public void setBankAccountEntities(Collection<BankAccountEntity> bankAccountEntities) {
+    public void setBankAccountEntities(Collection<BankAccount> bankAccountEntities) {
         this.bankAccountEntities = bankAccountEntities;
-    }
-
-    public AdressEntity getAdressEntity() {
-        return adressEntity;
-    }
-
-    public void setAdressEntity(AdressEntity adressEntity) {
-        this.adressEntity = adressEntity;
     }
 
     public Collection<Oder> getOders() {
@@ -121,4 +134,21 @@ public class User {
     public void setOders(Collection<Oder> oders) {
         this.oders = oders;
     }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }
