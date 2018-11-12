@@ -28,6 +28,10 @@ public class Pizza {
     public Pizza() {
     }
 
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public int getNumber() {
         return number;
     }
@@ -46,6 +50,7 @@ public class Pizza {
 
     public CategoryEnum getCategoryEnum() {
         return categoryEnum;
+    }
     public Category getCategory(){
         return category;
     }
