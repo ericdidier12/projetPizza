@@ -16,6 +16,13 @@
                     </a>
                 </li>
 
+
+
+                <li class="nav-item">
+                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/admin">Managers</a>
+                    </sec:authorize>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pizza</a>
                 </li>
@@ -39,14 +46,17 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="href="${pageContext.request.contextPath}/login">
-                    <button type="button" class="btn">
-                        <sec:authorize access="!isAuthenticated()">
-                            Login
-                        </sec:authorize>
-                        <sec:authorize access="isAuthenticated()">
-                            Logout
-                        </sec:authorize></button>
+                    <sec:authorize access="!isAuthenticated()">
+                        <a href="${pageContext.request.contextPath}/login">
+                        <button type="button" class="btn"> Login
+                        </button>
+                    </sec:authorize>
+                    <sec:authorize access="isAuthenticated()">
+                        <a href="${pageContext.request.contextPath}/logout">
+                        <button type="button" class="btn"> Logout
+                        </button>
+                    </sec:authorize>
+
                     </a>
                 </li>
             </ul>

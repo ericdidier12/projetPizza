@@ -1,7 +1,9 @@
 package eu.busi.projetPizza.controller;
 
+import eu.busi.projetPizza.enums.RoleEnum;
 import eu.busi.projetPizza.model.Constants;
 import eu.busi.projetPizza.model.User;
+import eu.busi.projetPizza.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,9 +23,10 @@ import javax.validation.Valid;
 @SessionAttributes({Constants.CURRENT_USER})
 public class InscriptionController {
 
-    @ModelAttribute(Constants.CURRENT_USER)
-    public User user() {
-        return new User();
+    private final UserService userService;
+
+    public InscriptionController(UserService userService) {
+        this.userService = userService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -31,20 +34,23 @@ public class InscriptionController {
         return "integrated:registerUser";
     }
 
+    @ModelAttribute(Constants.CURRENT_USER)
+    public User user() {
+        return new User();
+    }
 
-    /***
-     *
-     * @param user  // objet User qui sera tag lorsque le formulaire sera rempli c-à-d Objet User est mis (garder) dans le Sessiion_Attribute
-     * @param errors  // Type d'errors qu'on peut avoir dans nos champs si on a defini Validation cote Modele
-     * @return
-     */
     @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String getFormData(@Valid @ModelAttribute(value =Constants.CURRENT_USER) User user, final BindingResult errors) {
-
+    public String saveNewUserRegrister(@Valid @ModelAttribute(value = Constants.CURRENT_USER) User user, final BindingResult errors, Model model) {
+        System.out.println("*******************************************************" +
+                "Name : " + user.getName() + "  " +
+                "Passeword  : " + user.getPassword() + "  " +
+                "Email  : " + user.getEmail() + "  " +
+                "Username: " + user.getUsername()
+        );
+        userService.register(user, RoleEnum.USER);
         if (errors.hasErrors()) {
-            return "integrated:keyError";
+            return "integrated:registerUser";
         }
-
         return "redirect:/login";
     }
 }

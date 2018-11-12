@@ -1,4 +1,5 @@
 
+
 package eu.busi.projetPizza.dataAcces.repository;
 
 import eu.busi.projetPizza.dataAcces.entity.IngredientEntity;
@@ -14,4 +15,3 @@ public interface IngredientRepository extends JpaRepository<IngredientEntity,Lon
 
   // PizzaEntity findByPizzaId(Long id);
 }
-

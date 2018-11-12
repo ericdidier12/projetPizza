@@ -1,10 +1,10 @@
-
 package eu.busi.projetPizza.dataAcces.dao;
 
 import eu.busi.projetPizza.dataAcces.entity.IngredientEntity;
-import eu.busi.projetPizza.dataAcces.entity.PizzaEntity;
+import eu.busi.projetPizza.dataAcces.util.IngredientConveter;
 import eu.busi.projetPizza.dataAcces.repository.IngredientRepository;
-import eu.busi.projetPizza.dataAcces.repository.PizzaRepository;
+
+
 import eu.busi.projetPizza.model.Ingredient;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +16,15 @@ import java.util.List;
 @Transactional
 public class IngredientDAO {
 
+    private  final IngredientRepository ingredientRepository ;
+
+    public IngredientDAO(IngredientRepository ingredientRepository) {
+        this.ingredientRepository = ingredientRepository;
+    }
+
+   public IngredientEntity saveIngredient(Ingredient ingredient) {
+        return  ingredientRepository.save(IngredientConveter.IngredientIngredientTopizzaModel(ingredient)) ;
+    }
     private final IngredientRepository ingredientRepository;
 
     public IngredientDAO(IngredientRepository ingredientRepository) {

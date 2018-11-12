@@ -21,35 +21,22 @@ public class PizzaEntity extends BaseEntity {
     @Column(name = "fixed")
     private boolean fixed;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cat_id")
+    private CategoryEntity categoryEntity;
 
-    @Column(name = "cat_id")
-    @Convert(converter = CategoryEnumConverter.class)
-    private CategoryEnum categoryEnum;
-
-    /**Liaison pizza order line**/
-    @OneToMany(mappedBy = "pizzaOrderLineEntity", cascade = CascadeType.ALL)
-    private Set<OrderLineEntity> orderLineEntities;
-
-    @ManyToMany(mappedBy = "pizzaEntitiesList")
+    @ManyToMany(mappedBy = "pizzaEntitiesList", fetch = FetchType.EAGER)
     private List<IngredientEntity> ingredientEntityList;
 
     public PizzaEntity() {
     }
 
-    public Set<OrderLineEntity> getOrderLineEntities() {
-        return orderLineEntities;
+    public CategoryEntity getCategoryEntity() {
+        return categoryEntity;
     }
 
-    public void setOrderLineEntities(Set<OrderLineEntity> orderLineEntities) {
-        this.orderLineEntities = orderLineEntities;
-    }
-
-    public CategoryEnum getCategoryEnum() {
-        return categoryEnum;
-    }
-
-    public void setCategoryEnum(CategoryEnum categoryEnum) {
-        this.categoryEnum = categoryEnum;
+    public void setCategoryEntity(CategoryEntity categoryEntity) {
+        this.categoryEntity = categoryEntity;
     }
 
     public List<IngredientEntity> getIngredientEntityList() {
