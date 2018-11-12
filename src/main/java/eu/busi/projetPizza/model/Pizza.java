@@ -2,6 +2,7 @@
 package eu.busi.projetPizza.model;
 
 import eu.busi.projetPizza.dataAcces.entity.Authority;
+import eu.busi.projetPizza.enums.CategoryEnum;
 
 
 import java.util.List;
@@ -14,17 +15,37 @@ public class Pizza {
     private boolean month_promo;
     private boolean fixed;
 
-    private List<Category> categoryList;
+    private List<Order_Line> order_line;
+    private CategoryEnum categoryEnum;
+
+
+    private int number;
 
     public Pizza() {
     }
 
-    public List<Category> getCategoryList() {
-        return categoryList;
+    public int getNumber() {
+        return number;
     }
 
-    public void setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public List<Order_Line> getOrder_line() {
+        return order_line;
+    }
+
+    public void setOrder_line(List<Order_Line> order_line) {
+        this.order_line = order_line;
+    }
+
+    public CategoryEnum getCategoryEnum() {
+        return categoryEnum;
+    }
+
+    public void setCategoryEnum(CategoryEnum categoryEnum) {
+        this.categoryEnum = categoryEnum;
     }
 
     public String getName() {

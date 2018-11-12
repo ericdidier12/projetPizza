@@ -20,6 +20,9 @@ public class Oder {
     private StatusEnum statusEnum ;
     private User user;
 
+    public Oder() {
+    }
+
     public LocalDateTime getDate_order() {
         return date_order;
     }

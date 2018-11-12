@@ -1,7 +1,7 @@
 
 package eu.busi.projetPizza.dataAcces.util;
 
-import eu.busi.projetPizza.dataAcces.entity.CategoryEntity;
+
 import eu.busi.projetPizza.dataAcces.entity.PizzaEntity;
 import eu.busi.projetPizza.dataAcces.entity.UserEntity;
 
@@ -25,7 +25,6 @@ public class PizzaConverter {
         pizza.setFixed(pizzaEntity.isFixed());
         pizza.setMonth_promo(pizzaEntity.isMonth_promo());
         pizza.setPrice(pizzaEntity.getPrice());
-        pizza.setCategoryList((List<Category>) pizzaEntity.getCategoryEntity());
 
         return pizza;
     }
@@ -40,7 +39,6 @@ public class PizzaConverter {
         pizzaEntity.setMonth_promo(pizza.isMonth_promo());
         pizzaEntity.setName(pizza.getName());
         pizzaEntity.setPrice(pizza.getPrice());
-        pizzaEntity.setCategoryEntity((CategoryEntity) pizza.getCategoryList());
 
 
         return pizzaEntity;

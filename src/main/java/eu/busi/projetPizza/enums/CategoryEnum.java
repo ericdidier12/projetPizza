@@ -1,17 +1,22 @@
-/*
 package eu.busi.projetPizza.enums;
 
-public enum CategoryEnum {
-    Normal("Normal"), American("American"), Sea("Of the sea");
 
-    private final String name;
+import eu.busi.projetPizza.dataAcces.util.EnumValuePizzaria;
 
-    public String getName() {
-        return name;
-    }
 
-    CategoryEnum(String name) {
-        this.name = name;
+
+public enum CategoryEnum implements EnumValuePizzaria<Integer> {
+
+    NORMAL(1),
+    AMERICAN(2),
+    OF_THE_SEA(3),;
+
+    private Integer value;
+
+    CategoryEnum(Integer value) { this.value = value; }
+
+    @Override
+    public Integer getValue() {
+        return this.value;
     }
 }
-*/

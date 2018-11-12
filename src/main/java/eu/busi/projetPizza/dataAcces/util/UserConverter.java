@@ -20,7 +20,7 @@ public class UserConverter {
 
     /**
      * Transforme une entité JPA {@link UserEntity} en objet Model {@link User}.
-     * @param userEntity
+     *
      * @return Objet type User
      */
     public static User userEntityToUserModel(UserEntity userEntity){
@@ -76,9 +76,11 @@ public class UserConverter {
         userEntity.setAdressEntity(user.getAdressEntity());
 
         Collection<OderEntity> oderEntities =  new ArrayList<>();
-        user.getOders().forEach(oder -> {
-            oderEntities.add(OderConverter.oderModelToOderrEntity(oder));
-        });
+        if(user.getOders()!= null) {
+            for (Oder oder : user.getOders()) {
+                oderEntities.add(OderConverter.oderModelToOderrEntity(oder) != null ? OderConverter.oderModelToOderrEntity(oder) : null);
+            }
+        }
 
         userEntity.setOderEntities(oderEntities);
         return  userEntity;

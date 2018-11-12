@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     //
     private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{
-            "/home","/Pizza","/Panier",
+            "/home","/Pizza","/cart",
             "/user/register"};
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{
             "/admin/manage-stock" ,"/admin/manage-order", "/admin-pizza",

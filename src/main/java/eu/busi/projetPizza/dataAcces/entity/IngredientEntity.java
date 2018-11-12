@@ -3,6 +3,7 @@ package eu.busi.projetPizza.dataAcces.entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "ingredient")
@@ -22,7 +23,19 @@ public class IngredientEntity extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "pizza_id"))
     private List<PizzaEntity> pizzaEntitiesList;
 
+    /**Liaison Order order line**/
+    @OneToMany(mappedBy = "oderOrderLineEntity", cascade = CascadeType.ALL)
+    private Set<OrderLineEntity> orderLineEntities;
+
     public IngredientEntity() {
+    }
+
+    public Set<OrderLineEntity> getOrderLineEntities() {
+        return orderLineEntities;
+    }
+
+    public void setOrderLineEntities(Set<OrderLineEntity> orderLineEntities) {
+        this.orderLineEntities = orderLineEntities;
     }
 
     public String getName() {

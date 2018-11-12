@@ -1,8 +1,12 @@
 package eu.busi.projetPizza.dataAcces.entity;
 
 
+import eu.busi.projetPizza.dataAcces.util.converter.CategoryEnumConverter;
+import eu.busi.projetPizza.enums.CategoryEnum;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "pizza")
@@ -17,9 +21,14 @@ public class PizzaEntity extends BaseEntity {
     @Column(name = "fixed")
     private boolean fixed;
 
-    @ManyToOne
-    @JoinColumn(name = "cat_id")
-    private CategoryEntity categoryEntity;
+
+    @Column(name = "cat_id")
+    @Convert(converter = CategoryEnumConverter.class)
+    private CategoryEnum categoryEnum;
+
+    /**Liaison pizza order line**/
+    @OneToMany(mappedBy = "pizzaOrderLineEntity", cascade = CascadeType.ALL)
+    private Set<OrderLineEntity> orderLineEntities;
 
     @ManyToMany(mappedBy = "pizzaEntitiesList")
     private List<IngredientEntity> ingredientEntityList;
@@ -27,12 +36,20 @@ public class PizzaEntity extends BaseEntity {
     public PizzaEntity() {
     }
 
-    public CategoryEntity getCategoryEntity() {
-        return categoryEntity;
+    public Set<OrderLineEntity> getOrderLineEntities() {
+        return orderLineEntities;
     }
 
-    public void setCategoryEntity(CategoryEntity categoryEntity) {
-        this.categoryEntity = categoryEntity;
+    public void setOrderLineEntities(Set<OrderLineEntity> orderLineEntities) {
+        this.orderLineEntities = orderLineEntities;
+    }
+
+    public CategoryEnum getCategoryEnum() {
+        return categoryEnum;
+    }
+
+    public void setCategoryEnum(CategoryEnum categoryEnum) {
+        this.categoryEnum = categoryEnum;
     }
 
     public List<IngredientEntity> getIngredientEntityList() {
