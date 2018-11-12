@@ -25,12 +25,6 @@ public class IngredientDAO {
    public IngredientEntity saveIngredient(Ingredient ingredient) {
         return  ingredientRepository.save(IngredientConveter.IngredientIngredientTopizzaModel(ingredient)) ;
     }
-    private final IngredientRepository ingredientRepository;
-
-    public IngredientDAO(IngredientRepository ingredientRepository) {
-
-        this.ingredientRepository = ingredientRepository;
-    }
 
    public List<IngredientEntity> loadAllIngredient()
    {
