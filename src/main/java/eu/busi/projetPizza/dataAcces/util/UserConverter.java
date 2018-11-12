@@ -44,7 +44,7 @@ public class UserConverter {
         user.setBirth_date(userEntity.getBirth_date());
         user.setAdress(userEntity.getAdressEntity() );
 
-        Collection<Oder> oders = new ArrayList<>();
+        List<Oder> oders = new ArrayList<>();
         if (userEntity.getOderEntities() != null) {
             for (OderEntity command : userEntity.getOderEntities()) {
                 oders.add(OderConverter.oderEntityToOderModel(command));
@@ -82,7 +82,7 @@ public class UserConverter {
 
         userEntity.setAdressEntity(user.getAdress());
 
-        Collection<OderEntity> oderEntities = new ArrayList<>();
+        List<OderEntity> oderEntities = new ArrayList<>();
         if (user.getOders() != null) {
             for (Oder command : user.getOders()) {
                 oderEntities.add(OderConverter.oderModelToOderrEntity(command));

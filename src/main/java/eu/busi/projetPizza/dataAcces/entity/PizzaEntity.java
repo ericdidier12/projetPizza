@@ -17,11 +17,11 @@ public class PizzaEntity extends BaseEntity {
     @Column(name = "fixed")
     private boolean fixed;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cat_id")
     private CategoryEntity categoryEntity;
 
-    @ManyToMany(mappedBy = "pizzaEntitiesList")
+    @ManyToMany(mappedBy = "pizzaEntitiesList", fetch = FetchType.EAGER)
     private List<IngredientEntity> ingredientEntityList;
 
     public PizzaEntity() {
@@ -74,4 +74,6 @@ public class PizzaEntity extends BaseEntity {
     public void setFixed(boolean fixed) {
         this.fixed = fixed;
     }
+
+
 }

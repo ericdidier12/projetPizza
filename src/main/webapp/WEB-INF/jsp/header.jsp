@@ -16,6 +16,13 @@
                     </a>
                 </li>
 
+
+
+                <li class="nav-item">
+                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/admin">Managers</a>
+                    </sec:authorize>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pizza</a>
                 </li>

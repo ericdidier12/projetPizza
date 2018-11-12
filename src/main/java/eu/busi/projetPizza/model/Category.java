@@ -2,11 +2,16 @@
 package eu.busi.projetPizza.model;
 
 
+import eu.busi.projetPizza.dataAcces.entity.PizzaEntity;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Category {
 
     private long id;
     private String name;
+    private Set<Pizza> pizzas;
 
     public Category() {
     }
@@ -25,6 +30,14 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Pizza> getPizzas() {
+        return pizzas;
+    }
+
+    public void setPizzas(Set<Pizza> pizzas) {
+        this.pizzas = pizzas;
     }
 }
 

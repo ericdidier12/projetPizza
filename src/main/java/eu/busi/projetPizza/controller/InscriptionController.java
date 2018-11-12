@@ -40,7 +40,7 @@ public class InscriptionController {
     }
 
     @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String getSaveNewUserRegrister(@Valid @ModelAttribute(value = Constants.CURRENT_USER) User user, final BindingResult errors, Model model) {
+    public String saveNewUserRegrister(@Valid @ModelAttribute(value = Constants.CURRENT_USER) User user, final BindingResult errors, Model model) {
         System.out.println("*******************************************************" +
                 "Name : " + user.getName() + "  " +
                 "Passeword  : " + user.getPassword() + "  " +

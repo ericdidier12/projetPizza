@@ -42,7 +42,7 @@ public class User {
 
 
     private Collection<BankAccount> bankAccountEntities;
-    private Collection<Oder> oders;
+    private List<Oder> oders;
 
     public User() {
     }
@@ -127,11 +127,11 @@ public class User {
         this.bankAccountEntities = bankAccountEntities;
     }
 
-    public Collection<Oder> getOders() {
+    public List<Oder> getOders() {
         return oders;
     }
 
-    public void setOders(Collection<Oder> oders) {
+    public void setOders(List<Oder> oders) {
         this.oders = oders;
     }
 

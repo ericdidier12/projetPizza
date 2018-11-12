@@ -70,7 +70,7 @@ public class UserEntity extends BaseEntity implements UserDetails {
     private String adresse;
 
     @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL)
-    private Collection<OderEntity> oderEntities;
+    private List<OderEntity> oderEntities;
 
     public UserEntity() {
     }
@@ -172,7 +172,7 @@ public class UserEntity extends BaseEntity implements UserDetails {
         return oderEntities;
     }
 
-    public void setOderEntities(Collection<OderEntity> oderEntities) {
+    public void setOderEntities(List<OderEntity> oderEntities) {
         this.oderEntities = oderEntities;
     }
 

@@ -1,29 +1,22 @@
 package eu.busi.projetPizza.dataAcces.dao;
 
 
-import eu.busi.projetPizza.dataAcces.entity.Authority;
 import eu.busi.projetPizza.dataAcces.entity.UserEntity;
 import eu.busi.projetPizza.dataAcces.repository.AuthorityRepository;
 import eu.busi.projetPizza.dataAcces.repository.UserRepository;
 
 import eu.busi.projetPizza.dataAcces.util.UserConverter;
-import eu.busi.projetPizza.enums.RoleEnum;
-import eu.busi.projetPizza.model.Adress;
 import eu.busi.projetPizza.model.User;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Collections;
+
 
 
 @Primary

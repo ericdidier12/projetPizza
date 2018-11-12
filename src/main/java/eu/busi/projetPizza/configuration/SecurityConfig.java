@@ -24,7 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/user/register"};
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{
             "/admin/manage-stock" ,"/admin/manage-order", "/admin-pizza",
-            "/home","/users", "/user/register"};
+            "/home","/users", "/user/register",
+             "/admin"};
     private static final String[] AUTHORIZED_REQUESTS_USER = new String[]{"" +
             "/user/paiement","/user/commande","/user/pizza","/home"};
     String[] staticResources = {
