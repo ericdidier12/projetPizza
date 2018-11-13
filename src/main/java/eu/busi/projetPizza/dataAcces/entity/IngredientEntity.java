@@ -23,20 +23,20 @@ public class IngredientEntity extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "pizza_id"))
     private List<PizzaEntity> pizzaEntitiesList;
 
-    /**Liaison Order order line**/
+   /* *//**Liaison Order order line**//*
     @OneToMany(mappedBy = "oderOrderLineEntity", cascade = CascadeType.ALL)
-    private Set<OrderLineEntity> orderLineEntities;
+    private Set<OrderLineEntity> orderLineEntities;*/
 
     public IngredientEntity() {
     }
 
-    public Set<OrderLineEntity> getOrderLineEntities() {
+   /* public Set<OrderLineEntity> getOrderLineEntities() {
         return orderLineEntities;
     }
 
     public void setOrderLineEntities(Set<OrderLineEntity> orderLineEntities) {
         this.orderLineEntities = orderLineEntities;
-    }
+    }*/
 
     public String getName() {
         return name;

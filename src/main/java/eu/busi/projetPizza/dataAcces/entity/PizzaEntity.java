@@ -21,6 +21,9 @@ public class PizzaEntity extends BaseEntity {
     @Column(name = "fixed")
     private boolean fixed;
 
+    @OneToMany(mappedBy = "pizzaOrderLineEntity")
+    private List<OrderLineEntity> orderLineEntitiesList;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cat_id")
     private CategoryEntity categoryEntity;
@@ -31,6 +34,9 @@ public class PizzaEntity extends BaseEntity {
     public PizzaEntity() {
     }
 
+    public List<OrderLineEntity> getOrderLineEntitiesList() {
+        return orderLineEntitiesList;
+    }
     public CategoryEntity getCategoryEntity() {
         return categoryEntity;
     }

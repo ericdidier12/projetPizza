@@ -4,10 +4,13 @@ import eu.busi.projetPizza.dataAcces.util.EnumValuePizzaria;
 import eu.busi.projetPizza.dataAcces.util.converter.LocalDateTimeAttributeConverter;
 import eu.busi.projetPizza.dataAcces.util.converter.StatusEnumConverter;
 import eu.busi.projetPizza.enums.StatusEnum;
+import eu.busi.projetPizza.model.Pizza;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 /**
  * created by  eric.nyandwi on Nov,08/11/2018
@@ -19,11 +22,13 @@ public class OderEntity extends BaseEntity {
     @Column(nullable = false)
     @Convert(converter = LocalDateTimeAttributeConverter.class)
     private LocalDateTime date_order;
-
     private float delivery_price ;
     private float full_price;
     private float total_price;
     private boolean is_paid;
+
+    @OneToMany(mappedBy = "oderEntity")
+    private List<OrderLineEntity> orderlineentities;
 
     @OneToMany
     @JoinColumn(name = "promo_code_id", referencedColumnName = "id")
@@ -37,6 +42,13 @@ public class OderEntity extends BaseEntity {
     @JoinColumn(name="client_id")
     private UserEntity userEntity;
 
+    public List<OrderLineEntity> getOrderLineEntities() {
+        return orderlineentities;
+    }
+
+    public void setOrderLineEntities(List<OrderLineEntity> orderLineEntities) {
+        this.orderlineentities = orderLineEntities;
+    }
 
     public LocalDateTime getDate_order() {
         return date_order;

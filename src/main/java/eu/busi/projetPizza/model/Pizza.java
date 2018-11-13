@@ -2,6 +2,7 @@
 package eu.busi.projetPizza.model;
 
 import eu.busi.projetPizza.dataAcces.entity.Authority;
+import eu.busi.projetPizza.dataAcces.entity.OrderLineEntity;
 import eu.busi.projetPizza.enums.CategoryEnum;
 import eu.busi.projetPizza.dataAcces.entity.IngredientEntity;
 

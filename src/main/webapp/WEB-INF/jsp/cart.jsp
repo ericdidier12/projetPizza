@@ -43,7 +43,12 @@
     </c:forEach>
 </table>
 <div>${Total}
-    <input type="button"  onclick= 'testSend()' value="Register" >
+    <form:form  method="POST"
+                action="/cart/valider"
+                modelAttribute="pizzaEdit">
+    <form:button><i>Valider</i></form:button>
+    </form:form>
+
     <%--<div><button:button path="send">Send</button:button></div>--%>
 <%--<table>
     <!-- here should go some titles... -->

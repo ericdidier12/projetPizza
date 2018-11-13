@@ -4,6 +4,7 @@ import eu.busi.projetPizza.enums.StatusEnum;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * created by  eric.nyandwi on Nov,08/11/2018
@@ -11,7 +12,7 @@ import java.util.Collection;
 
 public class Oder {
     private LocalDateTime date_order;
-
+    private long id;
     private float delivery_price ;
     private float full_price;
     private float total_price;
@@ -21,6 +22,18 @@ public class Oder {
     private User user;
 
     public Oder() {
+    }
+
+    public void setPromos(Collection<Promo> promos) {
+        this.promos = promos;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public LocalDateTime getDate_order() {
@@ -61,14 +74,6 @@ public class Oder {
 
     public void setIs_paid(boolean is_paid) {
         this.is_paid = is_paid;
-    }
-
-    public Collection<Promo> getpromos() {
-        return promos;
-    }
-
-    public void setPromos(Collection<Promo> promos) {
-        this.promos = promos;
     }
 
     public StatusEnum getStatusEnum() {

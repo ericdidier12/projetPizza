@@ -1,10 +1,8 @@
 package eu.busi.projetPizza.dataAcces.entity;
 
 
-import eu.busi.projetPizza.model.Oder;
-
 import javax.persistence.*;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "order_line")
@@ -13,7 +11,7 @@ public class OrderLineEntity extends BaseEntity {
     @Column(name = "number_of_pizza")
     private int number_of_pizza;
 
-/*****PizzaEntity******/
+    /*****PizzaEntity******/
 
     @ManyToOne
     @JoinColumn(name = "pizza_id")
@@ -23,10 +21,7 @@ public class OrderLineEntity extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private OderEntity oderOrderLineEntity;
-
-
-
+    private OderEntity oderEntity;
 
     public OrderLineEntity() {
     }
@@ -47,11 +42,11 @@ public class OrderLineEntity extends BaseEntity {
         this.pizzaOrderLineEntity = pizzaOrderLineEntity;
     }
 
-    public OderEntity getOderOrderLineEntity() {
-        return oderOrderLineEntity;
+    public OderEntity getOderEntity() {
+        return oderEntity;
     }
 
-    public void setOderOrderLineEntity(OderEntity oderOrderLineEntity) {
-        this.oderOrderLineEntity = oderOrderLineEntity;
+    public void setOderEntity(OderEntity oderEntity) {
+        this.oderEntity = oderEntity;
     }
 }

@@ -47,6 +47,11 @@ public class UserDAO implements UserDetailsService {
         return found;
     }
 
+    public User findByUsername(String name){
+         return UserConverter.userEntityToUserModel(userRepository.findByUsername(name));
+
+    }
+
     public Boolean IsExist( User user){
         boolean isExist = false;
         UserEntity userEntity = userRepository.findByUsername(user.getUsername());

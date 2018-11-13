@@ -14,6 +14,8 @@ import java.util.List;
 
 public class User {
 
+    private Long id;
+
     @NotNull
     @Size(min = 3, max = 30, message = "Your name must between 6 and 15 characters")
     private String name;
@@ -45,6 +47,14 @@ public class User {
     private List<Oder> oders;
 
     public User() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {

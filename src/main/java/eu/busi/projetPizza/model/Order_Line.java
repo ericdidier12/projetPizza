@@ -7,10 +7,29 @@ import java.util.List;
 public class Order_Line {
 
     private long id;
-   private List<Pizza> pizzaList;
-   private List<Oder> oderList;
+    private List<Pizza> pizzaList;
+    private Pizza pizza;
+    private Oder oder;
+
+    private float number;
 
     public Order_Line() {
+    }
+
+    public Pizza getPizza() {
+        return pizza;
+    }
+
+    public void setPizza(Pizza pizza) {
+        this.pizza = pizza;
+    }
+
+    public Oder getOder() {
+        return oder;
+    }
+
+    public void setOder(Oder oder) {
+        this.oder = oder;
     }
 
     public long getId() {
@@ -29,12 +48,12 @@ public class Order_Line {
         this.pizzaList = pizzaList;
     }
 
-    public List<Oder> getOderList() {
-        return oderList;
+    public float getNumber() {
+        return number;
     }
 
-    public void setOderList(List<Oder> oderList) {
-        this.oderList = oderList;
+    public void setNumber(float number) {
+        this.number = number;
     }
 }
 

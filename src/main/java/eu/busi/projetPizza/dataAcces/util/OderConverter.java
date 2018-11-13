@@ -1,12 +1,17 @@
 package eu.busi.projetPizza.dataAcces.util;
 
 import eu.busi.projetPizza.dataAcces.entity.OderEntity;
+import eu.busi.projetPizza.dataAcces.entity.PizzaEntity;
 import eu.busi.projetPizza.dataAcces.entity.PromoEntity;
+import eu.busi.projetPizza.dataAcces.entity.UserEntity;
+import eu.busi.projetPizza.enums.StatusEnum;
 import eu.busi.projetPizza.model.Oder;
+import eu.busi.projetPizza.model.Pizza;
 import eu.busi.projetPizza.model.Promo;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Transformation entre le modèle des entités JPA et les objetsModel .
@@ -24,21 +29,20 @@ public class OderConverter {
             throw new IllegalArgumentException(" objet oderEntity  ne peut pas être null ");
         }
         Oder oder = new Oder();
-
+        oder.setId(oderEntity.getId());
         oder.setDate_order(oderEntity.getDate_order());
         oder.setDelivery_price(oderEntity.getDelivery_price());
         oder.setFull_price(oderEntity.getFull_price());
         oder.setIs_paid(oderEntity.isIs_paid());
-
-
+        oder.setStatusEnum(oderEntity.getStatusEnum());
         Collection<Promo> promos  = new ArrayList<>();
-        oderEntity.getPromoEntity().forEach( promoEntity -> {
-                promos.add(PromoConverter.promoEntityToPromoModel(promoEntity));
-        });
-
-        oder.setPromos(promos);
+        if (oderEntity.getPromoEntity() != null ){
+            for (PromoEntity promo: oderEntity.getPromoEntity()) {
+                promos.add(PromoConverter.promoEntityToPromoModel(promo));
+            }
+            oder.setPromos(promos);
+        }
         oder.setUser(UserConverter.userEntityToUserModel(oderEntity.getUserEntity()));
-
         return  oder;
     }
 
@@ -52,19 +56,25 @@ public class OderConverter {
             throw new IllegalArgumentException(" objet oder  ne peut pas être null ");
         }
         OderEntity oderEntity = new OderEntity();
-
+        oderEntity.setId(oder.getId());
         oderEntity.setDate_order(oder.getDate_order());
         oderEntity.setDelivery_price(oder.getDelivery_price());
         oderEntity.setFull_price(oder.getFull_price());
         oderEntity.setIs_paid(oder.isIs_paid());
+        oderEntity.setStatusEnum(oder.getStatusEnum());
+        oderEntity.setUserEntity(UserConverter.userModelToUserEntity(oder.getUser()));
+
         Collection<PromoEntity> promoEntity  = new ArrayList<>();
-        oder.getPromos().forEach(promo -> {
-            if(promo != null) {
+        if (oder.getPromos() != null ){
+            for (Promo promo: oder.getPromos()) {
                 promoEntity.add(PromoConverter.promoModelToPromoEntity(promo));
             }
-        });
-        oderEntity.setPromoEntity(promoEntity);
+            oderEntity.setPromoEntity(promoEntity);
+        }
+
+
         oderEntity.setUserEntity(UserConverter.userModelToUserEntity(oder.getUser()));
+
 
         return oderEntity;
     }
