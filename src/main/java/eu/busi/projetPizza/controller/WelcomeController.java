@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value = "/home")
+@RequestMapping(value = "")
 public class WelcomeController {
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home() {
         return "integrated:welcome";
     }

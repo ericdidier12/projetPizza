@@ -4,6 +4,7 @@ package eu.busi.projetPizza.model;
 import eu.busi.projetPizza.dataAcces.entity.Authority;
 import eu.busi.projetPizza.enums.CategoryEnum;
 import eu.busi.projetPizza.dataAcces.entity.IngredientEntity;
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class Pizza {
     private CategoryEnum categoryEnum;
 
 
-    private int number;
+    private int number = 1;
     private String categorie ;
     private Category category;
     private List<Ingredient> ingredients;

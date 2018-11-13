@@ -21,7 +21,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping(value = "/cart")
-@SessionAttributes({Constants.CURRENT_USER})
+@SessionAttributes({Constants.CURRENT_USER,Constants.CURRENT_PIZZA, Constants.CURRENT_MY_MAP_PIZZA })
 public class CartController extends HttpServlet {
 
     Map<Long, Pizza> pizzaMap = new HashMap<Long, Pizza>();
@@ -121,7 +121,6 @@ public class CartController extends HttpServlet {
         Pizza newPizza = pizzaMap.get(id);
         newPizza.setNumber(newPizza.getNumber() + 1);
         pizzaMap.replace(id, newPizza);
-
 
 
         // listPizza.set(id, pizza.setNumber((pizza.getNumber() + 1));

@@ -45,7 +45,8 @@ public class AdminController {
     @ModelAttribute(Constants.CURRENT_PIZZA)
     public Pizza pizza() {
         return new Pizza();
-    };
+    }
+
     @ModelAttribute(Constants.CURRENT_ENGREDIENT)
     public Ingredient ingredient() {
         return new Ingredient();
