@@ -24,7 +24,7 @@
                     </sec:authorize>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pizza</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/pizza">Pizza</a>
                 </li>
 
 

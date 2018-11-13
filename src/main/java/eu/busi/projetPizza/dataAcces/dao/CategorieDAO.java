@@ -32,4 +32,8 @@ public class CategorieDAO {
         }
         return categories;
     }
+
+    public CategoryEntity getCategoriyByName(String name){
+        return  categorieRepository.findByName(name);
+    }
 }

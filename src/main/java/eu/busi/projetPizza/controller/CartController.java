@@ -34,7 +34,7 @@ import static eu.busi.projetPizza.model.Constants.CURRENT_USER;
 
 @Controller
 @RequestMapping(value = "/cart")
-@SessionAttributes({CURRENT_USER})
+@SessionAttributes({Constants.CURRENT_USER,Constants.CURRENT_PIZZA, Constants.CURRENT_MY_MAP_PIZZA })
 public class CartController extends HttpServlet {
 
     Map<Long, Pizza> pizzaMap = new HashMap<Long, Pizza>();

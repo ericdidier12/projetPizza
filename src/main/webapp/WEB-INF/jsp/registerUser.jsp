@@ -14,25 +14,26 @@
         <div class="form-group col-md-6">
             <form:label  path="username" for="username">Username</form:label>
             <form:input  path="username" class="form-control" id="username" placeholder="username"/>
-            <form:errors path="username" cssClass="error"/>
+            <form:errors path="username" cssClass="error"></form:errors>
+
         </div>
 
         <div class="form-group col-md-6">
             <form:label  path="password" for="password">Password</form:label>
             <form:password path="password" class="form-control" id="password" placeholder="Password"/>
-            <form:errors path="password" cssClass="error"/>
+            <form:errors path="password" cssClass="error"></form:errors>
         </div>
 
         <div class="form-group col-md-6">
             <form:label path="email" for="email">Email</form:label>
             <form:input  path="email"  class="form-control" id="email" placeholder="Email"/>
-            <form:errors path="email" cssClass="error"/>
+            <form:errors path="email" cssClass="error"></form:errors>
         </div>
 
         <div class="form-group col-md-6">
             <form:label path="adress" for="adress">adress </form:label>
             <form:input  path="adress" class="form-control" id="adress" placeholder="Avenue Paris,1050,Bruxelles"/>
-            <form:errors path="adress" cssClass="error"/>
+            <form:errors path="adress" cssClass="error"></form:errors>
         </div>
 
        <%-- <div class="form-group col-md-6">

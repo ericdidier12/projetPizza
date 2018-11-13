@@ -20,14 +20,42 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     //
     private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{
-            "/home","/Pizza","/cart",
-            "/user/register"};
+            "/home",
+            "/pizza/ajouterAuPanier",
+            "/pizza",
+            "/cart",
+            "/user/register",
+            "/pizza/trieCategorieByName/american",
+            "/pizza/trieCategorieByName/of-the-sea",
+            "/pizza/trieCategorieByName/normal",
+            "/admin/ajouterAuPanier" ,
+            };
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{
-            "/admin/manage-stock" ,"/admin/manage-order", "/admin-pizza",
-            "/home","/users", "/user/register",
-             "/admin"};
-    private static final String[] AUTHORIZED_REQUESTS_USER = new String[]{"" +
-            "/user/paiement","/user/commande","/user/pizza","/home"};
+            "/home",
+            "/admin",
+            "/pizza/",
+            "/pizza/ajouterAuPanier",
+            "/users",
+            "/user/register",
+            "/admin/manage-stock" ,
+            "/admin/manage-order",
+            "/pizza/trieCategorieByName/normal",
+            "/pizza/trieCategorieByName/of-the-sea",
+            "/pizza/trieCategorieByName/american",
+            "/admin/ajouterAuPanier" ,
+    };
+    private static final String[] AUTHORIZED_REQUESTS_USER = new String[]{
+            "/home",
+            "/pizza",
+            "/user/paiement",
+            "/user/commande",
+            "/user/pizza",
+            "/pizza/ajouterAuPanier",
+            "/pizza/trieCategorieByName/normal",
+            "/pizza/trieCategorieByName/of-the-sea",
+            "/pizza/trieCategorieByName/american",
+                   "/admin/ajouterAuPanier" ,
+    };
     String[] staticResources = {
             "/css/**",
             "/images/**",

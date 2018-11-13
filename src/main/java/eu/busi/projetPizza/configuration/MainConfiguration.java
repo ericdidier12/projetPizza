@@ -11,8 +11,6 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import java.util.Locale;
 
-;
-
 /***
  * C'est fichier de configuration est  equivaux au fichier xml de configuration  servlet-context
  * et c'est un nouveau resolver de vu qui dit que tout nos views doit être  spécifier dans le repertoire
