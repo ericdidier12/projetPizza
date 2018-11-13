@@ -4,7 +4,7 @@
 
 <!-- Page Content -->
 <div class="container">
-
+  ${user}
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
         <h1 class="display-3">Bienvenu dans notre Pizzeria!</h1>
