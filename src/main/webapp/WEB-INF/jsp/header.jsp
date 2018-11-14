@@ -30,11 +30,22 @@
 
                 <li class="nav-item">
                     <span class="fi-cart"></span>
-                    <a class="nav-link" href="#">Panier</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/cart"><spring:message code="buttoncart"/></a>
                 </li>
 
+                <spring:url var="localeFr" value="">
+                    <spring:param name="locale" value="fr"/>
+                </spring:url>
+
+                <spring:url var="localeEn" value="">
+                    <spring:param name="locale" value="en"/>
+                </spring:url>
+
                 <li class="nav-item">
-                    <div class="dropdown show">
+                    <div>
+                    <a href="${localeFr}">FR</a>
+                    <a href="${localeEn}">EN</a>
+                    <%--<div class="dropdown show">
                         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Langage
                         </a>
@@ -42,6 +53,7 @@
                             <a class="dropdown-item" href="#">En</a>
                             <a class="dropdown-item" href="#">Fr</a>
                         </div>
+                    </div>--%>
                     </div>
                 </li>
 

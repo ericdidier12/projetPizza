@@ -7,11 +7,14 @@
   ${user}
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
-        <h1 class="display-3">Bienvenu dans notre Pizzeria!</h1>
+        <h1 class="display-3">
+
+            <spring:message code="messagewelcome"/>
+
+        </h1>
         <p class="lead">
-            Soyez les bienvenu au 3 rue des pommes, 1954 Fleur,
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
-        <div>
+            <spring:message code="messageHome"/>
+            <div>
             <img src="<spring:url value="/images/imagePiza.jpg"/>"/>
         </div>
     </header>

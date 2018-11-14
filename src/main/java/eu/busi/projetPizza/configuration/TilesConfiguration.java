@@ -27,21 +27,22 @@ public class TilesConfiguration  {
         resolver.setViewClass(TilesView.class);
         return resolver;
     }
-
-    /*@Bean
-    public DefaultMessageCodesResolver defaultMessageCodesResolver() {
+    @Bean
+    public DefaultMessageCodesResolver defaultMessageCodesResolver(){
         DefaultMessageCodesResolver defaultMessageCodesResolver = new DefaultMessageCodesResolver();
-        return defaultMessageCodesResolver;
+        return  defaultMessageCodesResolver;
     }
 
     @Bean
-    public ResourceBundleMessageSource messageSource() {
+    public ResourceBundleMessageSource messageSource()
+    {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setDefaultEncoding("UTF-8");
         messageSource.setBasenames("general");
         messageSource.setUseCodeAsDefaultMessage(true);
         return messageSource;
-    }*/
+    }
+
 
 
 

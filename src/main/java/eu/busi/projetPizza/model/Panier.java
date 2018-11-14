@@ -16,11 +16,11 @@ public class Panier {
         if (lc == null) {
             Order_Line art = new Order_Line();
             art.setPizza(p);
-            art.setQuantite(quantite);
+            art.setNumber(quantite);
             //art.setPizza(p);
             items.put(p.getId(), art);
         } else {
-            lc.setQuantite(lc.getQuantite() + quantite);
+            lc.setNumber(lc.getNumber() + quantite);
         }
     }
 
@@ -35,7 +35,7 @@ public class Panier {
     public double getTotal() {
         double total = 0;
         for (Order_Line lc : items.values()) {
-            total += lc.getPizza().getPrice() * lc.getQuantite();
+            total += lc.getPizza().getPrice() * lc.getNumber();
         }
         return total;
     }

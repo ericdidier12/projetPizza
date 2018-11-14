@@ -3,46 +3,35 @@ package eu.busi.projetPizza.controller;
 import eu.busi.projetPizza.dataAcces.dao.OderDAO;
 import eu.busi.projetPizza.dataAcces.dao.Oder_LineDAO;
 import eu.busi.projetPizza.dataAcces.dao.UserDAO;
-import eu.busi.projetPizza.dataAcces.entity.PizzaEntity;
-import eu.busi.projetPizza.dataAcces.repository.OrderLineRepository;
-import eu.busi.projetPizza.dataAcces.repository.OrderRepository;
 import eu.busi.projetPizza.dataAcces.service.OderLineSaveService;
-import eu.busi.projetPizza.dataAcces.service.OderService;
 import eu.busi.projetPizza.enums.StatusEnum;
 import eu.busi.projetPizza.model.*;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.omg.CORBA.Current;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.*;
-
-import static eu.busi.projetPizza.model.Constants.CURRENT_USER;
 
 @Controller
 @RequestMapping(value = "/cart")
 @SessionAttributes({Constants.CURRENT_USER,Constants.CURRENT_PIZZA, Constants.CURRENT_MY_MAP_PIZZA })
 public class CartController extends HttpServlet {
 
-    Map<Long, Pizza> pizzaMap = new HashMap<Long, Pizza>();
+    Map<Long, Pizza> pizzaHashMap = new HashMap<Long, Pizza>();
+
+    @ModelAttribute(Constants.CURRENT_MY_MAP_PIZZA)
+    public Map<Long, Pizza> pizzaMap() {
+        return pizzaHashMap;
+    }
 
     @ModelAttribute(Constants.PIZZA_EDIT)
-    public Pizza pizza() {
-        return new Pizza();
-    }
+    public Pizza pizza() {        return new Pizza();    }
 
     @Autowired
     public OderDAO oderDAO;
@@ -58,15 +47,25 @@ public class CartController extends HttpServlet {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public String Cart(HttpServletRequest request, HttpServletResponse response, Model model) {
+    public String Cart(Model model, @ModelAttribute(Constants.CURRENT_MY_MAP_PIZZA)Map<Long, Pizza> pizzaMapCart)
+    {
         model.addAttribute("title", "Cart");
-
-        HttpSession session = request.getSession();
+        Collection<Pizza> pizzaList = pizzaMapCart.values();
         float total = 0;
-        float totalWithoutDelivery = 0;
+        float subtotal = 0;
+        float delivery_price = 0;
         LocalDateTime a = LocalDateTime.now();
 
-        /**To Delete**/
+        for (Iterator<Pizza> i = pizzaList.iterator(); i.hasNext(); ) {
+            Pizza item = i.next();
+            subtotal += (item.getPrice() * item.getNumber());
+        }
+        if (subtotal <= 15) {
+            delivery_price = 5;
+        }
+        total = delivery_price + subtotal;
+
+      /*  *//**To Delete**//*
         Category category = new Category();
         Category category1 = new Category();
         category.setId(1);
@@ -111,58 +110,42 @@ public class CartController extends HttpServlet {
         oder.setStatusEnum(StatusEnum.IN_PROGRESS);
         oder.setUser(null);
 
-        session.setAttribute("ListPanier", pizzaList);
+        session.setAttribute("ListPanier", pizzaList);*/
         /**End of Delete**/
 
-
-        HttpSession getPizzaSession;
-        getPizzaSession = request.getSession(false);
-        List<Pizza> pizzaPanierList = (List<Pizza>) getPizzaSession.getAttribute("ListPanier");
-
-        /**Loop to set the amount of the order*/
-
-        for (Iterator<Pizza> i = pizzaPanierList.iterator(); i.hasNext(); ) {
-            Pizza item = i.next();
-            totalWithoutDelivery += (item.getPrice() * item.getNumber());
-        }
-
-        /**Add delivery price if the amount of the order is less than 15 euros**/
-        total = totalWithoutDelivery;
-        if (total <= 15) {
-            totalWithoutDelivery += 5;
-        }
-        model.addAttribute("Total", totalWithoutDelivery);
-        session.setAttribute("TotalToPaid", total);
+        model.addAttribute("Total", total);
+        model.addAttribute("SubTotal", subtotal);
+        model.addAttribute("Shipping", delivery_price);
         model.addAttribute("ContentCart", pizzaList);
-
         return "integrated:cart";
     }
 
     @PostMapping(value = "/sendAdd")
-    public String AddNumberPizzaToCart(Model model, HttpServletRequest request, @RequestParam("id") long id, @ModelAttribute(Constants.PIZZA_EDIT) Pizza pizza) {
-        //HttpSession session = request.getSession();
-        // float total = (float) session.getAttribute("TotalToPaid");
-        HttpSession getPanierSession = request.getSession(false);
-        List<Pizza> listPizza = (List<Pizza>) getPanierSession.getAttribute("ListPanier");
+    public String AddNumberPizzaToCart(Model model,@RequestParam("id") long id, @ModelAttribute(Constants.PIZZA_EDIT) Pizza pizza, @ModelAttribute(Constants.CURRENT_MY_MAP_PIZZA)Map<Long, Pizza> pizzaMapCart) {
 
-
-        for (Iterator<Pizza> i = listPizza.iterator(); i.hasNext(); ) {
-            Pizza item = i.next();
-            pizzaMap.put(item.getId(), item);
-        }
-        Pizza newPizza = pizzaMap.get(id);
+        Pizza newPizza = pizzaMapCart.get(id);
         newPizza.setNumber(newPizza.getNumber() + 1);
-        pizzaMap.replace(id, newPizza);
+        pizzaMapCart.replace(id, newPizza);
 
+        return "redirect:/cart";
+    }
 
-        // listPizza.set(id, pizza.setNumber((pizza.getNumber() + 1));
+    @PostMapping(value = "/sendSubstract")
+    public String SubstractNumberPizzaToCart(Model model,@RequestParam("id") long id, @ModelAttribute(Constants.PIZZA_EDIT) Pizza pizza, @ModelAttribute(Constants.CURRENT_MY_MAP_PIZZA)Map<Long, Pizza> pizzaMapCart) {
 
-        /*Optional<Pizza> pizzaToGetPrice = listPizza
-                .stream()
-                .filter(x -> x.getId() == id)
-                .findFirst();
-        total += pizzaToGetPrice.get().getPrice();
-        session.setAttribute("TotalToPaid", total);*/
+        Pizza newPizza = pizzaMapCart.get(id);
+        if(newPizza.getNumber() <= 1){pizzaMapCart.remove(id, newPizza);}
+        else{newPizza.setNumber(newPizza.getNumber() - 1);
+            pizzaMapCart.replace(id, newPizza);        }
+        return "redirect:/cart";
+    }
+
+    @PostMapping(value = "/sendDelete")
+    public String DeletePizzaToCart(Model model,@RequestParam("id") long id, @ModelAttribute(Constants.PIZZA_EDIT) Pizza pizza, @ModelAttribute(Constants.CURRENT_MY_MAP_PIZZA)Map<Long, Pizza> pizzaMapCart) {
+
+        Pizza newPizza = pizzaMapCart.get(id);
+        pizzaMapCart.remove(id, newPizza);
+
         return "redirect:/cart";
     }
 
