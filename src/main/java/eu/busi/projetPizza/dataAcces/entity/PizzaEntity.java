@@ -31,6 +31,9 @@ public class PizzaEntity extends BaseEntity {
     @ManyToMany(mappedBy = "pizzaEntitiesList", fetch = FetchType.EAGER)
     private List<IngredientEntity> ingredientEntityList;
 
+    @Transient
+    private int number2;
+
     public PizzaEntity() {
     }
 

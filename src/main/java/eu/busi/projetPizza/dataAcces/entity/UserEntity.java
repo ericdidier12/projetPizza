@@ -66,7 +66,6 @@ public class UserEntity extends BaseEntity implements UserDetails {
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Authority> authorities;
 
-
     private String adresse;
 
     @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL)
