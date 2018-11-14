@@ -26,10 +26,18 @@ public class Pizza {
     private String categorie ;
     private Category category;
     private List<Ingredient> ingredients;
-    private List<String> ingredients1;
+    private List<String> ingredientslist;
 
 
     public Pizza() {
+    }
+
+    public List<String> getIngredientslist() {
+        return ingredientslist;
+    }
+
+    public void setIngredientslist(List<String> ingredientslist) {
+        this.ingredientslist = ingredientslist;
     }
 
     public void setCategory(Category category) {

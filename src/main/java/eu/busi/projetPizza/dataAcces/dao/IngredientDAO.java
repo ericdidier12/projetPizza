@@ -6,6 +6,7 @@ import eu.busi.projetPizza.dataAcces.repository.IngredientRepository;
 
 
 import eu.busi.projetPizza.model.Ingredient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -33,9 +34,16 @@ public class IngredientDAO {
         return ingredientEntitiesList;
     }
 
-    public IngredientEntity loadIngredientById(long Id) {
+    public IngredientEntity loadIngredientEntityById(long Id) {
         IngredientEntity ingredientEntity = ingredientRepository.findOne(Id);
         return ingredientEntity;
+    }
+    public Ingredient loadIngredientById(long Id)
+    {
+
+        IngredientEntity ingredientEntity = ingredientRepository.findOne(Id);
+        Ingredient ingredient = IngredientConveter.ingredientIngredientTopizzaModel(ingredientEntity);
+        return ingredient;
     }
 
     public List<Ingredient> getAllIngredients() {

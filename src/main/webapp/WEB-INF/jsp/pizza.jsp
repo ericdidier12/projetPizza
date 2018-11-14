@@ -4,14 +4,13 @@
 <%@include file="include/importLinks.jsp" %>
 
 
-
 <!-- Page Content -->
 <div class="container">
     <!-- Category of Pizza -->
     <div class="container">
         <div class="row">
             <div class="dropdown">
-                <button class="btn btn-block dropdown-toggle" type="button" data-toggle="dropdown"><spring:message code="category"/>
+                <button class="btn btn-block dropdown-toggle" type="button" data-toggle="dropdown">Category of Pizza
                     <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                     <c:forEach var="categorie" items="${categories}">
@@ -135,15 +134,32 @@
                                         <div class="modal-body">
 
                                             <p>
-                                            <p>
-                                                <from:checkboxes path="ingredients"  items = "${ingredients}"  itemValue ="name"  itemLabel="name" delimiter="<br/>" />
-                                            </p>
+                                                <from:checkboxes path="ingredients"  items = "${ingredients}" itemLabel="name" itemValue="id" delimiter="<br/>" />
                                             </p>
 
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" value="Ajouter au panier">
+                        </form:form>
+
+                        <!-- Fin Tile & Descriptionn & add cart pizza custom-->
+                        <!-- Card footer -->
+                    </div>
+                    <!-- Card content -->
+                </div>
+                <!-- Card -->
+            </div>
             <!-- Grid column -->
+            <!---------------------------------------------------------------------------------------------------->
         </div>
         <!-- Grid row -->
     </section>
     <!-- Section: pizza v.2 -->
     <!-- /.container -->
 </div>
+

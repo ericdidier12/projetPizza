@@ -8,13 +8,12 @@ import eu.busi.projetPizza.dataAcces.dao.CategorieDAO;
 import eu.busi.projetPizza.dataAcces.dao.IngredientDAO;
 import eu.busi.projetPizza.dataAcces.dao.PizzaDAO;
 import eu.busi.projetPizza.dataAcces.entity.CategoryEntity;
-
-import eu.busi.projetPizza.dataAcces.util.generator.NameGenerator;
+import eu.busi.projetPizza.dataAcces.service.PizzaSaveService;
 import eu.busi.projetPizza.model.Category;
 import eu.busi.projetPizza.model.Constants;
-
 import eu.busi.projetPizza.model.Ingredient;
 import eu.busi.projetPizza.model.Pizza;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,6 +30,10 @@ import java.util.stream.Collectors;
 @RequestMapping(value = "/pizza")
 @SessionAttributes({Constants.CURRENT_USER, Constants.CURRENT_PIZZA, Constants.CURRENT_PIZZA, Constants.CURRENT_MY_MAP_PIZZA, Constants.CURRENT_PIZZA_Custom})
 public class PizzaController {
+
+
+    @Autowired
+    public PizzaSaveService pizzaSaveService;
 
     private final PizzaDAO pizzaDAO;
     private final CategorieDAO categorieDAO;
@@ -56,7 +59,7 @@ public class PizzaController {
     @RequestMapping(value = "/trieCategorieByName/{id}", method = RequestMethod.GET)
     public String triCategoryByName(@PathVariable(value = "id") String name, Model model) {
 
-        CategoryEntity categoryEntity = categorieDAO.getCategoriyByName(name);
+        CategoryEntity categoryEntity = categorieDAO.getCategoriyEntityByName(name);
         model.addAttribute("categories", categorieDAO.getListCategories());
         model.addAttribute("ingredients", ingredientDAO.getAllIngredients());
         List<Pizza> pizzas = pizzaDAO.findByCategoryEntity(categoryEntity);
@@ -99,22 +102,42 @@ public class PizzaController {
         return "redirect:/pizza";
     }
 
-    @ModelAttribute("webFrameworkList")
+   /* @ModelAttribute("webFrameworkList")
     public List<String> getWebFrameworkList() {
         List<String> webFrameworkList = new ArrayList<>();
         for (Ingredient ingredient : ingredientDAO.getAllIngredients()) {
             webFrameworkList.add(ingredient.getName());
         }
         return webFrameworkList;
-    }
+    }*/
 
 
     @RequestMapping(value = "/ajouterAuPanierPizzaCustom", method = RequestMethod.POST)
-    public String lookPizzaCustomsAndAddinCart(Model model, @ModelAttribute("webFrameworkList") Pizza infospizza, final BindingResult errors) {
-        Pizza pizzaCustom = infospizza;
-        if (errors.hasErrors()) {
+    public String lookPizzaCustomsAndAddinCart(Model model, @RequestParam("ingredients") List<Integer> integerList,@ModelAttribute(Constants.CURRENT_PIZZA_Custom) Pizza infospizza, final BindingResult errors) {
 
+        float priceOfIngredients = 3;
+
+        List<Ingredient> ingredientList = new ArrayList<>();
+        for(int item : integerList){
+            Ingredient ingredient = ingredientDAO.loadIngredientById(item);
+            priceOfIngredients += ingredient.getUnit_price();
+            ingredientList.add(ingredient);
         }
+        System.out.println("Liste des ingrédients dans la pizza OK!!!!!");
+/*
+
+        Pizza pizza = new Pizza();
+        pizza.setPrice(priceOfIngredients);
+        pizza.setFixed(false);
+        pizza.setCategory(categorieDAO.getCategoriyByName("normal"));
+        pizza.setMonth_promo(false);
+        pizza.setName("custome");*/
+
+
+
+
+
+
         return "redirect:/pizza";
     }
 
