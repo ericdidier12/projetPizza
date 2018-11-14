@@ -9,34 +9,43 @@ import eu.busi.projetPizza.model.Ingredient;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
 @Transactional
 public class IngredientDAO {
 
-    private  final IngredientRepository ingredientRepository ;
+    private final IngredientRepository ingredientRepository;
 
     public IngredientDAO(IngredientRepository ingredientRepository) {
         this.ingredientRepository = ingredientRepository;
     }
 
-   public IngredientEntity saveIngredient(Ingredient ingredient) {
-        return  ingredientRepository.save(IngredientConveter.IngredientIngredientTopizzaModel(ingredient)) ;
+    public IngredientEntity saveIngredient(Ingredient ingredient) {
+        return ingredientRepository.save(IngredientConveter.ingredientIngredientTopizzaModel(ingredient));
     }
 
-   public List<IngredientEntity> loadAllIngredient()
-   {
-       List<IngredientEntity> ingredientEntitiesList = ingredientRepository.findAll();
-       return ingredientEntitiesList;
-   }
+    public List<IngredientEntity> loadAllIngredient() {
+        List<IngredientEntity> ingredientEntitiesList = ingredientRepository.findAll();
+        return ingredientEntitiesList;
+    }
 
-   public IngredientEntity loadIngredientById(long Id)
-   {
-       IngredientEntity ingredientEntity = ingredientRepository.findOne(Id);
-       return ingredientEntity;
-   }
+    public IngredientEntity loadIngredientById(long Id) {
+        IngredientEntity ingredientEntity = ingredientRepository.findOne(Id);
+        return ingredientEntity;
+    }
 
+    public List<Ingredient> getAllIngredients() {
+        List<Ingredient> ingredients = new ArrayList<>();
+        List<IngredientEntity> ingredientEntities = ingredientRepository.findAll();
+        ingredients = ingredientEntities.stream()
+                .map(ingredientEntity ->
+                        IngredientConveter.ingredientIngredientTopizzaModel(ingredientEntity))
+                .collect(Collectors.toList());
+        return ingredients;
+    }
 
 }

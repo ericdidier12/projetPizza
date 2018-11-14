@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class IngredientConveter {
 
-    public static Ingredient IngredientIngredientTopizzaModel(IngredientEntity ingredientEntity) {
+    public static Ingredient ingredientIngredientTopizzaModel(IngredientEntity ingredientEntity) {
         if (ingredientEntity == null) {
             throw new IllegalArgumentException(" Objet IngredientEntity ne peut pas être null ");
         }
@@ -27,7 +27,7 @@ public class IngredientConveter {
         return ingredient;
     }
 
-    public static IngredientEntity IngredientIngredientTopizzaModel(Ingredient ingredient) {
+    public static IngredientEntity ingredientIngredientTopizzaModel(Ingredient ingredient) {
         if (ingredient == null) {
             throw new IllegalArgumentException(" Objet ingredient ne peut pas être null ");
         }
