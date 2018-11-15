@@ -4,7 +4,18 @@
 
 
 
-<div id="paypal-button-container"></div>
+<div class="container">
+    <header class="jumbotron my-4">
+        <p class="lead">
+            <spring:message code="paiement"/></p>
+        <div id="paypal-button-container" class="container"></div>
+
+    </header>
+</div>
+
+
+
+
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
     // Render the PayPal button
