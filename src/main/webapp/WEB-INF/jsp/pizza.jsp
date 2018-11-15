@@ -62,7 +62,7 @@
 
                                     <h2 class="card-title">
                                         <strong>
-                                            <u> Ingrédient</u>
+                                            <u> <spring:message code="ingredient"/></u>
                                         </strong>
                                     </h2>
 
@@ -78,8 +78,8 @@
                                     <form:form action="pizza/ajouterAuPanier" method="post"
                                                modelAttribute="ajoutPanierPizza">
                                         <from:hidden path="id" value="${infospizza.id}" name="id"/>
-                                        quantite: <form:input path="number" value="${infospizza.number}" name="number"/>
-                                        <input type="submit" value="Ajouter au panier">
+                                        <spring:message code="quantity"/>: <form:input path="number" value="${infospizza.number}" name="number"/>
+                                        <input type="submit" value="<spring:message code="addToCart"/>">
                                     </form:form></span>
                                     </div>
                                 </div>

@@ -27,7 +27,7 @@ public class IngredientConveter {
         return ingredient;
     }
 
-    public static IngredientEntity ingredientIngredientTopizzaModel(Ingredient ingredient) {
+    public static IngredientEntity ingredientIngredientToIngredientEntity(Ingredient ingredient) {
         if (ingredient == null) {
             throw new IllegalArgumentException(" Objet ingredient ne peut pas être null ");
         }

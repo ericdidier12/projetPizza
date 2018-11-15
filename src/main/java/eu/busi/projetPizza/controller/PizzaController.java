@@ -90,8 +90,9 @@ public class PizzaController {
     public String lookPizzasAndAddinCart(Model model, @ModelAttribute(Constants.CURRENT_PIZZA) Pizza infospizza, final BindingResult errors) {
 
         Pizza pizza = pizzaDAO.findPizzaById(infospizza.getId());
+        Pizza pizza1 = pizzaHashMap.get(pizza.getId());
         if (pizzaHashMap.get(pizza.getId()) != null) {
-            pizza.setNumber(pizza.getNumber() + infospizza.getNumber());
+            pizza.setNumber(pizza1.getNumber() + infospizza.getNumber());
         } else {
             pizza.setNumber(infospizza.getNumber());
         }

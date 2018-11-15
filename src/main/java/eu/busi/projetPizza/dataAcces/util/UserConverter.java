@@ -44,14 +44,14 @@ public class UserConverter {
         user.setBirth_date(userEntity.getBirth_date());
         user.setAdress(userEntity.getAdressEntity() );
 
-        List<Oder> oders = new ArrayList<>();
-        if (userEntity.getOderEntities() != null) {
+     /*   List<Oder> oders = new ArrayList<>();
+        if (userEntity.getOderEntities() != null & userEntity.getOderEntities().size() > 0) {
             for (OderEntity command : userEntity.getOderEntities()) {
                 oders.add(OderConverter.oderEntityToOderModel(command));
             }
             user.setOders(oders);
         }
-
+*/
         return user;
     }
 

@@ -54,7 +54,7 @@ public class PizzaConveter {
         List<IngredientEntity> c  = new ArrayList<>();
         if (pizza.getIngredients() != null) {
             for (Ingredient ingredient : pizza.getIngredients()) {
-                c.add(IngredientConveter.ingredientIngredientTopizzaModel(ingredient));
+                c.add(IngredientConveter.ingredientIngredientToIngredientEntity(ingredient));
             }
             pizzaEntity.setIngredientEntityList(c);
         }

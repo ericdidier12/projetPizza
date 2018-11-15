@@ -9,6 +9,7 @@ public class Ingredient {
     private float recipe_qunatity;
     private float stock_quantity;
     private float unit_price;
+    private float numberIngredient;
     List<Pizza> pizzas;
 
     public Ingredient() {
@@ -60,5 +61,13 @@ public class Ingredient {
 
     public void setPizzas(List<Pizza> pizzas) {
         this.pizzas = pizzas;
+    }
+
+    public float getNumberIngredient() {
+        return numberIngredient;
+    }
+
+    public void setNumberIngredient(float numberIngredient) {
+        this.numberIngredient = numberIngredient;
     }
 }

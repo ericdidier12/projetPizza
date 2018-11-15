@@ -31,13 +31,13 @@
                             <div class="pull-right"><div>${Total} €</div></div>
                             <hr>
                         </div>
-                        <form:form  method="POST"
+                      <form:form  method="POST"
                                     action="/cart/valider"
                                     modelAttribute="pizzaEdit">
-                            <form:button><i><spring:message code="checkout"/></i></form:button>
+                            <form:button class="btn btn-primary btn-lg btn-block"><i><spring:message code="checkout"/></i></form:button>
                         </form:form>
-                        <button type="button" class="btn btn-primary btn-lg btn-block"><spring:message code="checkout"/></button>
-
+                       <%-- <button type="button" class="btn btn-primary btn-lg btn-block"><spring:message code="checkout"/></button>--%>
+                        <div id="paypal-button-container"></div>
                     </div>
 
                 </div>
@@ -118,34 +118,68 @@
 </body>
 
 <%--
-<table border="5">
-    <c:forEach var="pizza" items="${ContentCart}">
-        <tr>
-            <td>
-                <c:out value="${pizza.id}" />
-            </td>
-            <td>
-                <c:out value="${pizza.name}" />
-            </td>
-            <td>
-                <c:out value="${pizza.price}" />  euro
-            </td>
-            <td>
-               &lt;%&ndash; <form:form  method="POST"
-                            action="/cart/sendAdd"
-                            modelAttribute="pizzaEdit">
-                    <form:hidden path="id" value="${pizza.id}"/>
-                    <form:button><i></i></form:button>
-                </form:form>&ndash;%&gt;
-              </td>
-        </tr>
-    </c:forEach>
-</table>
-<div>${Total}
-    <form:form  method="POST"
-                action="/cart/valider"
-                modelAttribute="pizzaEdit">
-    <form:button><i>Valider</i></form:button>
-    </form:form>
-</div>--%>
 
+
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+    // Render the PayPal button
+    paypal.Button.render({
+// Set your environment
+        env: 'sandbox', // sandbox | production
+
+// Specify the style of the button
+        style: {
+            layout: 'vertical',  // horizontal | vertical
+            size:   'medium',    // medium | large | responsive
+            shape:  'rect',      // pill | rect
+            color:  'gold'       // gold | blue | silver | white | black
+        },
+
+// Specify allowed and disallowed funding sources
+//
+// Options:
+// - paypal.FUNDING.CARD
+// - paypal.FUNDING.CREDIT
+// - paypal.FUNDING.ELV
+        funding: {
+            allowed: [
+                paypal.FUNDING.CARD,
+                paypal.FUNDING.CREDIT
+            ],
+            disallowed: []
+        },
+
+// PayPal Client IDs - replace with your own
+// Create a PayPal app: https://developer.paypal.com/developer/applications/create
+        client: {
+            sandbox: 'AaQx0-E6l-2nlB9kQC12vB37A0nBDCBOtf_KgaATfVHk4PqRS6LIMS9s5AFCs-gKspvpFSqu52gfZ75i',
+            production: '<insert production client id>'
+        },
+
+        payment: function (data, actions) {
+            return actions.payment.create({
+                payment: {
+                    transactions: [
+                        {
+                            amount: {
+                                total: "${Total}",
+                                currency: 'EUR'
+                            }
+                        }
+                    ]
+                }
+            });
+        },
+
+        onAuthorize: function (data, actions) {
+            return actions.payment.execute()
+                .then(function () {
+
+                    window.alert('Payment Complete!');
+                });
+        }
+    }, '#paypal-button-container');
+</script>
+
+--%>

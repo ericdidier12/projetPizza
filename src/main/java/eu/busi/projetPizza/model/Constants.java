@@ -9,5 +9,7 @@ public class Constants {
     public static final String CURRENT_CATEGORY = "NewCategorie";
     public static final String CURRENT_PANIER = "panier";
     public static final String CURRENT_MY_MAP_PIZZA = "my_MAyPizza";
+    public static final String CURRENT_TOTAL = "total";
+    public static final String ORDER_ID = "IdOrder";
    // public static final String CURRENT_BANKACCOUNT = "currentBankAccount";
 }

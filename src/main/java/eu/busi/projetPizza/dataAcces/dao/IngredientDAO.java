@@ -26,7 +26,18 @@ public class IngredientDAO {
     }
 
     public IngredientEntity saveIngredient(Ingredient ingredient) {
-        return ingredientRepository.save(IngredientConveter.ingredientIngredientTopizzaModel(ingredient));
+        IngredientEntity ingredientEntity = ingredientRepository.save(IngredientConveter.ingredientIngredientToIngredientEntity(ingredient));
+        return  ingredientEntity;
+
+    }
+
+    public IngredientEntity saveUpdateIngredient(Ingredient ingredient) {
+        IngredientEntity ingredientEntityFromModel = IngredientConveter.ingredientIngredientToIngredientEntity(ingredient);
+        IngredientEntity ingredientEntityToDB = ingredientRepository.findOne(ingredient.getId());
+        ingredientEntityToDB.setStock_quantity(ingredientEntityFromModel.getStock_quantity());
+        IngredientEntity ingredientEntity = ingredientRepository.save(ingredientEntityToDB);
+        return  ingredientEntity;
+
     }
 
     public List<IngredientEntity> loadAllIngredient() {
