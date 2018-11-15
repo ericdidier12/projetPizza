@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/pizza/trieCategorieByName/american",
             "/pizza/trieCategorieByName/of-the-sea",
             "/pizza/trieCategorieByName/normal",
-            "pizza/ajouterAuPanierPizzaCustom",
+            "/pizza/ajouterAuPanierPizzaCustom",
             "/admin/ajouterAuPanier"
 
             };
@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/pizza/trieCategorieByName/normal",
             "/pizza/trieCategorieByName/of-the-sea",
             "/pizza/trieCategorieByName/american",
-            "pizza/ajouterAuPanierPizzaCustom",
+            "/pizza/ajouterAuPanierPizzaCustom",
             "/admin/ajouterAuPanier"
     };
     private static final String[] AUTHORIZED_REQUESTS_USER = new String[]{
@@ -57,8 +57,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/pizza/trieCategorieByName/normal",
             "/pizza/trieCategorieByName/of-the-sea",
             "/pizza/trieCategorieByName/american",
-            "pizza/ajouterAuPanierPizzaCustom",
-                   "/admin/ajouterAuPanier"
+            "/pizza/ajouterAuPanierPizzaCustom",
+            "/admin/ajouterAuPanier"
     };
     String[] staticResources = {
             "/css/**",

@@ -38,9 +38,8 @@ public class IngredientDAO {
         IngredientEntity ingredientEntity = ingredientRepository.findOne(Id);
         return ingredientEntity;
     }
-    public Ingredient loadIngredientById(long Id)
-    {
 
+    public Ingredient loadIngredientById(long Id) {
         IngredientEntity ingredientEntity = ingredientRepository.findOne(Id);
         Ingredient ingredient = IngredientConveter.ingredientIngredientTopizzaModel(ingredientEntity);
         return ingredient;
@@ -56,4 +55,15 @@ public class IngredientDAO {
         return ingredients;
     }
 
+    public Boolean checkIfStockQuantiteIngredientIsNull(IngredientEntity ingredientEntity) {
+        boolean isfound = false;
+
+        IngredientEntity ingredientEntity1 = ingredientRepository.findOne(ingredientEntity.getId());
+        if (ingredientEntity1 != null && ingredientEntity1.getStock_quantity() != 0.0f) {
+           return isfound = true;
+        }
+        return isfound;
+    }
 }
+
+

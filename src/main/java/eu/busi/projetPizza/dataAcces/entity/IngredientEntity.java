@@ -1,6 +1,8 @@
 package eu.busi.projetPizza.dataAcces.entity;
 
 
+import org.springframework.data.jpa.repository.QueryHints;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
