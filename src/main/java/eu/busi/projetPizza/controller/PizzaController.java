@@ -21,7 +21,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -93,48 +92,47 @@ public class PizzaController {
     public String lookPizzasAndAddinCart(Model model, @ModelAttribute(Constants.CURRENT_PIZZA) Pizza infospizza, final BindingResult errors) {
 
         Pizza pizza = pizzaDAO.findPizzaById(infospizza.getId());
+        Pizza pizza1 = pizzaHashMap.get(pizza.getId());
         if (pizzaHashMap.get(pizza.getId()) != null) {
-            pizza.setNumber(pizza.getNumber() + infospizza.getNumber());
+            pizza.setNumber(pizza1.getNumber() + infospizza.getNumber());
         } else {
             pizza.setNumber(infospizza.getNumber());
         }
         pizzaHashMap.put(infospizza.getId(), pizza);
-
         if (errors.hasErrors()) {
 
         }
-
         return "redirect:/pizza";
     }
 
 
     @RequestMapping(value = "/ajouterAuPanierPizzaCustom", method = RequestMethod.POST)
     public String lookPizzaCustomsAndAddinCart(Model model, @RequestParam("ingredients") List<Integer> integerList, @ModelAttribute(Constants.CURRENT_PIZZA_Custom) Pizza infospizza, final BindingResult errors) {
-
         List<Ingredient> ingredientList = new ArrayList<>();
         Pizza pizza = new Pizza();
 
         for (int item : integerList) {
             Ingredient ingredient = ingredientDAO.loadIngredientById(item);
-            if (ingredientDAO.checkIfStockQuantiteIngredientIsNull(IngredientConveter.ingredientIngredientTopizzaModel(ingredient))) {
+            if (ingredientDAO.checkIfStockQuantiteAndgetStock_Quantity_IngredientIsNull(IngredientConveter.ingredientIngredientTopizzaModel(ingredient))) {
                 PRICE_OF_INGREDIENTS += ingredient.getUnit_price();
                 ingredientList.add(ingredient);
             }
         }
-
         if (!ingredientList.isEmpty()) {
-            pizza.setName(NameGenerator.generateName());
-            pizza.setFixed(false);
-            pizza.setIngredients(ingredientList);
-            pizza.setPrice(PRICE_OF_INGREDIENTS);
-            pizza.setNumber(1);
-            pizza.setCategory(categorieDAO.getCategoriyByName("normal"));
-            Pizza pizzaCustom = pizzaDAO.savePizza(PizzaConveter.pizzaModelTopizzaEntity(pizza));
-
-            pizzaHashMap.put(pizzaCustom.getId(), pizzaDAO.savePizza(PizzaConveter.pizzaModelTopizzaEntity(pizza)));
+            Pizza pizzaCustom = getPizza(ingredientList, pizza);
+            pizzaHashMap.put(pizzaCustom.getId(), pizzaCustom);
         }
+        return "redirect:/pizza";
+    }
 
-        return "integrated:pizza";
+    private Pizza getPizza(List<Ingredient> ingredientList, Pizza pizza) {
+        pizza.setName(NameGenerator.generateName());
+        pizza.setFixed(false);
+        pizza.setIngredients(ingredientList);
+        pizza.setPrice(PRICE_OF_INGREDIENTS);
+        pizza.setNumber(1);
+        pizza.setCategory(categorieDAO.getCategoriyByName("normal"));
+        return pizzaDAO.savePizza(PizzaConveter.pizzaModelTopizzaEntity(pizza));
     }
 
 }

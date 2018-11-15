@@ -10,6 +10,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                <sec:authorize access="isAuthenticated()">
+                    <span style="color: cadetblue"> Hello <sec:authentication property="principal.username"/> </span>
+                </sec:authorize>
+                </li>
+
+
+
                 <li class="nav-item active">
                     <a class="nav-link" href="${pageContext.request.contextPath}/home">Home
                         <span class="sr-only">(current)</span>

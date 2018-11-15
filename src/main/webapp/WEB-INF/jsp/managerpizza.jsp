@@ -27,7 +27,7 @@
                 <div class="card-body">
                     <form:form id="form" method="POST"
                                action="${pageContext.request.contextPath}/admin/managePizza/send"
-                               modelAttribute="Newpizza">
+                               modelAttribute="ajoutPanierPizza">
                         <div class="form-row">
                             <table class="table">
 

@@ -41,7 +41,7 @@ public class PizzaConveter {
             throw new IllegalArgumentException(" Objet Pizza ne peut pas être null ");
         }
         PizzaEntity pizzaEntity = new PizzaEntity();
-        pizzaEntity.setId(pizza.getId());
+       // pizzaEntity.setId(pizza.getId());
         pizzaEntity.setName(pizza.getName());
         pizzaEntity.setFixed(pizza.isFixed());
         pizzaEntity.setMonth_promo(pizza.isMonth_promo());

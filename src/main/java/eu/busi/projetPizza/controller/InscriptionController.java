@@ -41,12 +41,6 @@ public class InscriptionController {
 
     @RequestMapping(value = "/send", method = RequestMethod.POST)
     public String saveNewUserRegrister(@Valid @ModelAttribute(value = Constants.CURRENT_USER) User user, final BindingResult errors, Model model) {
-        System.out.println("*******************************************************" +
-                "Name : " + user.getName() + "  " +
-                "Passeword  : " + user.getPassword() + "  " +
-                "Email  : " + user.getEmail() + "  " +
-                "Username: " + user.getUsername()
-        );
         userService.register(user, RoleEnum.USER);
         if (errors.hasErrors()) {
             return "integrated:registerUser";

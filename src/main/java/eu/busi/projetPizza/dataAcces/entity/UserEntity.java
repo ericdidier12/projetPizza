@@ -62,7 +62,7 @@ public class UserEntity extends BaseEntity implements UserDetails {
     @Column(name = "ENABLED")
     private boolean enabled;
 
-    @ManyToMany(fetch = FetchType.EAGER) // EAGER c-à-d à chaque fois vous charge user vous chargerai aussi se Role
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST) // EAGER c-à-d à chaque fois vous charge user vous chargerai aussi se Role
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Authority> authorities;
 

@@ -2,13 +2,16 @@
 package eu.busi.projetPizza.dataAcces.util;
 
 
+import eu.busi.projetPizza.dataAcces.entity.IngredientEntity;
 import eu.busi.projetPizza.dataAcces.entity.PizzaEntity;
 import eu.busi.projetPizza.dataAcces.entity.UserEntity;
 
 import eu.busi.projetPizza.model.Category;
+import eu.busi.projetPizza.model.Ingredient;
 import eu.busi.projetPizza.model.Pizza;
 import eu.busi.projetPizza.model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,6 +29,15 @@ public class PizzaConverter {
         pizza.setMonth_promo(pizzaEntity.isMonth_promo());
         pizza.setPrice(pizzaEntity.getPrice());
 
+        pizza.setCategory(CategorieConveter.CategoryEntityToCategoryModel(pizzaEntity.getCategoryEntity()));
+        List<Ingredient> ingredients = new ArrayList<>();
+        if(pizzaEntity.getIngredientEntityList() != null) {
+            for (IngredientEntity ingredientEntity :pizzaEntity.getIngredientEntityList()) {
+                ingredients.add(IngredientConveter.ingredientIngredientTopizzaModel(ingredientEntity));
+            }
+            pizza.setIngredients(ingredients);
+        }
+
         return pizza;
     }
 
@@ -40,6 +52,17 @@ public class PizzaConverter {
         pizzaEntity.setName(pizza.getName());
         pizzaEntity.setPrice(pizza.getPrice());
 
+        List<IngredientEntity> ingredientEntity  = new ArrayList<>();
+        if (pizza.getIngredients() != null ) {
+            for (Ingredient ingredient1 : pizza.getIngredients()) {
+                ingredientEntity.add(IngredientConveter.ingredientIngredientTopizzaModel(ingredient1));
+            }
+            pizzaEntity.setIngredientEntityList(ingredientEntity);
+        }
+
+        if(pizza.getCategory() != null) {
+            pizzaEntity.setCategoryEntity(CategorieConveter.CategoryModelToCategoryEntity(pizza.getCategory()));
+        }
 
         return pizzaEntity;
     }

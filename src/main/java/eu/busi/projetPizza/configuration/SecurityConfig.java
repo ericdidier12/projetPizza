@@ -18,7 +18,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String LOGIN_REQUEST = "/login";
 
-    //
     private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{
             "/home",
             "/pizza/ajouterAuPanier",
@@ -29,8 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/pizza/trieCategorieByName/of-the-sea",
             "/pizza/trieCategorieByName/normal",
             "/pizza/ajouterAuPanierPizzaCustom",
-            "/admin/ajouterAuPanier"
-
+            "/admin/ajouterAuPanier",
+            "/user/register/send"
             };
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{
             "/home",

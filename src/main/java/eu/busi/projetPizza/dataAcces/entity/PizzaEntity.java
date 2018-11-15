@@ -10,8 +10,11 @@ import java.util.Set;
 
 @Entity
 @Table(name = "pizza")
-public class PizzaEntity extends BaseEntity {
+public class PizzaEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "price")
@@ -83,5 +86,17 @@ public class PizzaEntity extends BaseEntity {
 
     public void setFixed(boolean fixed) {
         this.fixed = fixed;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setOrderLineEntitiesList(List<OrderLineEntity> orderLineEntitiesList) {
+        this.orderLineEntitiesList = orderLineEntitiesList;
     }
 }

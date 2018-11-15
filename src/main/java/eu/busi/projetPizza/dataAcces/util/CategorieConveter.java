@@ -39,6 +39,7 @@ public class CategorieConveter {
         }
 
         CategoryEntity categoryEntity = new CategoryEntity();
+        categoryEntity.setId(category.getId());
         categoryEntity.setName(category.getName());
         return categoryEntity ;
     }

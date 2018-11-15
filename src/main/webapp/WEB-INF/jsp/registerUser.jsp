@@ -36,35 +36,6 @@
             <form:errors path="adress" cssClass="error"></form:errors>
         </div>
 
-       <%-- <div class="form-group col-md-6">
-            <form:label path="street" for="email">Street </form:label>
-            <form:input  path="street" class="form-control" id="email" placeholder="street"/>
-            <form:errors path="street" cssClass="error"/>
-        </div>
-
-        <div class="form-group col-md-6">
-            <form:label path="country" for="country">country </form:label>
-            <form:input  path="country" class="form-control" id="country" placeholder="country"/>
-            <form:errors path="country" cssClass="error"/>
-        </div>
-        <div class="form-group col-md-2">
-            <form:label path="zip_code" for="country">zip_code </form:label>
-            <form:input  path="zip_code" class="form-control" id="zip_code" placeholder="zip_code"/>
-            <form:errors path="zip_code" cssClass="error"/>
-        </div>
-
-        <div class="form-group col-md-2">
-            <form:label path="number" for="country">number </form:label>
-            <form:input  path="number" class="form-control" id="zip_code" placeholder="number"/>
-            <form:errors path="number" cssClass="error"/>
-        </div>
-
-        <div class="form-group col-md-2">
-            <form:label path="box" for="country">box </form:label>
-            <form:input  path="box" class="form-control" id="box" placeholder="box"/>
-            <form:errors path="number" cssClass="box"/>
-        </div>--%>
-
     </div>
 
 
