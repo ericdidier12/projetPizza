@@ -24,11 +24,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/pizza/ajouterAuPanier",
             "/pizza",
             "/cart",
+            "/cart/sendDelete",
+            "/cart/sendSubstract",
+            "/cart/sendAdd",
             "/user/register",
             "/pizza/trieCategorieByName/american",
             "/pizza/trieCategorieByName/of-the-sea",
             "/pizza/trieCategorieByName/normal",
-            "pizza/ajouterAuPanierPizzaCustom",
+            "/pizza/ajouterAuPanierPizzaCustom",
             "/admin/ajouterAuPanier"
 
             };
@@ -44,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/pizza/trieCategorieByName/normal",
             "/pizza/trieCategorieByName/of-the-sea",
             "/pizza/trieCategorieByName/american",
-            "pizza/ajouterAuPanierPizzaCustom",
+            "/pizza/ajouterAuPanierPizzaCustom",
             "/admin/ajouterAuPanier"
     };
     private static final String[] AUTHORIZED_REQUESTS_USER = new String[]{
