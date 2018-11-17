@@ -19,6 +19,14 @@ public class Ingredient {
         return name;
     }
 
+    public Ingredient(long id, String name, float recipe_qunatity, float stock_quantity, float unit_price) {
+        this.id = id;
+        this.name = name;
+        this.recipe_qunatity = recipe_qunatity;
+        this.stock_quantity = stock_quantity;
+        this.unit_price = unit_price;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -70,4 +78,5 @@ public class Ingredient {
     public void setNumberIngredient(float numberIngredient) {
         this.numberIngredient = numberIngredient;
     }
+
 }

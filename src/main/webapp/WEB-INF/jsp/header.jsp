@@ -10,6 +10,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <sec:authorize access="isAuthenticated()">
+                        <span style="color: cadetblue"> <spring:message code="welcomemister"/> <sec:authentication property="principal.username"/> !</span>
+                    </sec:authorize>
+                </li>
+
+
+
                 <li class="nav-item active">
                     <a class="nav-link" href="${pageContext.request.contextPath}/home">Home
                         <span class="sr-only">(current)</span>
@@ -42,19 +51,11 @@
                 </spring:url>
 
                 <li class="nav-item">
-                    <div>
-                    <a href="${localeFr}">FR</a>
-                    <a href="${localeEn}">EN</a>
-                    <%--<div class="dropdown show">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Langage
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">En</a>
-                            <a class="dropdown-item" href="#">Fr</a>
-                        </div>
-                    </div>--%>
-                    </div>
+                    <button type="button" class="btn btn-dark"><a href="${localeFr}">FR</a></button>
+
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-dark"><a href="${localeEn}">EN</a></button>
                 </li>
 
                 <li class="nav-item">

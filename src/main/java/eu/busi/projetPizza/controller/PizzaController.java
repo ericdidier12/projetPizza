@@ -9,7 +9,9 @@ import eu.busi.projetPizza.dataAcces.dao.IngredientDAO;
 import eu.busi.projetPizza.dataAcces.dao.PizzaDAO;
 import eu.busi.projetPizza.dataAcces.entity.CategoryEntity;
 import eu.busi.projetPizza.dataAcces.service.PizzaSaveService;
-import eu.busi.projetPizza.model.Category;
+import eu.busi.projetPizza.dataAcces.util.IngredientConveter;
+import eu.busi.projetPizza.dataAcces.util.PizzaConveter;
+import eu.busi.projetPizza.dataAcces.util.generator.NameGenerator;
 import eu.busi.projetPizza.model.Constants;
 import eu.busi.projetPizza.model.Ingredient;
 import eu.busi.projetPizza.model.Pizza;
@@ -19,12 +21,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+
 
 @Controller
 @RequestMapping(value = "/pizza")
@@ -38,6 +39,7 @@ public class PizzaController {
     private final PizzaDAO pizzaDAO;
     private final CategorieDAO categorieDAO;
     private final IngredientDAO ingredientDAO;
+    private static float PRICE_OF_INGREDIENTS = 3;
 
     public PizzaController(PizzaDAO pizzaDAO, CategorieDAO categorieDAO, IngredientDAO ingredientDAO) {
         this.pizzaDAO = pizzaDAO;
@@ -103,44 +105,34 @@ public class PizzaController {
         return "redirect:/pizza";
     }
 
-   /* @ModelAttribute("webFrameworkList")
-    public List<String> getWebFrameworkList() {
-        List<String> webFrameworkList = new ArrayList<>();
-        for (Ingredient ingredient : ingredientDAO.getAllIngredients()) {
-            webFrameworkList.add(ingredient.getName());
-        }
-        return webFrameworkList;
-    }*/
-
 
     @RequestMapping(value = "/ajouterAuPanierPizzaCustom", method = RequestMethod.POST)
-    public String lookPizzaCustomsAndAddinCart(Model model, @RequestParam("ingredients") List<Integer> integerList,@ModelAttribute(Constants.CURRENT_PIZZA_Custom) Pizza infospizza, final BindingResult errors) {
-
-        float priceOfIngredients = 3;
-
+    public String lookPizzaCustomsAndAddinCart(Model model, @RequestParam("ingredients") List<Integer> integerList, @ModelAttribute(Constants.CURRENT_PIZZA_Custom) Pizza infospizza, final BindingResult errors) {
         List<Ingredient> ingredientList = new ArrayList<>();
-        for(int item : integerList){
-            Ingredient ingredient = ingredientDAO.loadIngredientById(item);
-            priceOfIngredients += ingredient.getUnit_price();
-            ingredientList.add(ingredient);
-        }
-        System.out.println("Liste des ingrédients dans la pizza OK!!!!!");
-/*
-
         Pizza pizza = new Pizza();
-        pizza.setPrice(priceOfIngredients);
-        pizza.setFixed(false);
-        pizza.setCategory(categorieDAO.getCategoriyByName("normal"));
-        pizza.setMonth_promo(false);
-        pizza.setName("custome");*/
 
-
-
-
-
-
+        for (int item : integerList) {
+            Ingredient ingredient = ingredientDAO.loadIngredientById(item);
+            if (ingredientDAO.checkIfStockQuantiteAndgetStock_Quantity_IngredientIsNull(IngredientConveter.ingredientIngredientToIngredientEntity(ingredient))) {
+                PRICE_OF_INGREDIENTS += ingredient.getUnit_price();
+                ingredientList.add(ingredient);
+            }
+        }
+        if (!ingredientList.isEmpty()) {
+            Pizza pizzaCustom = getPizza(ingredientList, pizza);
+            pizzaHashMap.put(pizzaCustom.getId(), pizzaCustom);
+        }
         return "redirect:/pizza";
     }
 
+    private Pizza getPizza(List<Ingredient> ingredientList, Pizza pizza) {
+        pizza.setName(NameGenerator.generateName());
+        pizza.setFixed(false);
+        pizza.setIngredients(ingredientList);
+        pizza.setPrice(PRICE_OF_INGREDIENTS);
+        pizza.setNumber(1);
+        pizza.setCategory(categorieDAO.getCategoriyByName("normal"));
+        return pizzaDAO.savePizza(PizzaConveter.pizzaModelTopizzaEntity(pizza));
+    }
 
 }

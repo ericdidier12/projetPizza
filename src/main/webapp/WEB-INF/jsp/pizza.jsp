@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="dropdown">
-                <button class="btn btn-block dropdown-toggle" type="button" data-toggle="dropdown">Category of Pizza
+                <button class="btn btn-block dropdown-toggle" type="button" data-toggle="dropdown"><spring:message code="categoryOfPizzaList"/>
                     <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                     <c:forEach var="categorie" items="${categories}">
@@ -78,7 +78,7 @@
                                     <form:form action="pizza/ajouterAuPanier" method="post"
                                                modelAttribute="ajoutPanierPizza">
                                         <from:hidden path="id" value="${infospizza.id}" name="id"/>
-                                        <spring:message code="quantity"/>: <form:input path="number" value="${infospizza.number}" name="number"/>
+                                        <spring:message code="quantity"/> <form:input path="number" value="${infospizza.number}" name="number"/>
                                         <input type="submit" value="<spring:message code="addToCart"/>">
                                     </form:form></span>
                                     </div>
@@ -118,10 +118,10 @@
                         <form:form action="pizza/ajouterAuPanierPizzaCustom" method="post"
                                    modelAttribute="ajoutPanierPizzaCustom">
                             <h4 class="card-title">
-                                <form:label path="ingredients"><strong><u> Pizza Custom </u></strong></form:label>
+                                <form:label path="ingredients"><strong><u> <spring:message code="pizzacustom"/> </u></strong></form:label>
                             </h4>
                             <!-- Trigger the modal with a button -->
-                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Selected ingredient</button>
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><spring:message code="SelectIngredients"/></button>
 
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" role="dialog">
@@ -129,7 +129,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Ingredient</h4>
+                                            <h4 class="modal-title"><spring:message code="ingredient"/></h4>
                                         </div>
                                         <div class="modal-body">
 
@@ -139,12 +139,12 @@
 
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <input type="submit" value="<spring:message code="addToCart"/>">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <input type="submit" value="Ajouter au panier">
+
                         </form:form>
 
                         <!-- Fin Tile & Descriptionn & add cart pizza custom-->

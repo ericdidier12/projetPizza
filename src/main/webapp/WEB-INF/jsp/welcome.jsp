@@ -12,7 +12,7 @@
         </h1>
         <p class="lead">
             <spring:message code="messageHome"/>
-            <div>
+        <div>
             <img src="<spring:url value="/images/imagePiza.jpg"/>"/>
         </div>
     </header>

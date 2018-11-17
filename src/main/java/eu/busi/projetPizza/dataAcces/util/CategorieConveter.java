@@ -24,6 +24,7 @@ public class CategorieConveter {
         }
 
         Category category = new Category();
+        category.setId(categoryEntity.getId());
         category.setName(categoryEntity.getName());
         return category;
     }
@@ -39,6 +40,7 @@ public class CategorieConveter {
         }
 
         CategoryEntity categoryEntity = new CategoryEntity();
+        categoryEntity.setId((category.getId()));
         categoryEntity.setName(category.getName());
         return categoryEntity ;
     }

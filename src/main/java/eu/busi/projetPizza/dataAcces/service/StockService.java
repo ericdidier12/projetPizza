@@ -20,6 +20,7 @@ public class StockService {
     private IngredientDAO ingredientDAO;
 
     public boolean booleanTestPizzaInStock(List<Pizza> pizzaList) {
+
         boolean test = true;
         Collection<Ingredient> ingredientList = new ArrayList<>();
         Map<Long, Ingredient> ingredientMap = new HashMap<Long, Ingredient>();

@@ -33,7 +33,7 @@ public class PizzaEntity {
     @JoinColumn(name = "cat_id")
     private CategoryEntity categoryEntity;
 
-    @ManyToMany(mappedBy = "pizzaEntitiesList", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "pizzaEntitiesList", fetch = FetchType.EAGER)
     private List<IngredientEntity> ingredientEntityList;
 
     @Transient

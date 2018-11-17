@@ -35,6 +35,7 @@ public class OderConverter {
         oder.setFull_price(oderEntity.getFull_price());
         oder.setIs_paid(oderEntity.isIs_paid());
         oder.setStatusEnum(oderEntity.getStatusEnum());
+        oder.setTotal_price(oderEntity.getTotal_price());
         Collection<Promo> promos  = new ArrayList<>();
         if (oderEntity.getPromoEntity() != null ){
             for (PromoEntity promo: oderEntity.getPromoEntity()) {
@@ -63,6 +64,7 @@ public class OderConverter {
         oderEntity.setIs_paid(oder.isIs_paid());
         oderEntity.setStatusEnum(oder.getStatusEnum());
         oderEntity.setUserEntity(UserConverter.userModelToUserEntity(oder.getUser()));
+        oderEntity.setTotal_price(oder.getTotal_price());
 
         Collection<PromoEntity> promoEntity  = new ArrayList<>();
         if (oder.getPromos() != null ){

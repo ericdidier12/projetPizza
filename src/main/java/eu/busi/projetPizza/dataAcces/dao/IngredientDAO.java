@@ -66,5 +66,20 @@ public class IngredientDAO {
                 .collect(Collectors.toList());
         return ingredients;
     }
+    public Boolean checkIfStockQuantiteAndgetStock_Quantity_IngredientIsNull(IngredientEntity ingredientEntity) {
+
+        boolean  isfound =false;
+
+        IngredientEntity ingredientEntity1 = ingredientRepository.findOne(ingredientEntity.getId());
+
+        if ( ingredientEntity1.getRecipe_quantity() <= ingredientEntity1.getStock_quantity()) {
+
+            return isfound = true;
+
+        }
+
+        return isfound;
+
+    }
 
 }
