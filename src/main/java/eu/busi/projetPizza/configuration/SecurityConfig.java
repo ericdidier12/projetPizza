@@ -27,6 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/cart/sendDelete",
             "/cart/sendSubstract",
             "/cart/sendAdd",
+            "/user/register/send",
             "/user/register",
             "/pizza/trieCategorieByName/american",
             "/pizza/trieCategorieByName/of-the-sea",

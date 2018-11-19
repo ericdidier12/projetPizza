@@ -1,13 +1,11 @@
 
 package eu.busi.projetPizza.model;
 
-import eu.busi.projetPizza.dataAcces.entity.Authority;
-import eu.busi.projetPizza.dataAcces.entity.OrderLineEntity;
 import eu.busi.projetPizza.enums.CategoryEnum;
-import eu.busi.projetPizza.dataAcces.entity.IngredientEntity;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 public class Pizza {
@@ -21,7 +19,8 @@ public class Pizza {
     private List<Order_Line> order_line;
     private CategoryEnum categoryEnum;
 
-
+    @NotEmpty(message = "number can't be  empty")
+    @Pattern(regexp = "[\\s]*[0-9]*[1-9]+",message="msg")
     private int number = 1;
     private String categorie ;
     private Category category;

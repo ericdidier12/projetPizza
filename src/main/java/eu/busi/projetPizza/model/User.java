@@ -5,7 +5,7 @@ import eu.busi.projetPizza.dataAcces.entity.Authority;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -40,6 +40,7 @@ public class User {
     private LocalDate birth_date;
 
     @Size(min=4, max=50)
+    @NotEmpty(message = "adresse can't be  empty")
     private String adress;
 
 
