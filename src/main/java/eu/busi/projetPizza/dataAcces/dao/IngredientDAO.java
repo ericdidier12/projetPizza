@@ -21,6 +21,7 @@ public class IngredientDAO {
 
     private final IngredientRepository ingredientRepository;
 
+
     public IngredientDAO(IngredientRepository ingredientRepository) {
         this.ingredientRepository = ingredientRepository;
     }

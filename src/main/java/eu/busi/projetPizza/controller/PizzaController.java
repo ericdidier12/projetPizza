@@ -21,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -89,7 +90,7 @@ public class PizzaController {
 
 
     @RequestMapping(value = "/ajouterAuPanier", method = RequestMethod.POST)
-    public String lookPizzasAndAddinCart(Model model, @ModelAttribute(Constants.CURRENT_PIZZA) Pizza infospizza, final BindingResult errors) {
+    public String lookPizzasAndAddinCart(Model model, @Valid @ModelAttribute("ajoutPanierPizza") Pizza infospizza, final BindingResult errors) {
 
         Pizza pizza = pizzaDAO.findPizzaById(infospizza.getId());
         Pizza pizza1 = pizzaHashMap.get(pizza.getId());
@@ -98,10 +99,11 @@ public class PizzaController {
         } else {
             pizza.setNumber(infospizza.getNumber());
         }
-        pizzaHashMap.put(infospizza.getId(), pizza);
-        if (errors.hasErrors()) {
 
+        if (errors.hasErrors()) {
+            return "redirect:/pizza";
         }
+        pizzaHashMap.put(infospizza.getId(), pizza);
         return "redirect:/pizza";
     }
 
@@ -124,7 +126,7 @@ public class PizzaController {
         }
 
         if (result.hasErrors()) {
-            return "integrated:pizza";
+
         }
         return "redirect:/pizza";
     }

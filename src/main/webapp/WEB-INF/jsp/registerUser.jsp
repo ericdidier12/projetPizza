@@ -5,7 +5,8 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="type=text/html ; charset=UTF-8"/>
-    <title>Welcome</title>
+    <title>Inscription</title>
+
 
     <style>
         .error{
@@ -43,6 +44,14 @@
             <form:errors path="email" cssClass="error"></form:errors>
         </div>
 
+        <div class="form-group col-md-6" <spring:message code="fakeBirth_date" var="fakeBirth_date"/>
+            <form:label path="birth_date" for="birth_date"><spring:message code="birth_date"/> </form:label>
+               <fmt:formatDate value="${birth_date}" pattern="yyyy-MM-dd" var="birth_date"/>
+            <form:input  path="birth_date"   class="form-control" id="birth_date" placeholder="${fakeBirth_date}"/>
+            <form:errors path="birth_date" cssClass="error"></form:errors>
+        </div>
+
+
         <div class="form-group col-md-6" <spring:message code="fakeAddress" var="fakeAddressPlaceHolder"/>>
             <form:label path="adress" for="adress"><spring:message code="address"/> </form:label>
             <form:input  path="adress" class="form-control" id="adress" placeholder="${fakeAddressPlaceHolder}"/>
@@ -53,4 +62,11 @@
     <button type="submit" class="btn btn-primary"><spring:message code="Signin"/></button>
 </form:form>
 </body>
+
+<script type="text/javascript">
+    $(function() {
+        $('#birth_date').datepicker();
+    });
+</script>
+
 </html>

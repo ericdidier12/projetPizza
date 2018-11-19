@@ -87,11 +87,11 @@
 
                                     <form:form action="pizza/ajouterAuPanier" method="post"
                                                modelAttribute="ajoutPanierPizza">
-                                        <from:hidden path="id" value="${infospizza.id}" name="id"/>
-                                        <spring:message code="quantity"/> <form:input path="number"
-                                                                                      value="${infospizza.number}"
-                                                                                      name="number"/>
-                                        <form:errors path="number" cssClass="error"/>
+                                        <form:hidden path="id" value="${infospizza.id}" name="id"/>
+                                        <spring:message code="quantity"/>
+                                        <form:input path="number" value="${infospizza.number}" name="number"/>
+                                        <form:errors path="number" cssClass="error"></form:errors>
+
                                         <input type="submit" value="<spring:message code="addToCart"/>">
                                     </form:form></span>
                                     </div>
@@ -149,7 +149,7 @@
                                         <div class="modal-body">
 
                                             <p>
-                                                <from:checkboxes path="ingredients" items="${ingredients}"
+                                                <form:checkboxes path="ingredients" items="${ingredients}"
                                                                  itemLabel="name" itemValue="id" delimiter="<br/>"/>
                                             </p>
 

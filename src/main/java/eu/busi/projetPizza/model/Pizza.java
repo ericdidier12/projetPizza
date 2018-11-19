@@ -3,8 +3,12 @@ package eu.busi.projetPizza.model;
 
 import eu.busi.projetPizza.enums.CategoryEnum;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 
+import javax.jws.soap.InitParam;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import java.util.List;
 
@@ -19,9 +23,9 @@ public class Pizza {
     private List<Order_Line> order_line;
     private CategoryEnum categoryEnum;
 
-    @NotEmpty(message = "number can't be  empty")
-    @Pattern(regexp = "[\\s]*[0-9]*[1-9]+",message=" PLS number must be positive")
-    private int number = 1;
+    @Min(value = 1)
+    @Digits(integer = 2, fraction = 0 ,message = "must be greater than or equal to 1 ")
+    private Integer number = 1;
     private String categorie ;
     private Category category;
     private List<Ingredient> ingredients;
@@ -43,11 +47,11 @@ public class Pizza {
         this.category = category;
     }
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 
