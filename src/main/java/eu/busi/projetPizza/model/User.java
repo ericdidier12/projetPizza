@@ -42,8 +42,6 @@ public class User {
     @Size(min=4, max=50)
     private String adress;
 
-
-    private Collection<BankAccount> bankAccountEntities;
     private List<Oder> oders;
 
     public User() {
@@ -127,14 +125,6 @@ public class User {
 
     public void setBirth_date(LocalDate birth_date) {
         this.birth_date = birth_date;
-    }
-
-    public Collection<BankAccount> getBankAccountEntities() {
-        return bankAccountEntities;
-    }
-
-    public void setBankAccountEntities(Collection<BankAccount> bankAccountEntities) {
-        this.bankAccountEntities = bankAccountEntities;
     }
 
     public List<Oder> getOders() {

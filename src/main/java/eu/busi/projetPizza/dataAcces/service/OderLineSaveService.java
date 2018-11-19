@@ -24,9 +24,6 @@ public class OderLineSaveService {
     private OderDAO oderDAO;
 
     @Autowired
-    private IngredientDAO ingredientDAO;
-
-    @Autowired
     private StockService testStockService;
 
     public long InsertListOrderLine(Order_Line order_line, Oder oder) {

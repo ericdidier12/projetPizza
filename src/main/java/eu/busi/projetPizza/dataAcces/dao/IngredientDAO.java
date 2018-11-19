@@ -25,12 +25,6 @@ public class IngredientDAO {
         this.ingredientRepository = ingredientRepository;
     }
 
-    public IngredientEntity saveIngredient(Ingredient ingredient) {
-        IngredientEntity ingredientEntity = ingredientRepository.save(IngredientConveter.ingredientIngredientToIngredientEntity(ingredient));
-        return  ingredientEntity;
-
-    }
-
     public IngredientEntity saveUpdateIngredient(Ingredient ingredient) {
         IngredientEntity ingredientEntityFromModel = IngredientConveter.ingredientIngredientToIngredientEntity(ingredient);
         IngredientEntity ingredientEntityToDB = ingredientRepository.findOne(ingredient.getId());
@@ -40,15 +34,6 @@ public class IngredientDAO {
 
     }
 
-    public List<IngredientEntity> loadAllIngredient() {
-        List<IngredientEntity> ingredientEntitiesList = ingredientRepository.findAll();
-        return ingredientEntitiesList;
-    }
-
-    public IngredientEntity loadIngredientEntityById(long Id) {
-        IngredientEntity ingredientEntity = ingredientRepository.findOne(Id);
-        return ingredientEntity;
-    }
     public Ingredient loadIngredientById(long Id)
     {
 
@@ -58,28 +43,17 @@ public class IngredientDAO {
     }
 
     public List<Ingredient> getAllIngredients() {
-        List<Ingredient> ingredients = new ArrayList<>();
         List<IngredientEntity> ingredientEntities = ingredientRepository.findAll();
-        ingredients = ingredientEntities.stream()
+        List<Ingredient> ingredients = ingredientEntities.stream()
                 .map(ingredientEntity ->
                         IngredientConveter.ingredientIngredientTopizzaModel(ingredientEntity))
                 .collect(Collectors.toList());
         return ingredients;
     }
+
     public Boolean checkIfStockQuantiteAndgetStock_Quantity_IngredientIsNull(IngredientEntity ingredientEntity) {
-
-        boolean  isfound =false;
-
         IngredientEntity ingredientEntity1 = ingredientRepository.findOne(ingredientEntity.getId());
-
-        if ( ingredientEntity1.getRecipe_quantity() <= ingredientEntity1.getStock_quantity()) {
-
-            return isfound = true;
-
-        }
-
-        return isfound;
-
+        if ( ingredientEntity1.getRecipe_quantity() <= ingredientEntity1.getStock_quantity()) {return true;}
+        return false;
     }
-
 }

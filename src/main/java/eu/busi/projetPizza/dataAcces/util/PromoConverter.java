@@ -40,8 +40,6 @@ public class PromoConverter {
         promoEntity.setId(promo.getId());
         promoEntity.setName(promo.getName() != null ? promo.getName() : null);
         promoEntity.setReduction(promo.getReduction());
-
         return promoEntity;
     }
-
 }

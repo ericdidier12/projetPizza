@@ -14,7 +14,5 @@ import java.util.List;
 @Transactional
 public interface PizzaRepository extends JpaRepository<PizzaEntity,Long> {
     List<PizzaEntity> findByCategoryEntity(CategoryEntity categoryEntity);
-    PizzaEntity getPizzaEntityById(Long idPizza);
-
 }
 

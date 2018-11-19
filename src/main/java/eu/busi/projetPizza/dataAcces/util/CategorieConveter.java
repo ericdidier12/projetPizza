@@ -1,11 +1,7 @@
 package eu.busi.projetPizza.dataAcces.util;
 
 import eu.busi.projetPizza.dataAcces.entity.CategoryEntity;
-import eu.busi.projetPizza.dataAcces.entity.PizzaEntity;
 import eu.busi.projetPizza.model.Category;
-import eu.busi.projetPizza.model.Pizza;
-
-import java.util.Set;
 
 /**
  * created by  eric.nyandwi on Nov,12/11/2018

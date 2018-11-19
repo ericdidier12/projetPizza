@@ -4,7 +4,6 @@ import eu.busi.projetPizza.dataAcces.entity.IngredientEntity;
 import eu.busi.projetPizza.dataAcces.entity.PizzaEntity;
 import eu.busi.projetPizza.model.Ingredient;
 import eu.busi.projetPizza.model.Pizza;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,6 @@ public class PizzaConveter {
         if (pizzaEntity == null) {
             throw new IllegalArgumentException(" Objet PizzaEntity ne peut pas être null ");
         }
-
         Pizza  pizza = new Pizza();
         pizza.setId(pizzaEntity.getId());
         pizza.setName(pizzaEntity.getName());
@@ -25,7 +23,6 @@ public class PizzaConveter {
         pizza.setMonth_promo(pizzaEntity.isMonth_promo());
         pizza.setPrice(pizzaEntity.getPrice());
         pizza.setCategory(CategorieConveter.CategoryEntityToCategoryModel(pizzaEntity.getCategoryEntity()));
-
         List<Ingredient> ingredients = new ArrayList<>();
         if(pizzaEntity.getIngredientEntityList() != null){
             for (IngredientEntity ingredientEntity : pizzaEntity.getIngredientEntityList()) {
@@ -46,11 +43,9 @@ public class PizzaConveter {
         pizzaEntity.setFixed(pizza.isFixed());
         pizzaEntity.setMonth_promo(pizza.isMonth_promo());
         pizzaEntity.setPrice(pizza.getPrice());
-
         if(pizza.getCategory() != null) {
             pizzaEntity.setCategoryEntity(CategorieConveter.CategoryModelToCategoryEntity(pizza.getCategory()));
         }
-
         List<IngredientEntity> c  = new ArrayList<>();
         if (pizza.getIngredients() != null) {
             for (Ingredient ingredient : pizza.getIngredients()) {
@@ -60,6 +55,4 @@ public class PizzaConveter {
         }
         return pizzaEntity;
     }
-
-
 }

@@ -32,11 +32,6 @@ public class PizzaDAO {
         return pizzaEntitieslist;
     }
 
-    public PizzaEntity loadPizzaById(long Id) {
-        PizzaEntity pizzaEntities = pizzaRepository.findOne(Id);
-        return pizzaEntities;
-    }
-
     public Pizza savePizza(PizzaEntity pizzaEntity) {
         PizzaEntity pizzaEntitySave = pizzaRepository.save(pizzaEntity);
         return PizzaConveter.pizzaEntityTopizzaModel(pizzaEntitySave);
@@ -52,25 +47,15 @@ public class PizzaDAO {
         return pizzas;
     }
 
-
     public List<Pizza> findByCategoryEntity(CategoryEntity category) {
-        List<Pizza> pizzas = new ArrayList<>();
         List<PizzaEntity> pizzaEntities = pizzaRepository.findByCategoryEntity(category);
-
-        pizzas = pizzaEntities.stream().
+        List<Pizza> pizzas = pizzaEntities.stream().
                 map(pizzaEntity -> PizzaConveter.pizzaEntityTopizzaModel(pizzaEntity)).collect(Collectors.toList());
         return pizzas;
-    }
-
-    public Pizza getPizzaById(Long idPizza) {
-        PizzaEntity pizzaEntity = pizzaRepository.getPizzaEntityById(idPizza);
-        return PizzaConveter.pizzaEntityTopizzaModel(pizzaEntity);
     }
 
     public  Pizza findPizzaById(Long id){
         PizzaEntity pizzaEntity= pizzaRepository.findOne(id);
         return PizzaConveter.pizzaEntityTopizzaModel(pizzaEntity);
     }
-
-
 }

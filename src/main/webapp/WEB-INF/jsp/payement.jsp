@@ -1,20 +1,87 @@
 <%@ taglib prefix="button" uri="http://www.springframework.org/tags/form" %>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="include/importTags.jsp"%>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap2-css">
 
-
-
+<body>
 <div class="container">
-    <header class="jumbotron my-4">
-        <p class="lead">
-            <spring:message code="paiement"/></p>
-        <div id="paypal-button-container" class="container"></div>
-
-    </header>
+    <div class="row">
+        <br>
+        <div class="col-md-12">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
+                <!--REVIEW ORDER-->
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <h4><spring:message code="paiement"/></h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div id="paypal-button-container" class="container"></div>
+                    </div>
+                    </div>
+                </div>
+                <!--REVIEW ORDER END-->
+            </div>
+            <div class="col-md-8 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6">
+                <!--SHIPPING METHOD-->
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <h4><spring:message code="summaryOrder"/></h4>
+                        <table class="table borderless">
+                            <tbody>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><spring:message code="nameCustomer"/> :</h5>
+                                    </div>
+                                </td>
+                                <td class="text-left"><div>${nameCustomer}</div></td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><spring:message code="orderNumber"/> :</h5>
+                                    </div>
+                                </td>
+                                <td class="text-left"><div>${IdOrder}</div></td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><spring:message code="messagePromo"/></h5>
+                                    </div>
+                                </td>
+                                <td class="text-left"><div>${promoOrder} %</div></td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><spring:message code="TotalPrice"/></h5>
+                                    </div>
+                                </td>
+                                <td class="text-left"><div>${total} €</div></td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><spring:message code="address"/>:</h5>
+                                    </div>
+                                </td>
+                                <td class="text-left"><div>${addressCustomer}</div></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--SHIPPING METHOD END-->
+            </div>
+        </div>
+    </div>
 </div>
 
-
-
+</body>
 
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>

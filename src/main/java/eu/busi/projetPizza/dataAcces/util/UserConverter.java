@@ -2,13 +2,9 @@ package eu.busi.projetPizza.dataAcces.util;
 
 import eu.busi.projetPizza.dataAcces.entity.OderEntity;
 import eu.busi.projetPizza.dataAcces.entity.UserEntity;
-import eu.busi.projetPizza.model.Adress;
 import eu.busi.projetPizza.model.Oder;
 import eu.busi.projetPizza.model.User;
-import org.hibernate.internal.CriteriaImpl;
-
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -16,8 +12,6 @@ import java.util.List;
  * <br/>
  */
 public class UserConverter {
-
-
     /**
      * Transforme une entité JPA {@link UserEntity} en objet Model {@link User}.
      *
@@ -28,7 +22,6 @@ public class UserConverter {
             throw new IllegalArgumentException(" objet userEntity  ne peut pas être null ");
         }
         User user = new User();
-
         user.setId(userEntity.getId());
         user.setUsername(userEntity.getUsername() );
         user.setName(userEntity.getName());
@@ -39,22 +32,11 @@ public class UserConverter {
         user.setCredentialsNonExpired(userEntity.isCredentialsNonExpired());
         user.setEnabled(userEntity.isEnabled());
         user.setBirth_date(userEntity.getBirth_date());
-
         user.setAuthorities(userEntity.getAuthorities());
         user.setBirth_date(userEntity.getBirth_date());
         user.setAdress(userEntity.getAdressEntity() );
-
-     /*   List<Oder> oders = new ArrayList<>();
-        if (userEntity.getOderEntities() != null & userEntity.getOderEntities().size() > 0) {
-            for (OderEntity command : userEntity.getOderEntities()) {
-                oders.add(OderConverter.oderEntityToOderModel(command));
-            }
-            user.setOders(oders);
-        }
-*/
         return user;
     }
-
 
     /**
      * Transforme un objet Model {@link User} en une entité JPA {@link UserEntity}.
@@ -67,7 +49,6 @@ public class UserConverter {
             throw new IllegalArgumentException(" objet userEntity  ne peut pas être null ");
         }
         UserEntity userEntity = new UserEntity();
-
         userEntity.setId(user.getId());
         userEntity.setUsername(user.getUsername());
         userEntity.setName(user.getName());
@@ -78,11 +59,8 @@ public class UserConverter {
         userEntity.setAccountNonLocked(user.isAccountNonLocked());
         userEntity.setCredentialsNonExpired(user.isCredentialsNonExpired());
         userEntity.setEnabled(user.isEnabled());
-
         userEntity.setAuthorities(user.getAuthorities());
-
         userEntity.setAdressEntity(user.getAdress());
-
         List<OderEntity> oderEntities = new ArrayList<>();
         if (user.getOders() != null) {
             for (Oder command : user.getOders()) {
@@ -92,5 +70,4 @@ public class UserConverter {
         }
         return userEntity;
     }
-
 }

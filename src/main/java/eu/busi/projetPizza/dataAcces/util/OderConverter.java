@@ -1,17 +1,11 @@
 package eu.busi.projetPizza.dataAcces.util;
 
 import eu.busi.projetPizza.dataAcces.entity.OderEntity;
-import eu.busi.projetPizza.dataAcces.entity.PizzaEntity;
 import eu.busi.projetPizza.dataAcces.entity.PromoEntity;
-import eu.busi.projetPizza.dataAcces.entity.UserEntity;
-import eu.busi.projetPizza.enums.StatusEnum;
 import eu.busi.projetPizza.model.Oder;
-import eu.busi.projetPizza.model.Pizza;
 import eu.busi.projetPizza.model.Promo;
-
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Transformation entre le modèle des entités JPA et les objetsModel .
@@ -65,7 +59,6 @@ public class OderConverter {
         oderEntity.setStatusEnum(oder.getStatusEnum());
         oderEntity.setUserEntity(UserConverter.userModelToUserEntity(oder.getUser()));
         oderEntity.setTotal_price(oder.getTotal_price());
-
         Collection<PromoEntity> promoEntity  = new ArrayList<>();
         if (oder.getPromos() != null ){
             for (Promo promo: oder.getPromos()) {
@@ -73,11 +66,7 @@ public class OderConverter {
             }
             oderEntity.setPromoEntity(promoEntity);
         }
-
-
         oderEntity.setUserEntity(UserConverter.userModelToUserEntity(oder.getUser()));
-
-
         return oderEntity;
     }
 

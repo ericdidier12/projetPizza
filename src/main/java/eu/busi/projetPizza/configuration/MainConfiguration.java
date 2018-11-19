@@ -1,6 +1,7 @@
 package eu.busi.projetPizza.configuration;
 
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -36,7 +37,4 @@ public class MainConfiguration extends WebMvcConfigurerAdapter {
         interceptor.setParamName("locale");
         registry.addInterceptor(interceptor);
     }
-
-
-
 }

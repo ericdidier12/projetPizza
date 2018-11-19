@@ -27,12 +27,10 @@ public class WelcomeController {
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String home(Model model, Locale locale) {
+    public String home(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
-
         model.addAttribute("user", name);
-
         return "integrated:welcome";
     }
 

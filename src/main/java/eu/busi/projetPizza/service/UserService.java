@@ -22,7 +22,6 @@ import java.util.Collections;
 public class UserService {
 
     private final UserRepository userRepository;
-
     private final AuthorityRepository authorityRepository;
 
     private final PasswordEncoder passwordEncoder;
