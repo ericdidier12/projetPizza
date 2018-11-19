@@ -107,7 +107,7 @@ public class PizzaController {
 
 
     @RequestMapping(value = "/ajouterAuPanierPizzaCustom", method = RequestMethod.POST)
-    public String lookPizzaCustomsAndAddinCart(Model model, @RequestParam("ingredients") List<Integer> integerList, @ModelAttribute(Constants.CURRENT_PIZZA_Custom) Pizza infospizza, final BindingResult errors) {
+    public String lookPizzaCustomsAndAddinCart(Model model, @RequestParam("ingredients") List<Integer> integerList, @ModelAttribute(Constants.CURRENT_PIZZA_Custom) Pizza infospizza, final BindingResult result) {
         List<Ingredient> ingredientList = new ArrayList<>();
         Pizza pizza = new Pizza();
 
@@ -121,6 +121,10 @@ public class PizzaController {
         if (!ingredientList.isEmpty()) {
             Pizza pizzaCustom = getPizza(ingredientList, pizza);
             pizzaHashMap.put(pizzaCustom.getId(), pizzaCustom);
+        }
+
+        if (result.hasErrors()) {
+            return "integrated:pizza";
         }
         return "redirect:/pizza";
     }

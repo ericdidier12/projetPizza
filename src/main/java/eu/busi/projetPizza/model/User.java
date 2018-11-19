@@ -5,6 +5,7 @@ import eu.busi.projetPizza.dataAcces.entity.Authority;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -21,26 +22,26 @@ public class User {
     private String name;
 
     @NotNull
-    @Size(min = 3, max = 15, message = "Your username must between 6 and 15 characters")
+    @Size(min = 3, max = 15, message = "Your username must between 6 and 15 characters, can't be empty. ")
     private String username;
 
+    @Size(min = 3, max = 15, message = "Your password must between 3 and 15 characters, can't be empty. ")
     @NotNull
-    //@Size(min = 3, max = 15, message = "Your password must between 3 and 15 characters")
     private String password;
 
+    @NotEmpty(message = "Please enter your email addresss, can't be empty.")
     @NotNull
-    @NotEmpty(message = "Please enter your email addresss.")
     @Email
     private String email;
     private boolean accountNonLocked;
     private boolean accountNonExpired;
     private boolean credentialsNonExpired;
-    private boolean enabled ;
+    private boolean enabled;
     private List<Authority> authorities;
     private LocalDate birth_date;
 
-    @Size(min=4, max=50)
-    @NotEmpty(message = "adresse can't be  empty")
+    @NotEmpty(message = "adresse can't be empty")
+    @Size(min = 4)
     private String adress;
 
 

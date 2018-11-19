@@ -20,7 +20,7 @@ public class Pizza {
     private CategoryEnum categoryEnum;
 
     @NotEmpty(message = "number can't be  empty")
-    @Pattern(regexp = "[\\s]*[0-9]*[1-9]+",message="msg")
+    @Pattern(regexp = "[\\s]*[0-9]*[1-9]+",message=" PLS number must be positive")
     private int number = 1;
     private String categorie ;
     private Category category;
