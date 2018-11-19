@@ -21,7 +21,7 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping(value = "/admin")
-@SessionAttributes({Constants.CURRENT_USER , Constants.CURRENT_ENGREDIENT})
+@SessionAttributes({Constants.CURRENT_USER , Constants.CURRENT_ENGREDIENT, Constants.CURRENT_Admin})
 public class AdminController {
 
     private final CategorieDAO categorieDAO ;
@@ -47,13 +47,19 @@ public class AdminController {
         return new Pizza();
     }
 
+
+    @ModelAttribute(Constants.CURRENT_Admin)
+    public Pizza pizza1() {
+        return new Pizza();
+    }
+
     @ModelAttribute(Constants.CURRENT_ENGREDIENT)
     public Ingredient ingredient() {
         return new Ingredient();
     }
 
     @RequestMapping(value = "managePizza/send", method = RequestMethod.POST)
-    public String registerNewPizza(@Valid @ModelAttribute(value = Constants.CURRENT_PIZZA) Pizza pizza, final BindingResult errors) {
+    public String registerNewPizza(@Valid @ModelAttribute(value = Constants.CURRENT_Admin) Pizza pizza, final BindingResult errors) {
         System.out.println("*******************************************************" +
                 "Name : " + pizza.getName() + "  " +
                 "price  : " +pizza.getPrice() + "  " +
