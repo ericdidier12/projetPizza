@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.*;
 
 
@@ -38,8 +39,9 @@ public class PizzaController {
         this.ingredientDAO = ingredientDAO;
     }
 
-    @ModelAttribute(Constants.CURRENT_MY_MAP_PIZZA)
+   @ModelAttribute(Constants.CURRENT_MY_MAP_PIZZA)
     public Map<Long, Pizza> pizzaMap() {return new HashMap<>();}
+
 
     @RequestMapping(method = RequestMethod.GET)
     public String pizza(Model model) {
@@ -71,7 +73,7 @@ public class PizzaController {
     }
 
     @RequestMapping(value = "/ajouterAuPanier", method = RequestMethod.POST)
-    public String lookPizzasAndAddinCart(@ModelAttribute(Constants.CURRENT_PIZZA) Pizza infospizza, @ModelAttribute(Constants.CURRENT_MY_MAP_PIZZA) Map<Long, Pizza> pizzaHashMap, final BindingResult errors) {
+    public String lookPizzasAndAddinCart(Model model, @Valid @ModelAttribute(Constants.CURRENT_PIZZA) Pizza infospizza, final BindingResult errors, @ModelAttribute(Constants.CURRENT_MY_MAP_PIZZA)Map<Long, Pizza> pizzaHashMap) {
 
         Pizza pizza = pizzaDAO.findPizzaById(infospizza.getId());
         Pizza pizza1 = pizzaHashMap.get(pizza.getId());
@@ -80,10 +82,14 @@ public class PizzaController {
         } else {
             pizza.setNumber(infospizza.getNumber());
         }
+
+        if (errors.hasErrors()) {
+            return "redirect:/pizza";
+        }
         pizzaHashMap.put(infospizza.getId(), pizza);
-        if (errors.hasErrors()) {}
         return "redirect:/pizza";
     }
+
 
     @RequestMapping(value = "/ajouterAuPanierPizzaCustom", method = RequestMethod.POST)
         public String lookPizzaCustomsAndAddinCart(@ModelAttribute(Constants.CURRENT_MY_MAP_PIZZA) Map < Long, Pizza > pizzaHashMap, @RequestParam("ingredients") List < Integer > integerList, @ModelAttribute(Constants.CURRENT_PIZZA_Custom) Pizza

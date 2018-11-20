@@ -1,11 +1,8 @@
 
 package eu.busi.projetPizza.model;
 
-import eu.busi.projetPizza.enums.CategoryEnum;
-import org.hibernate.validator.constraints.NotEmpty;
-
-
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import java.util.List;
 
 public class Pizza {
@@ -16,37 +13,26 @@ public class Pizza {
     private boolean month_promo;
     private boolean fixed;
     private List<Order_Line> order_line;
-    private CategoryEnum categoryEnum;
 
-    @NotEmpty(message = "number can't be  empty")
-    @Pattern(regexp = "[\\s]*[0-9]*[1-9]+",message=" PLS number must be positive")
-    private int number = 1;
-    private String categorie ;
-    private Category category;
+    @Min(value = 1)
+    @Digits(integer = 2, fraction = 0 ,message = "must be greater than or equal to 1 ")
+    private Integer number = 1;
+     private Category category;
     private List<Ingredient> ingredients;
-    private List<String> ingredientslist;
 
 
     public Pizza() {
-    }
-
-    public List<String> getIngredientslist() {
-        return ingredientslist;
-    }
-
-    public void setIngredientslist(List<String> ingredientslist) {
-        this.ingredientslist = ingredientslist;
     }
 
     public void setCategory(Category category) {
         this.category = category;
     }
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 
@@ -58,16 +44,8 @@ public class Pizza {
         this.order_line = order_line;
     }
 
-    public CategoryEnum getCategoryEnum() {
-        return categoryEnum;
-    }
     public Category getCategory(){
         return category;
-    }
-
-
-    public void setCategoryEnum(CategoryEnum categoryEnum) {
-        this.categoryEnum = categoryEnum;
     }
 
     public String getName() {
@@ -108,14 +86,6 @@ public class Pizza {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(String categorie) {
-        categorie = categorie;
     }
 
     public List<Ingredient> getIngredients() {
