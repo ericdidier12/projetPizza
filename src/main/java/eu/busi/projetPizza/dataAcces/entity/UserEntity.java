@@ -1,6 +1,5 @@
 package eu.busi.projetPizza.dataAcces.entity;
-
-import eu.busi.projetPizza.dataAcces.util.converter.LocalDateTimeAttributeConverter;
+import eu.busi.projetPizza.dataAcces.util.converter.LocalDateConverter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.Email;
@@ -44,7 +43,7 @@ public class UserEntity extends BaseEntity implements UserDetails {
     private String password;
 
     @Column(nullable = true)
-    @Convert(converter = LocalDateTimeAttributeConverter.class)
+    @Convert(converter = LocalDateConverter.class)
     private LocalDate birth_date;
 
     @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL)

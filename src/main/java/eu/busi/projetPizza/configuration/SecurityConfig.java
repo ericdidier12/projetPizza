@@ -66,6 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     };
     String[] staticResources = {
             "/css/**",
+            "/jquery-ui/**",
             "/images/**",
             "/fonts/**",
             "/vendor/**",

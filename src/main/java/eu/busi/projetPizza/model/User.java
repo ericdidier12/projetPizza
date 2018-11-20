@@ -5,6 +5,7 @@ import eu.busi.projetPizza.dataAcces.entity.Authority;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
@@ -38,6 +39,8 @@ public class User {
     private boolean credentialsNonExpired;
     private boolean enabled;
     private List<Authority> authorities;
+
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private LocalDate birth_date;
 
     @NotEmpty(message = "adresse can't be empty")
