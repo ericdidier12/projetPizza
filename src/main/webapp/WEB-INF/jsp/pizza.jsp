@@ -2,15 +2,25 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="include/importTags.jsp" %>
 <%@include file="include/importLinks.jsp" %>
+<head>
+    <meta http-equiv="Content-Type" content="type=text/html ; charset=UTF-8"/>
+    <title>Pizza</title>
 
-
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
 <!-- Page Content -->
 <div class="container">
     <!-- Category of Pizza -->
     <div class="container">
         <div class="row">
             <div class="dropdown">
-                <button class="btn btn-block dropdown-toggle" type="button" data-toggle="dropdown"><spring:message code="categoryOfPizzaList"/>
+                <button class="btn btn-block dropdown-toggle" type="button" data-toggle="dropdown"><spring:message
+                        code="categoryOfPizzaList"/>
                     <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                     <c:forEach var="categorie" items="${categories}">
@@ -78,7 +88,10 @@
                                     <form:form action="pizza/ajouterAuPanier" method="post"
                                                modelAttribute="ajoutPanierPizza">
                                         <from:hidden path="id" value="${infospizza.id}" name="id"/>
-                                        <spring:message code="quantity"/> <form:input path="number" value="${infospizza.number}" name="number"/>
+                                        <spring:message code="quantity"/> <form:input path="number"
+                                                                                      value="${infospizza.number}"
+                                                                                      name="number"/>
+                                        <form:errors path="number" cssClass="error"/>
                                         <input type="submit" value="<spring:message code="addToCart"/>">
                                     </form:form></span>
                                     </div>
@@ -118,10 +131,12 @@
                         <form:form action="pizza/ajouterAuPanierPizzaCustom" method="post"
                                    modelAttribute="ajoutPanierPizzaCustom">
                             <h4 class="card-title">
-                                <form:label path="ingredients"><strong><u> <spring:message code="pizzacustom"/> </u></strong></form:label>
+                                <form:label path="ingredients"><strong><u> <spring:message
+                                        code="pizzacustom"/> </u></strong></form:label>
                             </h4>
                             <!-- Trigger the modal with a button -->
-                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><spring:message code="SelectIngredients"/></button>
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                    data-target="#myModal"><spring:message code="SelectIngredients"/></button>
 
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" role="dialog">
@@ -134,7 +149,8 @@
                                         <div class="modal-body">
 
                                             <p>
-                                                <from:checkboxes path="ingredients"  items = "${ingredients}" itemLabel="name" itemValue="id" delimiter="<br/>" />
+                                                <from:checkboxes path="ingredients" items="${ingredients}"
+                                                                 itemLabel="name" itemValue="id" delimiter="<br/>"/>
                                             </p>
 
                                         </div>
@@ -162,4 +178,6 @@
     <!-- Section: pizza v.2 -->
     <!-- /.container -->
 </div>
+</body>
+</html>
 

@@ -1,7 +1,19 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="include/importTags.jsp" %>
 <%@include file="include/importLinks.jsp" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="type=text/html ; charset=UTF-8"/>
+    <title>Welcome</title>
 
+    <style>
+        .error{
+            color:red;
+        }
+    </style>
+</head>
+<body>
 <div class="row"> <h2><spring:message code="registerUser"/> </h2>  </div>
 <form:form id="form" method="POST" action="${pageContext.request.contextPath}/user/register/send"  modelAttribute="currentUser"  >
 
@@ -40,3 +52,5 @@
 
     <button type="submit" class="btn btn-primary"><spring:message code="Signin"/></button>
 </form:form>
+</body>
+</html>
