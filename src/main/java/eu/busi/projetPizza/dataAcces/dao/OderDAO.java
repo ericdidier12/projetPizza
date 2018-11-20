@@ -16,10 +16,8 @@ import javax.transaction.Transactional;
 @Transactional
 public class OderDAO {
 
-
     private final OrderRepository orderRepository;
 
-    @Autowired
     public OderDAO(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }

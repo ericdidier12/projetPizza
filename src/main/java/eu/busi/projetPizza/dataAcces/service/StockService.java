@@ -22,7 +22,6 @@ public class StockService {
     public boolean booleanTestPizzaInStock(List<Pizza> pizzaList) {
 
         boolean test = true;
-        Collection<Ingredient> ingredientList = new ArrayList<>();
         Map<Long, Ingredient> ingredientMap = new HashMap<Long, Ingredient>();
         Ingredient ingredientTemp;
         for (Pizza item : pizzaList) {
@@ -38,7 +37,7 @@ public class StockService {
             }
 
         }
-        ingredientList = ingredientMap.values();
+        Collection<Ingredient> ingredientList = ingredientMap.values();
         for (Ingredient item : ingredientList)
         {
             if ((item.getNumberIngredient() * item.getRecipe_qunatity()) > item.getStock_quantity())

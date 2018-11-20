@@ -6,8 +6,6 @@
 
 <!-- Footer -->
 <footer class="py-2 bg-dark footer">
-        <p class="m-0 text-center text-white">Copyright &copy;2018-2020 Website developped by Eric & Sébatien</p>
+        <p class="m-0 text-center text-white">Copyright &copy;2018-2020 Website developped by Eric & Sébastien</p>
     <!-- /.container -->
 </footer>
-
-

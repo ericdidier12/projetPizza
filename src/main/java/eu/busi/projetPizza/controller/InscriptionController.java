@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
 import javax.validation.Valid;
 
 /**
@@ -30,7 +29,7 @@ public class InscriptionController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String home(Model model) {
+    public String home() {
         return "integrated:registerUser";
     }
 
@@ -40,7 +39,8 @@ public class InscriptionController {
     }
 
     @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String saveNewUserRegrister(@Valid @ModelAttribute(value ="currentUser") User user, final BindingResult errors, Model model) {
+    public String saveNewUserRegrister(@Valid @ModelAttribute(value ="currentUser") User user, final BindingResult errors) {
+
         if (errors.hasErrors()) {
             return "integrated:registerUser";
         }

@@ -1,13 +1,9 @@
 package eu.busi.projetPizza.dataAcces.dao;
 
 import eu.busi.projetPizza.dataAcces.entity.CategoryEntity;
-import eu.busi.projetPizza.dataAcces.entity.PizzaEntity;
-import eu.busi.projetPizza.dataAcces.repository.CategorieRepository;
+import eu.busi.projetPizza.dataAcces.repository.CategoryRepository;
 import eu.busi.projetPizza.dataAcces.util.CategorieConveter;
 import eu.busi.projetPizza.model.Category;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,18 +16,16 @@ import java.util.List;
 
 @Service
 @Transactional
-public class CategorieDAO {
+public class CategoryDAO {
 
+    private final CategoryRepository categoryRepository;
 
-
-    private final CategorieRepository categorieRepository;
-
-    public CategorieDAO(CategorieRepository categorieRepository) {
-        this.categorieRepository = categorieRepository;
+    public CategoryDAO(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
     }
 
     public List<Category> getListCategories() {
-        List<CategoryEntity> categoryEntities = categorieRepository.findAll();
+        List<CategoryEntity> categoryEntities = categoryRepository.findAll();
         List<Category> categories = new ArrayList<>();
         for (CategoryEntity categoryEntity : categoryEntities) {
             categories.add(CategorieConveter.CategoryEntityToCategoryModel(categoryEntity));
@@ -40,10 +34,11 @@ public class CategorieDAO {
     }
 
     public CategoryEntity getCategoriyEntityByName(String name){
-        return  categorieRepository.findByName(name);
+        return  categoryRepository.findByName(name);
     }
+
     public Category getCategoriyByName(String name){
-        CategoryEntity categoryEntity = categorieRepository.findByName(name);
+        CategoryEntity categoryEntity = categoryRepository.findByName(name);
         return CategorieConveter.CategoryEntityToCategoryModel(categoryEntity);
     }
 

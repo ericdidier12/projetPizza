@@ -2,9 +2,6 @@
 package eu.busi.projetPizza.model;
 
 
-import eu.busi.projetPizza.dataAcces.entity.PizzaEntity;
-
-import java.util.HashSet;
 import java.util.Set;
 
 public class Category {

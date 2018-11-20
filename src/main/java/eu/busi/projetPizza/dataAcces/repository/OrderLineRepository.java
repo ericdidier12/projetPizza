@@ -10,10 +10,4 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional
-public interface OrderLineRepository extends JpaRepository<OrderLineEntity,Long> {
-
-    // PizzaEntity findByPizzaId(Long id);
-    //  @Query("INSERT Oder ")
-
-
-}
+public interface OrderLineRepository extends JpaRepository<OrderLineEntity,Long> {}

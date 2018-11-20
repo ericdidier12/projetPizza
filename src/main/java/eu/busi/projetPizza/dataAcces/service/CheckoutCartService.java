@@ -24,6 +24,7 @@ public class CheckoutCartService {
 
     private  float total;
     private  long IdOrder;
+    private int toPromo;
 
     public void CreateCompleteOrder(Pizza pizza, Map<Long, Pizza> pizzaMapCart, String userName) {
 
@@ -35,9 +36,6 @@ public class CheckoutCartService {
         LocalDateTime a = LocalDateTime.now();
         for (Iterator<Pizza> i = pizzaList.iterator(); i.hasNext(); ) {
             Pizza item = i.next();
-            if (item.isMonth_promo()) {
-                item.setPrice(item.getPrice() - (item.getPrice() / 100) * 5);
-            }
             subtotal += (item.getPrice() * item.getNumber());
             listPizza.add(item);
         }
@@ -50,7 +48,7 @@ public class CheckoutCartService {
 /**create promo random**/
 
         Random r = new Random();
-        int toPromo = r.nextInt((15 - 1) + 1) + 1;
+        this.toPromo = r.nextInt((15 - 1) + 1) + 1;
         total -= ((total / 100) * toPromo);
         Oder oder = new Oder();
         oder.setUser(user1);
@@ -76,5 +74,9 @@ public class CheckoutCartService {
 
     public long getIdOrder() {
         return IdOrder;
+    }
+
+    public int getToPromo() {
+        return toPromo;
     }
 }

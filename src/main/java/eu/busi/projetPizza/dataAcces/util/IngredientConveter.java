@@ -1,12 +1,7 @@
 package eu.busi.projetPizza.dataAcces.util;
 
 import eu.busi.projetPizza.dataAcces.entity.IngredientEntity;
-import eu.busi.projetPizza.dataAcces.entity.PizzaEntity;
 import eu.busi.projetPizza.model.Ingredient;
-import eu.busi.projetPizza.model.Pizza;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * created by  eric.nyandwi on Nov,12/11/2018

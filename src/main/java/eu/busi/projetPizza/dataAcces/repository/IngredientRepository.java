@@ -11,7 +11,4 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional
-public interface IngredientRepository extends JpaRepository<IngredientEntity,Long> {
-
-  // PizzaEntity findByPizzaId(Long id);
-}
+public interface IngredientRepository extends JpaRepository<IngredientEntity,Long> {}

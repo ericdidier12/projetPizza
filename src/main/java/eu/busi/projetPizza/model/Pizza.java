@@ -1,15 +1,8 @@
 
 package eu.busi.projetPizza.model;
 
-import eu.busi.projetPizza.enums.CategoryEnum;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
-
-
-import javax.jws.soap.InitParam;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Pattern;
 import java.util.List;
 
 public class Pizza {
@@ -19,28 +12,16 @@ public class Pizza {
     private float price;
     private boolean month_promo;
     private boolean fixed;
-
     private List<Order_Line> order_line;
-    private CategoryEnum categoryEnum;
 
     @Min(value = 1)
     @Digits(integer = 2, fraction = 0 ,message = "must be greater than or equal to 1 ")
     private Integer number = 1;
-    private String categorie ;
-    private Category category;
+     private Category category;
     private List<Ingredient> ingredients;
-    private List<String> ingredientslist;
 
 
     public Pizza() {
-    }
-
-    public List<String> getIngredientslist() {
-        return ingredientslist;
-    }
-
-    public void setIngredientslist(List<String> ingredientslist) {
-        this.ingredientslist = ingredientslist;
     }
 
     public void setCategory(Category category) {
@@ -63,16 +44,8 @@ public class Pizza {
         this.order_line = order_line;
     }
 
-    public CategoryEnum getCategoryEnum() {
-        return categoryEnum;
-    }
     public Category getCategory(){
         return category;
-    }
-
-
-    public void setCategoryEnum(CategoryEnum categoryEnum) {
-        this.categoryEnum = categoryEnum;
     }
 
     public String getName() {
@@ -113,14 +86,6 @@ public class Pizza {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(String categorie) {
-        categorie = categorie;
     }
 
     public List<Ingredient> getIngredients() {
