@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Oder {
     private LocalDateTime date_order;
-    private long id;
+    private Long id;
     private float delivery_price ;
     private float full_price;
     private float total_price;
@@ -28,11 +28,11 @@ public class Oder {
         this.promos = promos;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

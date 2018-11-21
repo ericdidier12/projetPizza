@@ -20,7 +20,9 @@ public class CategorieConveter {
         }
 
         Category category = new Category();
-        category.setId(categoryEntity.getId());
+        if(categoryEntity.getId() != null) {
+            category.setId(categoryEntity.getId());
+        }
         category.setName(categoryEntity.getName());
         return category;
     }

@@ -1,15 +1,4 @@
 
-----------   Create DB ---------------
-
-CREATE DATABASE pizzeriadb
-    WITH 
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'French_France.1252'
-    LC_CTYPE = 'French_France.1252'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
-
 
 ------------------------ address; ------------------------------
 
@@ -168,71 +157,71 @@ ALTER TABLE public.user_client_authorities OWNER TO postgres;
 
 ----------------------     DATA     ------------------------------
 
-INSERT INTO public.address(id, street, "number", zip_code, city, box) VALUES (1,	'Avenue Arnaud Fraiteur',	15,	1050,	'Ixelles',	null);
+INSERT INTO public.address(street, "number", zip_code, city, box) VALUES ('Avenue Arnaud Fraiteur',	15,	1050,	'Ixelles',	null);
 
 
 
-INSERT INTO public.authorities(id, name) VALUES (1,	'role_admin');
-INSERT INTO public.authorities(id, name) VALUES (2,	'role_user');
+INSERT INTO public.authorities(name) VALUES ('role_admin');
+INSERT INTO public.authorities(name) VALUES ('role_user');
 
 
-INSERT INTO public.authority(id, authority) VALUES (1,	'ROLE_ADMIN');
-INSERT INTO public.authority(id, authority)	VALUES (2,	'ROLE_USER');
+INSERT INTO public.authority(authority) VALUES ('ROLE_ADMIN');
+INSERT INTO public.authority(authority)	VALUES ('ROLE_USER');
 
 
-INSERT INTO public.category(id, name) VALUES (1, 'normal');
-INSERT INTO public.category(id, name) VALUES (2, 'american');
-INSERT INTO public.category(id, name) VALUES (3,'of the sea');
+INSERT INTO public.category(name) VALUES ('normal');
+INSERT INTO public.category(name) VALUES ('american');
+INSERT INTO public.category(name) VALUES ('of the sea');
 
 
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (1,	'tomato sauce',	50,	3000, 1.5);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (2, 'mozzarela', 20, 2000, 1.5);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (3,	'ham',	15,	2000,	1.5);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (4,	'pineapple',	10,	1500,	1.5);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (5,	'mushroom',	10	,1500	,1);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (6,	'parmesan',	10,	1700,	1.5);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (7,	'egg'	,20,	2000,	2);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (8,	'gorgonzola',	15	,1000,	2);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (9	,'cheddar',	15,	1000,	2);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (10,	'Cherry tomato',	15	,1200,	2);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (11,	'salmone',	15,	800,	2.5);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (12	,'tuna'	,15	,500,	2);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (13,	'sausage',	25,	250,	2);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (14,	'hotdog',	20,	220,	2);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (15,	'hamburger',	20,	180,	2.5);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (16,	'chips',	15,	500,	1);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (17,	'scampi',	15,	200,	2);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (18,	'chicken',	15,	400,	2);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (19	,'barbecue sauce',	10	,250	,2);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (20,	'anchovy',	15,	600,	2);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (21	,'caper',	7,	120,	1);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (22,	'squid',	20,	180,	2.5);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (23,	'chorizo',	15,	300	,2);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (24,'onion',	10,	200,	1);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (25,	'bacon',	15,	300,	2);
-INSERT INTO public.ingredient(id, name, recipe_quantity, stock_quantity, unit_price) VALUES (26,	'pickel',	8,	110,	1);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('tomato sauce',	50,	3000, 1.5);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('mozzarela', 20, 2000, 1.5);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('ham',	15,	2000,	1.5);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('pineapple',	10,	1500,	1.5);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('mushroom',	10	,1500	,1);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('parmesan',	10,	1700,	1.5);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('egg'	,20,	2000,	2);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('gorgonzola',	15	,1000,	2);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('cheddar',	15,	1000,	2);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('Cherry tomato',	15	,1200,	2);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('salmone',	15,	800,	2.5);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('tuna'	,15	,500,	2);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('sausage',	25,	250,	2);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('hotdog',	20,	220,	2);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('hamburger',	20,	180,	2.5);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('chips',	15,	500,	1);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('scampi',	15,	200,	2);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('chicken',	15,	400,	2);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('barbecue sauce',	10	,250	,2);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('anchovy',	15,	600,	2);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('caper',	7,	120,	1);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('squid',	20,	180,	2.5);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('chorizo',	15,	300	,2);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('onion',	10,	200,	1);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('bacon',	15,	300,	2);
+INSERT INTO public.ingredient(name, recipe_quantity, stock_quantity, unit_price) VALUES ('pickel',	8,	110,	1);
 		
 
-INSERT INTO public.pizza(id, name, price, month_promo, cat_id, fixed) VALUES (1	,'Margherita',	7,	false	,1,	true);
-INSERT INTO public.pizza(id, name, price, month_promo, cat_id, fixed) VALUES (2,	'Ham'	,7,	false,	1,	true);
-INSERT INTO public.pizza(id, name, price, month_promo, cat_id, fixed) VALUES (3,	'Napoli',	8,	false,	1,	true);
-INSERT INTO public.pizza(id, name, price, month_promo, cat_id, fixed) VALUES (4,	'Hawaï',	8	,false,	1,	true);
-INSERT INTO public.pizza(id, name, price, month_promo, cat_id, fixed) VALUES (5, 'cheese',	10,	false,	1,	true);	
-INSERT INTO public.pizza(id, name, price, month_promo, cat_id, fixed) VALUES (6,	'Hotdog'	,11,	false,	2,	true);
-INSERT INTO public.pizza(id, name, price, month_promo, cat_id, fixed) VALUES (7,	'Hamburger',	13,	false,	2,	true);
-INSERT INTO public.pizza(id, name, price, month_promo, cat_id, fixed) VALUES (8,	'Chips',	9,	false,	2,	true);
-INSERT INTO public.pizza(id, name, price, month_promo, cat_id, fixed) VALUES (9,	'Sausage',	12,	false,	2,	true);
-INSERT INTO public.pizza(id, name, price, month_promo, cat_id, fixed) VALUES (10,	'Barbecue',	12	,false,	2,	true);
-INSERT INTO public.pizza(id, name, price, month_promo, cat_id, fixed) VALUES (11	,'Scampi',	12	,false,	3,	true);
-INSERT INTO public.pizza(id, name, price, month_promo, cat_id, fixed) VALUES (12,	'Squid',	12	,true,	3,	true);
-INSERT INTO public.pizza(id, name, price, month_promo, cat_id, fixed) VALUES (13,	'Salmone',	13,	false,	3,	true);
-INSERT INTO public.pizza(id, name, price, month_promo, cat_id, fixed) VALUES (14,	'Tuna',	11,	false	,3	,true);
+INSERT INTO public.pizza(name, price, month_promo, cat_id, fixed) VALUES ('Margherita',	7,	false	,1,	true);
+INSERT INTO public.pizza(name, price, month_promo, cat_id, fixed) VALUES ('Ham'	,7,	false,	1,	true);
+INSERT INTO public.pizza(name, price, month_promo, cat_id, fixed) VALUES ('Napoli',	8,	false,	1,	true);
+INSERT INTO public.pizza(name, price, month_promo, cat_id, fixed) VALUES ('Hawaï',	8	,false,	1,	true);
+INSERT INTO public.pizza(name, price, month_promo, cat_id, fixed) VALUES ('cheese',	10,	false,	1,	true);	
+INSERT INTO public.pizza(name, price, month_promo, cat_id, fixed) VALUES ('Hotdog'	,11,	false,	2,	true);
+INSERT INTO public.pizza(name, price, month_promo, cat_id, fixed) VALUES ('Hamburger',	13,	false,	2,	true);
+INSERT INTO public.pizza(name, price, month_promo, cat_id, fixed) VALUES ('Chips',	9,	false,	2,	true);
+INSERT INTO public.pizza(name, price, month_promo, cat_id, fixed) VALUES ('Sausage',	12,	false,	2,	true);
+INSERT INTO public.pizza(name, price, month_promo, cat_id, fixed) VALUES ('Barbecue',	12	,false,	2,	true);
+INSERT INTO public.pizza(name, price, month_promo, cat_id, fixed) VALUES ('Scampi',	12	,false,	3,	true);
+INSERT INTO public.pizza(name, price, month_promo, cat_id, fixed) VALUES ('Squid',	12	,true,	3,	true);
+INSERT INTO public.pizza(name, price, month_promo, cat_id, fixed) VALUES ('Salmone',	13,	false,	3,	true);
+INSERT INTO public.pizza(name, price, month_promo, cat_id, fixed) VALUES ('Tuna',	11,	false	,3	,true);
 
 
-INSERT INTO public.promo_code(id, name, reduction) VALUES (1,	'sales',	15);
-INSERT INTO public.promo_code(id, name, reduction) VALUES (2,	'summer',	5);
-INSERT INTO public.promo_code(id, name, reduction) VALUES (3,	'black week',	25);
-INSERT INTO public.promo_code(id, name, reduction) VALUES (4,	'random',	0);
+INSERT INTO public.promo_code(name, reduction) VALUES ('sales',	15);
+INSERT INTO public.promo_code(name, reduction) VALUES ('summer',	5);
+INSERT INTO public.promo_code(name, reduction) VALUES ('black week',	25);
+INSERT INTO public.promo_code(name, reduction) VALUES ('random',	0);
 
 
 INSERT INTO public.recipe(pizza_id, ingredient_id) VALUES (1,	1);
@@ -297,10 +286,10 @@ INSERT INTO public.recipe(pizza_id, ingredient_id) VALUES (14,	10);
 INSERT INTO public.recipe(pizza_id, ingredient_id) VALUES (14,	3);
 
 
-INSERT INTO public.status(id, name) VALUES (1,	'in progress');
-INSERT INTO public.status(id, name) VALUES (2,	'ready');
-INSERT INTO public.status(id, name) VALUES (3,	'transit');
-INSERT INTO public.status(id, name) VALUES (4,	'delivered');
+INSERT INTO public.status(name) VALUES ('in progress');
+INSERT INTO public.status(name) VALUES ('ready');
+INSERT INTO public.status(name) VALUES ('transit');
+INSERT INTO public.status(name) VALUES ('delivered');
 
 
 SELECT pg_catalog.setval('public.authority_id_seq', 1, true);

@@ -41,7 +41,7 @@ public class PizzaConverterTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testPizzaEntityNullToPizzaModel() {
-        PizzaConverter.pizzaEntityToUserModel(null);
+        PizzaConveter.pizzaEntityTopizzaModel(null);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -53,7 +53,7 @@ public class PizzaConverterTest {
     public void testPizzaEntityAllFields() {
         PizzaEntity pizzaEntity = createPizzaEntityAllFields();
 
-        Pizza pizza = PizzaConverter.pizzaEntityToUserModel(pizzaEntity);
+        Pizza pizza = PizzaConveter.pizzaEntityTopizzaModel(pizzaEntity);
         assertEquals(NAME, pizza.getName());
         assertEquals(ISFIXE, pizza.isFixed());
         assertEquals(PRICE, pizza.getPrice(),6.7f );
@@ -73,7 +73,7 @@ public class PizzaConverterTest {
         pizza.setMonth_promo(ISMONTH_PROMO);
         pizza.setCategory(createCategory());
         pizza.setIngredients(ingredienties);
-        PizzaEntity pizzaEntity   = PizzaConverter.PizzaModelToPizzaEntity(pizza);
+        PizzaEntity pizzaEntity   = PizzaConveter.pizzaModelTopizzaEntity(pizza);
         validateUserEntity(pizzaEntity);
     }
 

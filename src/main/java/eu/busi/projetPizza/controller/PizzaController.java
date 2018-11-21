@@ -92,8 +92,11 @@ public class PizzaController {
 
 
     @RequestMapping(value = "/ajouterAuPanierPizzaCustom", method = RequestMethod.POST)
-        public String lookPizzaCustomsAndAddinCart(@ModelAttribute(Constants.CURRENT_MY_MAP_PIZZA) Map < Long, Pizza > pizzaHashMap, @RequestParam("ingredients") List < Integer > integerList, @ModelAttribute(Constants.CURRENT_PIZZA_Custom) Pizza
+        public String lookPizzaCustomsAndAddinCart(Model model, @ModelAttribute(Constants.CURRENT_MY_MAP_PIZZA) Map < Long, Pizza > pizzaHashMap, @RequestParam("ingredients") List < Integer > integerList, @ModelAttribute(Constants.CURRENT_PIZZA_Custom) Pizza
         infospizza,final BindingResult result){
+        model.addAttribute("ingredients", ingredientDAO.getAllIngredients());
+        model.addAttribute("categories", categorieDAO.getListCategories());
+        model.addAttribute("pizzas", pizzaDAO.listPizza());
             List<Ingredient> ingredientList = new ArrayList<>();
             Pizza pizza = new Pizza();
 
@@ -112,7 +115,7 @@ public class PizzaController {
             if (result.hasErrors()) {
                 return "integrated:pizza";
             }
-            return "redirect:/pizza";
+            return "integrated:pizza";
         }
 
         private Pizza getPizza (List < Ingredient > ingredientList, Pizza pizza){

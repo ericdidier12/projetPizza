@@ -10,12 +10,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "pizza")
-public class PizzaEntity {
+public class PizzaEntity extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="id")
-    private long id;
 
     @Column(name = "name")
     private String name;
@@ -40,14 +36,6 @@ public class PizzaEntity {
     private int number2;
 
     public PizzaEntity() {
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public List<OrderLineEntity> getOrderLineEntitiesList() {
