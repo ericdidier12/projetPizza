@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Pizza {
 
-    private long id;
+    private Long id;
     private String name;
     private float price;
     private boolean month_promo;
@@ -80,11 +80,11 @@ public class Pizza {
         this.fixed = fixed;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

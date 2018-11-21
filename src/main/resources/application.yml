@@ -7,7 +7,7 @@ spring:
   datasource:
     username: postgres
     password: BuSI
-    url: jdbc:postgresql://localhost:5432/pizzeriadb
+    url: jdbc:postgresql://localhost:5432/pizzeriatestdb
   jpa:
     database: POSTGRESQL
     generate-ddl: true
