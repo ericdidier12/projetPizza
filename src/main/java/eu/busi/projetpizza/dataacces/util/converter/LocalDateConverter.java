@@ -1,4 +1,4 @@
-package eu.busi.projetpizza.dataacces.util.converter;
+package eu.busi.projetpizza.dataAcces.util.converter;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

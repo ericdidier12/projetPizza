@@ -1,5 +1,5 @@
-package eu.busi.projetpizza.dataacces.entity;
-import eu.busi.projetpizza.dataacces.util.converter.LocalDateConverter;
+package eu.busi.projetpizza.dataAcces.entity;
+import eu.busi.projetpizza.dataAcces.util.converter.LocalDateConverter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.Email;
@@ -46,8 +46,7 @@ public class UserEntity extends BaseEntity implements UserDetails {
     @Convert(converter = LocalDateConverter.class)
     private LocalDate birth_date;
 
-    @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL)
-    private Collection<BankAccountEntity> bankAccountEntities;
+
 
     @Column(name = "ACOUNT_NOT_LOCKED")
     private boolean accountNonLocked;
@@ -148,14 +147,6 @@ public class UserEntity extends BaseEntity implements UserDetails {
 
     public void setBirth_date(LocalDate birth_date) {
         this.birth_date = birth_date;
-    }
-
-    public Collection<BankAccountEntity> getBankAccountEntities() {
-        return bankAccountEntities;
-    }
-
-    public void setBankAccountEntities(Collection<BankAccountEntity> bankAccountEntities) {
-        this.bankAccountEntities = bankAccountEntities;
     }
 
     public String getAdressEntity() {

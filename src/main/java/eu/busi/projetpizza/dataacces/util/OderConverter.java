@@ -1,7 +1,7 @@
-package eu.busi.projetpizza.dataacces.util;
+package eu.busi.projetpizza.dataAcces.util;
 
-import eu.busi.projetpizza.dataacces.entity.OderEntity;
-import eu.busi.projetpizza.dataacces.entity.PromoEntity;
+import eu.busi.projetpizza.dataAcces.entity.OderEntity;
+import eu.busi.projetpizza.dataAcces.entity.PromoEntity;
 import eu.busi.projetpizza.model.Oder;
 import eu.busi.projetpizza.model.Promo;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.Collection;
 public class OderConverter {
 
     /**
-     * Transforme une entité JPA {@link eu.busi.projetpizza.dataacces.entity.OderEntity} en objet Model {@link eu.busi.projetpizza.model.Oder}.
+     * Transforme une entité JPA {@link eu.busi.projetpizza.dataAcces.entity.OderEntity} en objet Model {@link eu.busi.projetpizza.model.Oder}.
      * @param oderEntity
      * @return Objet type Oder
      */

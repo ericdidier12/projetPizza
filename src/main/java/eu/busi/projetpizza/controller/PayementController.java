@@ -1,7 +1,7 @@
 package eu.busi.projetpizza.controller;
 
-import eu.busi.projetpizza.dataacces.dao.OderDAO;
-import eu.busi.projetpizza.dataacces.dao.UserDAO;
+import eu.busi.projetpizza.dataAcces.dao.OderDAO;
+import eu.busi.projetpizza.dataAcces.dao.UserDAO;
 import eu.busi.projetpizza.model.Constants;
 import eu.busi.projetpizza.model.Oder;
 import eu.busi.projetpizza.model.User;

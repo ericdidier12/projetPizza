@@ -1,6 +1,6 @@
-package eu.busi.projetpizza.dataacces.service;
+package eu.busi.projetpizza.dataAcces.service;
 
-import eu.busi.projetpizza.dataacces.dao.UserDAO;
+import eu.busi.projetpizza.dataAcces.dao.UserDAO;
 import eu.busi.projetpizza.enums.StatusEnum;
 import eu.busi.projetpizza.model.*;
 import org.springframework.beans.factory.annotation.Autowired;

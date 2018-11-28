@@ -1,4 +1,4 @@
-package eu.busi.projetpizza.dataacces.util;
+package eu.busi.projetpizza.dataAcces.util;
 
 /**
  * Interface � implémenter pour  les enums qui utilisent une valeur pour les représenter.

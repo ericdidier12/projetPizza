@@ -1,8 +1,8 @@
-package eu.busi.projetpizza.dataacces.dao;
+package eu.busi.projetpizza.dataAcces.dao;
 
-import eu.busi.projetpizza.dataacces.entity.CategoryEntity;
-import eu.busi.projetpizza.dataacces.repository.CategoryRepository;
-import eu.busi.projetpizza.dataacces.util.CategorieConveter;
+import eu.busi.projetpizza.dataAcces.entity.CategoryEntity;
+import eu.busi.projetpizza.dataAcces.repository.CategoryRepository;
+import eu.busi.projetpizza.dataAcces.util.CategorieConveter;
 import eu.busi.projetpizza.model.Category;
 import org.springframework.stereotype.Service;
 

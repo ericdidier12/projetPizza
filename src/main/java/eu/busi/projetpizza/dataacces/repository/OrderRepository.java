@@ -1,8 +1,10 @@
 
-package eu.busi.projetpizza.dataacces.repository;
+package eu.busi.projetpizza.dataAcces.repository;
 
-import eu.busi.projetpizza.dataacces.entity.OderEntity;
+
+import eu.busi.projetpizza.dataAcces.entity.OderEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;

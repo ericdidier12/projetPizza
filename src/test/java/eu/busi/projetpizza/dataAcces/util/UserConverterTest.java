@@ -1,6 +1,6 @@
-package eu.busi.projetpizza.dataacces.util;
+package eu.busi.projetpizza.dataAcces.util;
 
-import eu.busi.projetpizza.dataacces.entity.UserEntity;
+import eu.busi.projetpizza.dataAcces.entity.UserEntity;
 
 import eu.busi.projetpizza.model.User;
 import org.junit.Test;
@@ -66,7 +66,7 @@ public class UserConverterTest {
 
 
     /**
-     * Création d'une entité {@link eu.busi.projetpizza.dataacces.entity.UserEntity} de base commune au tests de cette classe et de {@link eu.busi.projetpizza.model.User}.
+     * Création d'une entité {@link eu.busi.projetpizza.dataAcces.entity.UserEntity} de base commune au tests de cette classe et de {@link eu.busi.projetpizza.model.User}.
      * Toutes les propriétés sont remplies.
      *
      * @return

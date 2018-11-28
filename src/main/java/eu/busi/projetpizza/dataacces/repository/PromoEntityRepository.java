@@ -1,6 +1,6 @@
-package eu.busi.projetpizza.dataacces.repository;
+package eu.busi.projetpizza.dataAcces.repository;
 
-import eu.busi.projetpizza.dataacces.entity.PromoEntity;
+import eu.busi.projetpizza.dataAcces.entity.PromoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

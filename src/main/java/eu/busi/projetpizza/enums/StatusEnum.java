@@ -1,7 +1,7 @@
 package eu.busi.projetpizza.enums;
 
 
-import eu.busi.projetpizza.dataacces.util.EnumValuePizzaria;
+import eu.busi.projetpizza.dataAcces.util.EnumValuePizzaria;
 
 /**
  * Code permettant de distinguer les différentes sortes de status.

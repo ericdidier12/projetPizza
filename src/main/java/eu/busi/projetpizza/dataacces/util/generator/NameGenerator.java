@@ -1,4 +1,4 @@
-package eu.busi.projetpizza.dataacces.util.generator;
+package eu.busi.projetpizza.dataAcces.util.generator;
 
 import java.util.Random;
 

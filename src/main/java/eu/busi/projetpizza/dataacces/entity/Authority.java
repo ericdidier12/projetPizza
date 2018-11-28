@@ -1,4 +1,4 @@
-package eu.busi.projetpizza.dataacces.entity;
+package eu.busi.projetpizza.dataAcces.entity;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;

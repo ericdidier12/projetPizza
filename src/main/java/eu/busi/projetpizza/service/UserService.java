@@ -1,9 +1,9 @@
 package eu.busi.projetpizza.service;
 
-import eu.busi.projetpizza.dataacces.dao.UserDAO;
-import eu.busi.projetpizza.dataacces.entity.Authority;
-import eu.busi.projetpizza.dataacces.repository.AuthorityRepository;
-import eu.busi.projetpizza.dataacces.repository.UserRepository;
+import eu.busi.projetpizza.dataAcces.dao.UserDAO;
+import eu.busi.projetpizza.dataAcces.entity.Authority;
+import eu.busi.projetpizza.dataAcces.repository.AuthorityRepository;
+import eu.busi.projetpizza.dataAcces.repository.UserRepository;
 import eu.busi.projetpizza.enums.RoleEnum;
 import eu.busi.projetpizza.model.User;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -1,8 +1,8 @@
 
 
-package eu.busi.projetpizza.dataacces.repository;
+package eu.busi.projetpizza.dataAcces.repository;
 
-import eu.busi.projetpizza.dataacces.entity.IngredientEntity;
+import eu.busi.projetpizza.dataAcces.entity.IngredientEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

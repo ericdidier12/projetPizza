@@ -1,8 +1,8 @@
-package eu.busi.projetpizza.dataacces.dao;
+package eu.busi.projetpizza.dataAcces.dao;
 
-import eu.busi.projetpizza.dataacces.entity.IngredientEntity;
-import eu.busi.projetpizza.dataacces.util.IngredientConveter;
-import eu.busi.projetpizza.dataacces.repository.IngredientRepository;
+import eu.busi.projetpizza.dataAcces.entity.IngredientEntity;
+import eu.busi.projetpizza.dataAcces.util.IngredientConveter;
+import eu.busi.projetpizza.dataAcces.repository.IngredientRepository;
 
 
 import eu.busi.projetpizza.model.Ingredient;

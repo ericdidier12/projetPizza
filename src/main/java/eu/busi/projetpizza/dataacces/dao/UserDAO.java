@@ -1,11 +1,11 @@
-package eu.busi.projetpizza.dataacces.dao;
+package eu.busi.projetpizza.dataAcces.dao;
 
 
-import eu.busi.projetpizza.dataacces.entity.UserEntity;
-import eu.busi.projetpizza.dataacces.repository.AuthorityRepository;
-import eu.busi.projetpizza.dataacces.repository.UserRepository;
+import eu.busi.projetpizza.dataAcces.entity.UserEntity;
+import eu.busi.projetpizza.dataAcces.repository.AuthorityRepository;
+import eu.busi.projetpizza.dataAcces.repository.UserRepository;
 
-import eu.busi.projetpizza.dataacces.util.UserConverter;
+import eu.busi.projetpizza.dataAcces.util.UserConverter;
 import eu.busi.projetpizza.model.User;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;

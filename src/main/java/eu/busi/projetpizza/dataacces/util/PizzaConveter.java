@@ -1,7 +1,7 @@
-package eu.busi.projetpizza.dataacces.util;
+package eu.busi.projetpizza.dataAcces.util;
 
-import eu.busi.projetpizza.dataacces.entity.IngredientEntity;
-import eu.busi.projetpizza.dataacces.entity.PizzaEntity;
+import eu.busi.projetpizza.dataAcces.entity.IngredientEntity;
+import eu.busi.projetpizza.dataAcces.entity.PizzaEntity;
 import eu.busi.projetpizza.model.Ingredient;
 import eu.busi.projetpizza.model.Pizza;
 import java.util.ArrayList;

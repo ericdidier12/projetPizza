@@ -1,8 +1,7 @@
 package eu.busi.projetpizza.model;
 
 
-import eu.busi.projetpizza.dataacces.entity.Authority;
-
+import eu.busi.projetpizza.dataAcces.entity.Authority;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -18,11 +17,11 @@ public class User {
 
     @NotNull
     @Size(min = 3, max = 30, message = "Your name must between 6 and 15 characters")
-    private String name;
+    public String name;
 
     @NotNull
     @Size(min = 3, max = 15, message = "Your username must between 6 and 15 characters, can't be empty. ")
-    private String username;
+    public String username;
 
     @Size(min = 3, max = 15, message = "Your password must between 3 and 15 characters, can't be empty. ")
     @NotNull

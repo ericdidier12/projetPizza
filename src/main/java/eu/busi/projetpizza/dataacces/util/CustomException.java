@@ -1,4 +1,4 @@
-package eu.busi.projetpizza.dataacces.util;
+package eu.busi.projetpizza.dataAcces.util;
 
 public class CustomException extends Exception {
     public CustomException(){}

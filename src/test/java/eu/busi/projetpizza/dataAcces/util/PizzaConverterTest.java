@@ -1,7 +1,7 @@
-package eu.busi.projetpizza.dataacces.util;
+package eu.busi.projetpizza.dataAcces.util;
 
-import eu.busi.projetpizza.dataacces.entity.IngredientEntity;
-import eu.busi.projetpizza.dataacces.entity.PizzaEntity;
+import eu.busi.projetpizza.dataAcces.entity.IngredientEntity;
+import eu.busi.projetpizza.dataAcces.entity.PizzaEntity;
 import eu.busi.projetpizza.model.Ingredient;
 import eu.busi.projetpizza.model.Pizza;
 import org.junit.Before;
@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import  static eu.busi.projetpizza.dataacces.util.CategorieConveterTest.*;
+import  static eu.busi.projetpizza.dataAcces.util.CategorieConveterTest.*;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -92,7 +92,7 @@ public class PizzaConverterTest {
 
 
     /**
-     * Création d'une entité {@link eu.busi.projetpizza.dataacces.entity.PizzaEntity} de base commune au tests de cette classe et de {@link eu.busi.projetpizza.model.Pizza}.
+     * Création d'une entité {@link eu.busi.projetpizza.dataAcces.entity.PizzaEntity} de base commune au tests de cette classe et de {@link eu.busi.projetpizza.model.Pizza}.
      * Toutes les propriétés sont remplies.
      *
      * @return

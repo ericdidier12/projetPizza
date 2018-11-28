@@ -1,6 +1,6 @@
 package eu.busi.projetpizza.controller;
 
-import eu.busi.projetpizza.dataacces.entity.UserEntity;
+import eu.busi.projetpizza.dataAcces.entity.UserEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 

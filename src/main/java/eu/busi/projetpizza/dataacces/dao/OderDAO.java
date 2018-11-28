@@ -1,10 +1,10 @@
-package eu.busi.projetpizza.dataacces.dao;
+package eu.busi.projetpizza.dataAcces.dao;
 
 
 
-import eu.busi.projetpizza.dataacces.entity.OderEntity;
-import eu.busi.projetpizza.dataacces.repository.OrderRepository;
-import eu.busi.projetpizza.dataacces.util.OderConverter;
+import eu.busi.projetpizza.dataAcces.entity.OderEntity;
+import eu.busi.projetpizza.dataAcces.repository.OrderRepository;
+import eu.busi.projetpizza.dataAcces.util.OderConverter;
 import eu.busi.projetpizza.model.Oder;
 import org.springframework.stereotype.Service;
 

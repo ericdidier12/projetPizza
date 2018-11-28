@@ -1,8 +1,8 @@
 package eu.busi.projetpizza.controller;
 
-import eu.busi.projetpizza.dataacces.dao.CategoryDAO;
-import eu.busi.projetpizza.dataacces.dao.PizzaDAO;
-import eu.busi.projetpizza.dataacces.util.PizzaConveter;
+import eu.busi.projetpizza.dataAcces.dao.CategoryDAO;
+import eu.busi.projetpizza.dataAcces.dao.PizzaDAO;
+import eu.busi.projetpizza.dataAcces.util.PizzaConveter;
 import eu.busi.projetpizza.model.Constants;
 import eu.busi.projetpizza.model.Ingredient;
 import eu.busi.projetpizza.model.Pizza;

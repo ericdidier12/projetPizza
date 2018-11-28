@@ -1,6 +1,6 @@
 package eu.busi.projetpizza.controller;
 
-import eu.busi.projetpizza.dataacces.dao.UserDAO;
+import eu.busi.projetpizza.dataAcces.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;

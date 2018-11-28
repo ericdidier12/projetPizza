@@ -1,7 +1,7 @@
-package eu.busi.projetpizza.dataacces.service;
+package eu.busi.projetpizza.dataAcces.service;
 
-import eu.busi.projetpizza.dataacces.dao.IngredientDAO;
-import eu.busi.projetpizza.dataacces.entity.IngredientEntity;
+import eu.busi.projetpizza.dataAcces.dao.IngredientDAO;
+import eu.busi.projetpizza.dataAcces.entity.IngredientEntity;
 import eu.busi.projetpizza.model.Ingredient;
 import eu.busi.projetpizza.model.Pizza;
 import org.springframework.beans.factory.annotation.Autowired;

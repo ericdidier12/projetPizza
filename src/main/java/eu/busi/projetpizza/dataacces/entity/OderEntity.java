@@ -1,7 +1,7 @@
-package eu.busi.projetpizza.dataacces.entity;
+package eu.busi.projetpizza.dataAcces.entity;
 
-import eu.busi.projetpizza.dataacces.util.converter.LocalDateTimeAttributeConverter;
-import eu.busi.projetpizza.dataacces.util.converter.StatusEnumConverter;
+import eu.busi.projetpizza.dataAcces.util.converter.LocalDateTimeAttributeConverter;
+import eu.busi.projetpizza.dataAcces.util.converter.StatusEnumConverter;
 import eu.busi.projetpizza.enums.StatusEnum;
 
 import javax.persistence.*;

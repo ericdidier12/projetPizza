@@ -1,6 +1,6 @@
-package eu.busi.projetpizza.dataacces.util;
+package eu.busi.projetpizza.dataAcces.util;
 
-import eu.busi.projetpizza.dataacces.entity.CategoryEntity;
+import eu.busi.projetpizza.dataAcces.entity.CategoryEntity;
 import eu.busi.projetpizza.model.Category;
 import org.junit.Test;
 

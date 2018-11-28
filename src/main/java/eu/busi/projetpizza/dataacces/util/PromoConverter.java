@@ -1,6 +1,6 @@
-package eu.busi.projetpizza.dataacces.util;
+package eu.busi.projetpizza.dataAcces.util;
 
-import eu.busi.projetpizza.dataacces.entity.PromoEntity;
+import eu.busi.projetpizza.dataAcces.entity.PromoEntity;
 import eu.busi.projetpizza.model.Promo;
 
 /**
