@@ -22,15 +22,15 @@ import java.util.Date;
 import java.util.stream.Collectors;
 
 /**
- * <p>    Classe qui permets de définit des filtres ( custom filter dans la configuration http de spring-security) qui vont être activés en fonction du choix du
+ * <p>    Classe qui permets de définir des filtres ( custom filter dans la configuration http de spring-security) qui vont être activés en fonction du choix du
  * <br/>  type d’authentification fait pendant la configuration de Spring.</p>
- *
+ * <p>
  * <br/>  posseder deux methodes attemptAuthentication, successfulAuthentication et on  hérite de
  * <br/>  UsernamePasswordAuthenticationFilter ( Ce filtre traite la soumission du formulaire d’authentification.
  * <br/> Ce formulaire doit présenter deux paramètres username et password) et aussi verifier si la requete contient le token(JWT) qui sera signé.
  * <br/>
  */
-public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter{
+public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
 
@@ -43,7 +43,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     /**
-     *
      * <br/> Effectue l'authentification réelle (Au moment ou l'utilisateur tente des authentifier)
      * <br/> recupere username+passWord sous forme d'objet Authentication
      *
@@ -56,8 +55,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
 
         try {
-            User dto = new ObjectMapper().readValue(request.getInputStream(), User.class); // request.getInputStream() = contenue de la requete, UserFormDTO.class= serialise desaserailisatio en ce type objet
-            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(dto.name, dto.username, Collections.emptyList()));
+            User user = new ObjectMapper().readValue(request.getInputStream(), User.class); // request.getInputStream() = contenue de la requete, UserFormDTO.class= serialise desaserailisatio en ce type objet
+            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.name, user.username, Collections.emptyList()));
         } catch (IOException e) {
             throw new RuntimeException();
         }
@@ -66,14 +65,15 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     /**
      * <br/> Comportement par défaut pour une authentification réussie.
      * <br/> genere le token , le temps d'expiration de ce token  et qui sera signé(certifier) par code secret.
-     *
+     * <p>
      * <br/>  les etapes : call build JWt en lui donnant le claims quon fait (le role)
      * <br/>  associe à une date d'expiration et un mot de passe
      * <br/>  dans la reponse http on va add une entete Appelé "Authorization", et 1 prefixe "Bearer" + le token
      * <br/>
+     *
      * @param request
      * @param response
-     * @param chain Objet qui accompagne sringSecurity
+     * @param chain      Objet qui accompagne sringSecurity
      * @param authResult l'objet renvoyé par la méthode attemptAuthentication .
      * @throws IOException
      * @throws ServletException

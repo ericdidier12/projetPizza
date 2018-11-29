@@ -1,6 +1,9 @@
 package eu.busi.projetpizza.configuration;
 
+import eu.busi.projetpizza.filter.JwtAuthenticationFilter;
+import eu.busi.projetpizza.filter.JwtAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -11,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.security.config.http.SessionCreationPolicy;
 
 @Configuration
 @EnableWebSecurity
@@ -18,7 +22,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String LOGIN_REQUEST = "/login";
 
-    //
     private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{
             "/home",
             "/pizza/ajouterAuPanier",
@@ -36,6 +39,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/admin/ajouterAuPanier"
 
             };
+
+
+    @Value("${secret}")
+    private String secret ;
+
+
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{
             "/home",
             "/admin",
@@ -81,7 +90,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
+
+/*
+       http.csrf().disable();
         http
                 .authorizeRequests()
                 .antMatchers(AUTHORIZED_REQUESTS_ADMIN).hasRole("ADMIN")
@@ -100,6 +111,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutSuccessUrl("/home")
                 .permitAll();
+                 */
+
+
+        http
+                .authorizeRequests()
+                .antMatchers("/api/user/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/api/admin/**").hasAnyRole("ADMIN")
+                .antMatchers("/api/**").permitAll()
+                .antMatchers("/**").permitAll()
+                .anyRequest().authenticated()
+                .and().exceptionHandling()
+                .authenticationEntryPoint((request, response, e) -> response.sendError(401))
+                .and()
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), secret))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), secret))
+                .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // important permet de desactive la session.
+                .and().headers().frameOptions().disable();
+
+
     }
 
     @Bean
@@ -110,7 +141,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
-        // auth.inMemoryAuthentication().withUser("admin").password("root123").roles("ADMIN");
     }
 
 }
